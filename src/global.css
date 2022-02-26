@@ -8,13 +8,13 @@
 }
 
 body {
-    font-weight: 400 14px Roboto, sans-serif;
-    background: #9494da;
+    font: 400 14px Roboto, sans-serif;
+    background-color: rgb(255, 255, 255);
     -webkit-font-smoothing: antialiased;
 }
 
 input, button, textarea {
-    font-weight: 400 18px Roboto, sans-serif;
+    font: 400 18px Roboto, sans-serif;
 }
 
 button {
@@ -34,7 +34,7 @@ form input{
 .button{
     width: 100%;
     height: 60px;
-    background: #251FC5;
+    background: #BA2126;
     border: 0;
     border-radius: 8px;
     color: white;
@@ -48,6 +48,6 @@ form input{
     transition: filter 0.2s;
 }
 
-button:hover{
+.button:hover{
     filter: brightness(80%);
 }

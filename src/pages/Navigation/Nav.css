@@ -1,0 +1,670 @@
+.Navbar {
+    width: 100%;
+    display: flex;
+    height: 180px;
+    align-items: center;
+    background-color: #3B0B0C;
+}
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    border: none;
+  }
+  button:hover{
+    cursor: pointer;
+  }
+
+
+
+/* INICIO - ESTILIZAÇÃO DA DIREITA */
+.Navbar .nav-main-left{
+    flex: 30%;
+    display: flex;
+}
+
+.Navbar .nav-main-left .nav-icon-menu-response{
+    display: none;
+}
+
+.Navbar .nav-main-left .nav-icon-menu-response:hover{
+    cursor: pointer;
+}
+
+.Navbar .nav-main-left .nav-img-logo{
+    width: 300px;
+    margin:auto;
+}
+/* FIM - ESTILIZAÇÃO DA DIREITA */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DO MEIO */
+.Navbar .nav-main-center{
+    flex: 40%;
+}
+
+.Navbar .nav-main-center .nav-align-search-button{
+    display: flex;
+    background-color: white;
+    border-radius: 50px;
+    align-items: center;
+}
+
+.Navbar .nav-main-center .nav-align-search-button .nav-icon-mic{
+    flex: 10%;
+    font-size: 25px;
+    color: #BA2126;
+}
+
+.Navbar .nav-main-center .nav-align-search-button .nav-button-icon-glass{
+    flex: 10%;
+    border: none;
+    background-color: white;
+    border-radius: 50px;
+    font-size: 25px;
+    color: #BA2126;
+}
+
+.Navbar .nav-main-center .nav-align-search-button .nav-button-icon-glass:hover{
+    cursor:pointer;
+}
+
+.Navbar .nav-main-center .nav-align-search-button .nav-button-icon-glass .nav-icon-glass{
+    font-size: 25px;
+}
+
+.Navbar .nav-main-center .nav-align-search-button .nav-search-button{
+    width: 70%;
+    margin: auto;
+    height: 70px;
+    border: none;
+    padding-left: 10px;
+    outline: 0;
+}
+/* FIM - ESTILIZAÇÃO DO MEIO */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DA ESQUERDA */
+.Navbar .nav-main-right{
+    flex: 30%;
+}
+
+.Navbar .nav-main-right .nav-align-options{
+    display: flex;
+    height: 180px;
+    align-items: center;
+    width: 60%;
+    margin: auto;
+    
+}
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DA DIREITA DE DENTRO DA ESQUERDA */
+.Navbar .nav-main-right .nav-align-options .nav-align-options-left{
+    flex: 33%;
+    display: flex;
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-left button{
+    color: white;
+    background-color: #3B0B0C;
+    margin: auto;
+    transition: 300ms;
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-left button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-left button .nav-icon-user{
+    margin: 10px;
+    font-size: 200%;
+}
+/* FIM - ESTILIZAÇÃO DA DIREITA DE DENTRO DA ESQUERDA */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DA DIREITA DE DENTRO DO CENTRO */
+.Navbar .nav-main-right .nav-align-options .nav-align-options-center{
+    display: flex;
+    flex: 33%;
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-center button{
+    color: white;
+    background-color: #3B0B0C;
+    margin: auto;
+    transition: 300ms;
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-center button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-center button .nav-icon-cart{
+    margin: 10px;
+    font-size: 200%;
+}
+/* FIM - ESTILIZAÇÃO DA DIREITA DE DENTRO DO CENTRO  */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DA DIREITA DE DENTRO DA DIREITA  */
+.Navbar .nav-main-right .nav-align-options .nav-align-options-right{
+    display: flex;
+    flex: 33%;
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-right button{
+    color: white;
+    background-color: #3B0B0C;
+    margin: auto;
+    transition: 300ms;
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-right button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.Navbar .nav-main-right .nav-align-options .nav-align-options-right button .nav-icon-whatsaap{
+    margin: 10px;
+    font-size: 180%;
+}
+/* FIM - ESTILIZAÇÃO DA DIREITA DE DENTRO DA DIREITA */
+/* FIM - ESTILIZAÇÃO DA ESQUERDA */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DE BAIXO DA NAV */
+.nav-header-botom{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    background-color: #BA2126;
+    display: flex;
+}
+
+.nav-header-botom #hidden{
+    display: block;
+    position: absolute;
+    top: 180px;
+    left: 0px;
+    width:0px;
+    height: 335px;
+    background-color: #3B0B0C;
+    border-bottom-right-radius: 5px;
+}
+
+.nav-header-botom .nav-align-header-bottom{
+    margin: auto;
+    width: 60%;
+    height: 50px;
+    display: flex;
+}
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DO ICONE DE GUITARRA */
+.nav-header-botom .nav-align-header-bottom .nav-align-options-guitar{
+    flex: 16%;
+    margin: auto;
+    display: flex;
+}
+.nav-header-botom .nav-align-header-bottom .nav-align-options-guitar button{
+    margin: auto;
+    background-color: #BA2126;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.nav-header-botom .nav-align-header-bottom .nav-align-options-guitar button .nav-icon-guitar{
+    font-size: 30px;
+}
+/* FIM - ESTILIZAÇÃO DO ICONE DE GUITARRA */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DO ICONE DE SAXOFONE */
+.nav-header-botom .nav-align-header-bottom .nav-align-options-sax{
+    color: white;
+    flex: 16%;
+    margin: auto;
+    display: flex;
+}
+
+.nav-header-botom .nav-align-header-bottom .nav-align-options-sax button{
+    margin: auto;
+    background-color: #BA2126;
+    color: white;  
+    display: flex;
+    align-items: center;
+}
+.nav-header-botom .nav-align-header-bottom .nav-align-options-sax button .nav-icon-sax{
+    font-size: 30px;
+}
+/* FIM - ESTILIZAÇÃO DO ICONE DE SAXOFONE */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DO ICONE DE BATERIA */
+.nav-header-botom .nav-align-header-bottom .nav-align-options-drum{
+    color: white;
+    flex: 16%;
+    margin: auto;
+    display: flex;
+}
+
+.nav-header-botom .nav-align-header-bottom .nav-align-options-drum button{
+    margin: auto;
+    background-color: #BA2126;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.nav-header-botom .nav-align-header-bottom .nav-align-options-drum button .nav-icon-drum{
+    font-size: 30px;
+}
+/* FIM - ESTILIZAÇÃO DO ICONE DE BATERIA */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DO ICONE DE PIANO */
+.nav-header-botom .nav-align-header-bottom .nav-align-options-piano{
+    color: white;
+    flex: 16%;
+    margin: auto;
+    display: flex;
+}
+
+.nav-header-botom .nav-align-header-bottom .nav-align-options-piano button{
+    margin: auto;
+    background-color: #BA2126;
+    color: white;
+    display: flex;
+    align-items: center;   
+}
+.nav-header-botom .nav-align-header-bottom .nav-align-options-piano button .nav-icon-piano{
+    font-size: 30px;
+}
+/* FIM - ESTILIZAÇÃO DO ICONE DE PIANO */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DO ICONE DE MENU */
+.nav-header-botom .nav-align-header-bottom .nav-align-options-menu{
+    color: white;
+    flex: 16%;
+    margin: auto;
+    display: flex;
+}
+
+.nav-header-botom .nav-align-header-bottom .nav-align-options-menu button{
+    margin: auto;
+    background-color: #BA2126;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.nav-header-botom .nav-align-header-bottom .nav-align-options-menu button .nav-icon-menu{
+    font-size: 30px;
+}
+/* FIM - ESTILIZAÇÃO DO ICONE DE MENU */
+/* FIM - ESTILIZAÇÃO DE BAIXO DA NAV */
+
+
+
+
+/* INICIO - ESTILIZAÇÃO DE 1150PX */
+@media screen and (max-width: 1150px) {
+
+    .nav-main-left { grid-area: left;}
+    .nav-main-center { grid-area: center;}
+    .nav-main-right { grid-area: right;}
+    
+
+    .Navbar{
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+        'left   left   right  right'
+        'center center center center';
+    }
+
+    /* INICIO - ESTILIZAÇÃO DA DIREITA */
+    .Navbar .nav-main-left .nav-img-logo{
+        width: 200px;
+    }
+    /* FIM - ESTILIZAÇÃO DA DIREITA */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DO MEIO */
+    .Navbar .nav-main-center{
+        width: 85%;
+        margin: auto;
+    }
+
+    .Navbar .nav-main-center .nav-align-search-button{
+        height: 55px;
+    }
+
+    .Navbar .nav-main-center .nav-align-search-button .nav-search-button{
+        height: 55px;
+    }
+    /* FIM - ESTILIZAÇÃO DO MEIO */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DA ESQUERDA */
+    .Navbar .nav-main-right .nav-align-options {
+        height: 45px;
+    }
+    /* FIM - ESTILIZAÇÃO DA ESQUERDA */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DE BAIXO */
+    .nav-header-botom .nav-align-header-bottom{
+        width: 80%; 
+    }
+    /* FIM - ESTILIZAÇÃO DE BAIXO */
+}
+
+@media screen and (max-width: 1000px) {
+
+    /* INICIO - ESTILIZAÇÃO DE BAIXO */
+    .nav-header-botom .nav-align-header-bottom{
+        width: 100%; 
+    }
+    /* FIM - ESTILIZAÇÃO DE BAIXO */
+}
+
+@media screen and (max-width: 801px) {
+
+    /* INICIO - ESTILIZAÇÃO DE BAIXO */
+    .nav-header-botom .nav-align-header-bottom{
+        display: block;
+    }
+
+    .nav-header-botom .nav-align-header-bottom .nav-align-options-guitar{
+        display: none;
+    }
+
+    .nav-header-botom .nav-align-header-bottom .nav-align-options-sax{
+        display: none;
+    }
+
+    .nav-header-botom .nav-align-header-bottom .nav-align-options-drum{
+        display: none;
+    }
+
+    .nav-header-botom .nav-align-header-bottom .nav-align-options-piano{
+        display: none;
+    }
+
+    .nav-header-botom .nav-align-header-bottom .nav-align-options-menu{
+        display: none;
+    }
+    /* FIM - ESTILIZAÇÃO DE BAIXO */
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .Navbar{
+        grid-template-areas:
+        'left   left   right  right'
+        'center center center center';
+    }
+
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DA DIREITA */
+    .Navbar .nav-main-left{
+        align-items: center;
+        margin: auto;
+    }
+    .Navbar .nav-main-left .nav-img-logo{
+        width: 200px;
+        margin: 0px;
+    }
+
+    .Navbar .nav-main-left .nav-icon-menu-response{
+        display: flex;
+        color: white;
+        margin:  0px 30px 0px 30px;
+        font-size: 50px;
+    }
+    /* FIM - ESTILIZAÇÃO DA DIREITA */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DO CENTRO */
+    .Navbar .nav-main-center{
+        width: 95%;
+        margin-bottom: 15px;
+    }
+    /* FIM - ESTILIZAÇÃO DO CENTRO */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DA ESQUERDA */
+    .Navbar .nav-main-right .nav-align-options{
+        margin-left: 10px;
+    }
+    /* INICIO - ESTILIZAÇÃO DA ESQUERDA */
+
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DE BAIXO */
+    .nav-header-botom {
+        display: block;
+        position: absolute;
+        top: 180px;
+        left: 0px;
+        width:0px;
+        height: 455px;
+        background-color: #3B0B0C;
+        border-bottom-right-radius: 5px;
+        transition: 100ms;
+    }
+    
+    #hidden.nav-header-botom {
+        transition: 100ms;
+        width:300px;
+    }
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DO ICONE DE GUITARRA */
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-guitar{
+        display: flex;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding-bottom: 20px;
+    }
+
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-guitar button{
+        margin: 20px auto;
+        background-color: #3B0B0C;
+    }
+    /* FIM - ESTILIZAÇÃO DO ICONE DE GUITARRA */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DO ICONE DE SAXFONE */
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-sax{
+        display: flex;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding-bottom: 20px;
+    }
+
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-sax button{
+        margin: 20px auto;
+        background-color: #3B0B0C;
+    }
+    /* FIM - ESTILIZAÇÃO DO ICONE DE SAXFONE */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DO ICONE DE BATERIA */
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-drum{
+        display: flex;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding-bottom: 20px;
+    }
+
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-drum button{
+        margin: 20px auto;
+        background-color: #3B0B0C;
+    }
+    /* FIM - ESTILIZAÇÃO DO ICONE DE BATERIA */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DO ICONE DE PIANO */
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-piano{
+        display: flex;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding-bottom: 20px;
+    }
+
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-piano button{
+        margin: 20px auto;
+        background-color: #3B0B0C;
+    }
+    /* FIM - ESTILIZAÇÃO DO ICONE DE PIANO */
+
+
+
+
+    /* INICIO - ESTILIZAÇÃO DO ICONE DE MENU */
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-menu{
+        display: flex;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        padding-bottom: 20px;
+    }
+
+    #hidden.nav-header-botom .nav-align-header-bottom .nav-align-options-menu button{
+        margin: 20px auto;
+        background-color: #3B0B0C;
+    }
+    /* FIM - ESTILIZAÇÃO DO ICONE DE MENU */
+    /* FIM - ESTILIZAÇÃO DE BAIXO */
+}
+
+@media screen and (max-width: 520px) {
+    .Navbar{
+        padding-top: 10px;
+        height: 140px;
+    }
+
+    .Navbar .nav-main-left .nav-icon-menu-response{
+        width: 20px;
+    }
+
+    .Navbar .nav-main-left .nav-img-logo{
+        width: 150px;
+    }
+
+    .Navbar .nav-main-center .nav-align-search-button .nav-icon-mic{
+        font-size: 15px;
+    }
+    
+    .Navbar .nav-main-center .nav-align-search-button .nav-button-icon-glass{
+        font-size: 15px;
+    }
+
+    .Navbar .nav-main-right .nav-align-options .nav-align-options-left button .nav-icon-user{
+        font-size: 100%;
+    }
+
+    .Navbar .nav-main-right .nav-align-options .nav-align-options-center button .nav-icon-cart{
+
+        font-size: 100%;
+    }
+
+    .Navbar .nav-main-right .nav-align-options .nav-align-options-right button .nav-icon-whatsaap{
+        font-size: 100%;
+    }
+
+    .Navbar .nav-main-center .nav-align-search-button{
+        height: 35px;
+    }
+
+    .Navbar .nav-main-center .nav-align-search-button .nav-search-button{
+        height: 35px;
+    }
+
+    .nav-header-botom {
+        display: block;
+        position: absolute;
+        top: 150px;
+        left: 0px;
+        width:0px;
+        height: 455px;
+        background-color: #3B0B0C;
+        border-bottom-right-radius: 5px;
+        transition: 100ms;
+    }
+}
+
+@media screen and (max-width: 370px) {
+
+    .Navbar{
+        height: 120px;
+    }
+
+    .Navbar .nav-main-left .nav-icon-menu-response{
+        width: 20px;
+    }
+
+    .Navbar .nav-main-left .nav-img-logo{
+        width: 100px;
+    }
+
+    .nav-header-botom {
+        display: block;
+        position: absolute;
+        top: 130px;
+        left: 0px;
+        width:0px;
+        height: 455px;
+        background-color: #3B0B0C;
+        border-bottom-right-radius: 5px;
+        transition: 100ms;
+    }
+
+}

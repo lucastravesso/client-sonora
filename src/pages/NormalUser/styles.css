@@ -1,0 +1,46 @@
+.full-container{
+    display: flex;
+    align-items: center;
+    
+}
+
+.cont-left{
+    flex: 70%;
+    display: flex;  
+}
+
+.full-container .cont-left table{
+    margin: 50px 10px 0 200px;
+}
+
+.full-container .cont-left table tr{
+    display: flex;
+}
+
+.full-container .cont-left table tr p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    padding-top: 30px;
+    border-bottom: 2.5px solid black;
+}
+
+
+
+/*---------------------------------------------------*/
+
+.cont-right{
+    flex: 30%;
+    display: flex;
+}
+
+.cont-right button{
+    height: 60px;
+    width: 60px;
+    border-radius: 4px;
+    border: 1px solid rgb(202, 101, 101);
+    background: transparent;
+    transition: border-color 0.5s;
+}
+.cont-right button:hover{
+    border: 2px solid rgb(177, 140, 140);
+}
