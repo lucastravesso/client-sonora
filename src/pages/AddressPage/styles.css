@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container form{
+    flex: 100%;
+    padding: 5% 20%;
+}

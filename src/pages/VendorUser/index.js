@@ -61,7 +61,7 @@ export default function Products () {
         }).then(resProd => {
             setProducts(resProd.data)
         })
-    },[])
+    })
 
     /** ----------------------------------------------------------- SEPARADOR ----------------------------------------------------------- */
 

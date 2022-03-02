@@ -2,12 +2,13 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom"
 
 import Login from './pages/Login';
-import Products from './pages/Products'
-import NewProduct from './pages/NewProduct'
-import Nav from './pages/Navigation/Nav'
-import LandPage from './pages/LandPage/index'
-import Register from './pages/RegisterPage/index'
-import NormalPerfil from "./pages/NormalUser";
+import VendorUser from './pages/VendorUser/index';
+import NewProduct from './pages/NewProduct';
+import LandPage from './pages/LandPage/index';
+import Register from './pages/RegisterPage/index';
+import AddressAdd from './pages/AddressPage/index';
+import NormalPerfil from './pages/NormalUser/index';
+import EditUser from './pages/EditUser/index';
 
 export default function Routes(){
     return (
@@ -15,11 +16,12 @@ export default function Routes(){
             <Switch>
                 <Route path='/' exact component={LandPage}/>
                 <Route path='/login' component={Login}/>
-                <Route path='/products' exact component={Products}/>
+                <Route path='/perfilvendedor' exact component={VendorUser}/>
                 <Route path='/products/new/:prodId' component={NewProduct}/>
-                <Route path='/nav' component={Nav}/>
                 <Route path='/register' component={Register}/>
-                <Route parh='/perfilsimples' component={NormalPerfil} />
+                <Route path='/perfilsimples' component={NormalPerfil} />
+                <Route path='/adicionarendereco' component={AddressAdd} />
+                <Route path='/editarperfil' component={EditUser} />
             </Switch>
         </BrowserRouter>
     );

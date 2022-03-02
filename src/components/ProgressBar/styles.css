@@ -1,0 +1,87 @@
+
+.box
+{
+  background:#fff;
+  height:250px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  flex-direction:column;
+}
+/* .box:hover
+{
+ transform:scale(1.2);
+} */
+.box .percent
+{
+  width:150px;
+  height:150px;
+  position:relative;
+}
+.box .percent svg
+{
+  width:150px;
+  height:150px;
+  position:relative;
+}
+.box .percent svg circle
+{
+  width:150px;
+  height:150px;
+  fill:none;
+  stroke-width:10;
+  stroke:#000;
+  transform:translate(5px,5px);
+  stroke-dasharray:440;
+  stroke-dashoffset:440;
+  stroke-linecap:round;
+}
+
+.box .percent .half circle:nth-child(1)
+{
+  stroke-dashoffset:calc(440 - (440 * 55) / 100);
+  stroke:#f4e403;
+}
+
+.box .percent .semi-full circle:nth-child(1)
+{
+  stroke-dashoffset:calc(440 - (440 * 87) / 100);
+  stroke:#2bf403;
+}
+
+.box .percent .num
+{
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  color:#111;
+}
+.box .percent .num h2
+{
+  font-size:48px;
+}
+.box .percent .num h2 span
+{
+  font-size:24px;
+}
+.box .text
+{
+  padding: 10px 0 0;
+  color:#999;
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.box .text-red{
+    color: red;
+}
+
+.box .text-green{
+    color: green;
+}

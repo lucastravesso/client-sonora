@@ -10,6 +10,7 @@ import './styles.css'
 export default function Register() {
 
     const history = useHistory();
+    
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -20,6 +21,7 @@ export default function Register() {
     const [email, setEmail] = useState('');
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordConf, setPasswordConf] = useState('');
 
 
     async function registerForm(e){
@@ -39,17 +41,20 @@ export default function Register() {
             email,
         }
 
-        try {
-            api.post('/user/registerNoAddress', data);
-            history.push('/login')
-
-        } catch (err) {
-            alert("Falha ao criar conta . .")
+        if(password === passwordConf)
+        {
+            try {
+                api.post('/user/registerNoAddress', data);
+                history.push('/login')
+    
+            } catch (err) {
+                alert("Falha ao criar conta . .")
+            }
+        }else{
+            alert("Confirmação de senha invalida . . . .")
         }
 
-
     }
-
 
     return (
         <>
@@ -102,11 +107,15 @@ export default function Register() {
                             />
                             <input
                                 placeholder='Senha'
+                                type='password'
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
                             />
                             <input
                                 placeholder='Confirmação de senha'
+                                type='password'
+                                value={passwordConf}
+                                onChange={e => setPasswordConf(e.target.value)}
                             />
                             <button className="button" type='submit'>Enviar</button>
                         </div>

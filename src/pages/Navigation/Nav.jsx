@@ -24,7 +24,7 @@ function Nav() {
       <div className='Navbar'>
         <div className='nav-main-left'>
           <FiMenu className='nav-icon-menu-response' onClick={()=> setshowLinks(!showLinks)}/>
-          <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' />
+          <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")}/>
         </div>
         <div className='nav-main-center'>
           <div className='nav-align-search-button'>

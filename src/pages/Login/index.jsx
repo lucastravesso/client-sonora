@@ -10,6 +10,8 @@ export default function Login () {
 
     const history = useHistory();
 
+
+    //VERIFICAR TIPO DE PERFIL
     if(localStorage.getItem('email') != null)
     {
         history.push('/perfilsimples');

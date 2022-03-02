@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useHistory, Link, useParams} from 'react-router-dom'
-import NumberFormar from 'react-number-format'
+import NumberFormat from 'react-number-format'
 import { FiArrowLeft } from "react-icons/fi";
 
 import logo from '../../assets/instrumentos.png'
@@ -55,9 +55,6 @@ export default function NewProduct(){
             setUserId(response.data.id)
         })
     })
-
-
-    
 
     //----------------------------------functions------------------------------------
     //----------------------------------functions------------------------------------
@@ -127,7 +124,7 @@ export default function NewProduct(){
                 })
             }
 
-            history.push('/products')
+            history.push('/perfilvendedor')
         } catch (err) {
             alert('Error while recoring product, try again')
         }
@@ -144,7 +141,7 @@ export default function NewProduct(){
                     <img src={logo} alt="logo" />
                     <h1>Adicionar novo produto</h1>
                     <p>Entre com as informações do produto e clique em adicionar</p>
-                    <Link className="back-link" to="/products">
+                    <Link className="back-link" to="/perfilvendedor">
                         <FiArrowLeft size={16} color="blue"/>
                         Voltar
                     </Link>
@@ -165,7 +162,7 @@ export default function NewProduct(){
                         value={prod_spec}
                         onChange={e => setProd_spec(e.target.value)}
                       />
-                    <NumberFormar 
+                    <NumberFormat
                     //ARRUMAR DECIMAL SCALE, INSERT FALHANDO CASO NAO INSIRA CERTO
                         //decimalScale={2}
                         //fixedDecimalScale
