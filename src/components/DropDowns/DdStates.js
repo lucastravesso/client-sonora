@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { fetchStates, parseStates } from "../../services/ibgeApi";
+import api from "../../services/loginApi";
 
 import './styles.css'
 
-const DropDownStates = ({id, name, onChange = () => { } }) => {
+const DropDownStates = ({id, name,address, onChange = () => { } }) => {
     const [states, setStates] = useState([]);
+    const accessToken = localStorage.getItem('accessToken');
 
-    useEffect(() => {
-        fetchStates().then(parseStates).then(setStates)}, []);    
+    useEffect(() => {fetchStates().then(parseStates).then(setStates)}, []);    
 
     return (
         <select id={id || name} name={name || id} onChange={onChange}>
-            <option value="">Selecione um estado</option>
+            <option value="">{address}</option>
             {
                 states.map(state => {
                     const { label, value } = state;

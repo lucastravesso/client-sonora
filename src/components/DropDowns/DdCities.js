@@ -3,7 +3,7 @@ import { fetchCities } from "../../services/ibgeApi";
 
 import './styles.css'
 
-const DropDownCities = ({id, name, state, onChange =() =>{} }) => {
+const DropDownCities = ({id, name, state, address, onChange =() =>{} }) => {
     const [cities, setCities] = useState([]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const DropDownCities = ({id, name, state, onChange =() =>{} }) => {
 
     return (
         <select id={id || name} name={name || id} onChange={onChange}>
-            <option value="">Selecione uma cidade </option>
+            <option value="">{address}</option>
             {cities.map(city => {
                     const { id, nome } = city;
                     return (
