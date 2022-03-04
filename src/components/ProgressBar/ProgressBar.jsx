@@ -11,6 +11,7 @@ export default function verifyUserAddress(user) {
                     <div className="percent">
                         <svg className='half'>
                             <circle cx="70" cy="70" r="70"></circle>
+                            <circle cx="70" cy="70" r="70"></circle>
                         </svg>
                         <div className="num">
                             <h2>55%<span>%</span></h2>
@@ -29,6 +30,7 @@ export default function verifyUserAddress(user) {
             <div className="box">
                 <div className="percent">
                     <svg className='semi-full'>
+                        <circle cx="70" cy="70" r="70"></circle>
                         <circle cx="70" cy="70" r="70"></circle>
                     </svg>
                     <div className="num">

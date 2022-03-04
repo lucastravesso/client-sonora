@@ -1,0 +1,177 @@
+
+
+body {
+    background-color: rgb(252, 239, 220);
+}
+
+.form-edit-user{
+    display: flex;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.form-edit-user .form-left{
+    flex: 50%;
+    display: flex;
+    padding-left: 15%;
+}
+
+.form-edit-user .form-right{
+    flex: 50%;
+    display: flex;
+    padding-right: 15%;
+}
+
+.form-edit-user .form-left .align-left{
+    width: 600px;
+    margin: auto;
+}
+
+.form-edit-user .form-right .align-rigth{
+    width: 600px;
+    margin: auto;
+}
+
+
+@media screen and (max-width: 1714px) {
+    
+    body {
+        background-color: rgb(255, 234, 202);
+    }
+    .form-edit-user .form-left{
+        flex: 50%;
+        display: flex;
+    }
+    
+    .form-edit-user .form-right{
+        flex: 50%;
+        display: flex;
+    }
+    
+    .form-edit-user .form-left .align-left{
+        width: 500px;
+        margin: auto;
+    }
+    
+    .form-edit-user .form-right .align-rigth{
+        width: 500px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1418px) {
+
+    body {
+        background-color: rgb(241, 216, 179);
+    }
+
+    .form-edit-user .form-left{
+        flex: 50%;
+        display: flex;
+    }
+    
+    .form-edit-user .form-right{
+        flex: 50%;
+        display: flex;
+    }
+    
+    .form-edit-user .form-left .align-left{
+        width: 400px;
+        margin: auto;
+    }
+    
+    .form-edit-user .form-right .align-rigth{
+        width: 400px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1132px) {
+
+    body {
+        background-color: rgb(252, 198, 118);
+    }
+
+    .form-edit-user .form-left{
+        flex: 50%;
+        display: flex;
+    }
+    
+    .form-edit-user .form-right{
+        flex: 50%;
+        display: flex;
+    }
+    
+    .form-edit-user .form-left .align-left{
+        width: 300px;
+        margin: auto;
+    }
+    
+    .form-edit-user .form-right .align-rigth{
+        width: 300px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1132px) {
+
+    .form-edit-user{
+        display: flex;
+        width: 100%;
+        margin: 20px 0px;
+    }
+    
+    .form-edit-user .align-left{
+        width: 100px;
+        margin: auto;
+    }
+    
+    .form-edit-user .align-rigth{
+        width: 100px;
+        margin: auto;
+    }
+
+    @media screen and (max-width: 900px) {
+        body {
+            background-color: rgb(252, 180, 72);
+        }
+        .form-edit-user {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-edit-user .form-left .align-left{
+            width: 100%;
+            padding-right: 5%;
+        }
+        .form-edit-user .form-right .align-rigth{
+            width: 100%;
+            padding-left: 5%;
+
+        }
+
+    }
+
+    @media screen and (max-width: 900px) {
+        body {
+            background-color: rgb(252, 180, 72);
+        }
+        .form-edit-user {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-edit-user .form-left .align-left{
+            width: 100%;
+            padding-right: 5%;
+        }
+        .form-edit-user .form-right .align-rigth{
+            width: 100%;
+            padding-left: 5%;
+
+        }
+
+    }
+    
+}
+

@@ -131,68 +131,73 @@ export default function EditUser() {
     return (
         <>
             <Nav />
-            <form onSubmit={updateUser}>
+            <form onSubmit={updateUser} className="form-edit-user">
                 <div className="form-left">
-                    <input
-                        placeholder="Nome"
-                        value={firstName}
-                        onChange={e => setFirstName(e.target.value)}
-                    />
-                    <input
-                        placeholder="Sobrenome"
-                        value={lastName}
-                        onChange={e => setLastName(e.target.value)}
-                    />
-                    <input
-                        placeholder="CPF"
-                        value={cpf}
-                        onChange={e => setCpf(e.target.value)}
-                    />
-                    <input
-                        placeholder="RG"
-                        value={rg}
-                        onChange={e => setRg(e.target.value)}
-                    />
-                    <input
-                        placeholder="Nascimento"
-                        value={born}
-                        onChange={e => setBorn(e.target.value)}
-                    />
-                    <input
-                        placeholder="email"
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
-                    />
-                    <input
-                        placeholder="login"
-                        value={login}
-                        onChange={e => setLogin(e.target.value)}
-                    />
+                    <div className="align-left">
+                        <input
+                            placeholder="Nome"
+                            value={firstName}
+                            onChange={e => setFirstName(e.target.value)}
+                        />
+                        <input
+                            placeholder="Sobrenome"
+                            value={lastName}
+                            onChange={e => setLastName(e.target.value)}
+                        />
+                        <input
+                            placeholder="CPF"
+                            value={cpf}
+                            onChange={e => setCpf(e.target.value)}
+                        />
+                        <input
+                            placeholder="RG"
+                            value={rg}
+                            onChange={e => setRg(e.target.value)}
+                        />
+                        <input
+                            type="date"
+                            placeholder="Nascimento"
+                            value={born}
+                            onChange={e => setBorn(e.target.value)}
+                        />
+                        <input
+                            placeholder="email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        <input
+                            placeholder="login"
+                            value={login}
+                            onChange={e => setLogin(e.target.value)}
+                        />
+                    </div>
                 </div>
                 <div className="form-right">
-                    <DropDownStates id="state" name="state" address={state} onChange={handleInputChangeState} />
-                    <DropDownCities id="city" name="city" address={city} onChange={handleInputChangeCity} state={formValuesState.state} />
-                    <input
-                        placeholder="Bairro"
-                        value={district}
-                        onChange={e => setDistrict(e.target.value)}
-                    />
-                    <input
-                        placeholder="Rua"
-                        value={street}
-                        onChange={e => setStreet(e.target.value)}
-                    />
-                    <input
-                        placeholder="Numero"
-                        value={number}
-                        onChange={e => setNumber(e.target.value)}
-                    />
-                    <input
-                        placeholder="Complemento"
-                        value={complement}
-                        onChange={e => setComplement(e.target.value)}
-                    />
-                    <button className="button" type="submit">Enviar</button>
+                    <div className="align-rigth">
+                        <DropDownStates id="state" name="state" address={state} onChange={handleInputChangeState} />
+                        <DropDownCities id="city" name="city" address={city} onChange={handleInputChangeCity} state={formValuesState.state} />
+                        <input
+                            placeholder="Bairro"
+                            value={district}
+                            onChange={e => setDistrict(e.target.value)}
+                        />
+                        <input
+                            placeholder="Rua"
+                            value={street}
+                            onChange={e => setStreet(e.target.value)}
+                        />
+                        <input
+                            placeholder="Numero"
+                            value={number}
+                            onChange={e => setNumber(e.target.value)}
+                        />
+                        <input
+                            placeholder="Complemento"
+                            value={complement}
+                            onChange={e => setComplement(e.target.value)}
+                        />
+                        <button className="button" type="submit">Enviar</button>
+                    </div>
                 </div>
             </form>
         </>

@@ -84,6 +84,7 @@ export default function NormalPerfil() {
                             </tr>
                         </thead>
                         <tbody>
+                            <br />
                             <tr>
                                 <td>
                                     <h1>Informações de endereço</h1>
@@ -115,15 +116,16 @@ export default function NormalPerfil() {
  
                </div>
                 <div className="cont-right">
-                    <table>
+                    <table className="table-right">
                         <thead>
+                            
                             <tr>
                                 <td>{verifyUserAddress(user)}</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
+                                <td className="offbutton">
                                     <button className="button1" onClick={logout} type="button">
                                         <FiPower size={18} color='251fc5' />
                                     </button>

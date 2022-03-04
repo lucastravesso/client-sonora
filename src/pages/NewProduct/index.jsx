@@ -23,7 +23,6 @@ export default function NewProduct(){
     
     const {prodId} = useParams();
 
-    //const email = localStorage.getItem('email');
     const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();

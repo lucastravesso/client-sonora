@@ -1,38 +1,41 @@
 .full-container{
-    display: flex;    
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 70% 30%;
 }
 
-.cont-left{
-    flex: 70%;
-    display: flex;  
-    justify-content: space-around;
+.full-container .cont-left{
+    padding-left: 15%;
 }
 
 .full-container .cont-left .table-left tr td{
-    display: flex;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 25px;
-    padding-top: 5%;
     border-bottom: 2.5px solid black;
+    padding-top: 3%;
+    font-size: 140%;
+    width: 900px;
 }
 
-.full-container .cont-left .table-left h1{
-    font-size: 30px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.full-container .cont-left .table-left tr td h1{
+    border-bottom: 2.5px solid black;
+    padding-top: 3%;
+    font-size: 140%;
+    text-align: center;
+    width: 900px;
 }
 
 
-/*---------------------------------------------------*/
-
-.cont-right{
-    flex: 30%;
-    display: flex;
+.full-container .cont-right .table-right {
+    width: 100%;
 }
 
-.full-container .cont-right table{
-    padding-right: 35px;
+.full-container .cont-right .table-right td{
+    padding: 2%;
+    width: 100%;
 }
+
+.full-container .cont-right .table-right .offbutton{
+    text-align: center;
+}
+
 
 .full-container .cont-right table .button1{
     height: 60px;
@@ -45,13 +48,3 @@
 .full-container .cont-right table button:hover{
     border: 2px solid rgb(177, 140, 140);
 }
-
-.full-container .cont-right table tr td{
-
-    padding-top: 5%;
-
-}
-
-
-
-/*--------------------------------------------------*/

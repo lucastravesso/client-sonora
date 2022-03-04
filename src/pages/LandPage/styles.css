@@ -79,6 +79,17 @@
     
 }
 
+@media screen and (max-width: 1800px) {
+
+    
+    .products-full-container ul {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        margin: auto;
+        list-style: none;
+    }
+}
+
 @media screen and (max-width: 520px) {
 
     .products-full-container{
