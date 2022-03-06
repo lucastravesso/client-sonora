@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import './styles.css'
 
-export default function verifyUserAddress(user) {
+export default function verifyUserInformations(user, card) {
 
     if (user.addressDto === null) {
         return (
@@ -24,7 +24,7 @@ export default function verifyUserAddress(user) {
                 <Link className="button" to='/adicionarendereco'>Adicionar endereço</Link>
             </>
         );
-    } else{
+    } else if(user.addressDto != null && card.length === 0){
         return (
             <>
             <div className="box">
@@ -42,6 +42,30 @@ export default function verifyUserAddress(user) {
                 <h2 className="text-red">Cartão preenchido X</h2>
             </div>
             <Link className="button" to='/editarperfil'>Editar Perfil</Link>
+            <Link className="button" to='/adicionarcartao'>Adicionar Cartão</Link>
+            </>
+        );
+    }else{
+        return (
+            <>
+            <div className="box">
+                <div className="percent">
+                    <svg className='full'>
+                        <circle cx="70" cy="70" r="70"></circle>
+                        <circle cx="70" cy="70" r="70"></circle>
+                    </svg>
+                    <div className="num">
+                        <h2>
+                            <span className="span2">✔</span>
+                        </h2>
+                    </div>
+                </div>
+                <h2 className="text">Perfil</h2>
+                <h2 className="text-green">Endereço preenchido ✓</h2>
+                <h2 className="text-green">Cartão preenchido ✔</h2>
+            </div>
+            <Link className="button" to='/editarperfil'>Editar Perfil</Link>
+            <Link className="button" to='/adicionarcartao'>Adicionar Cartão</Link>
             </>
         );
     }

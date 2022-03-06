@@ -6,7 +6,6 @@ import './styles.css'
 
 const DropDownStates = ({id, name,address, onChange = () => { } }) => {
     const [states, setStates] = useState([]);
-    const accessToken = localStorage.getItem('accessToken');
 
     useEffect(() => {fetchStates().then(parseStates).then(setStates)}, []);    
 

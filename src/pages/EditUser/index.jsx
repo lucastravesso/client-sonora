@@ -116,7 +116,6 @@ export default function EditUser() {
                     Authorization: `Bearer ${accessToken}`
                 }
             })
-            console.log(User)
             history.push('/perfilsimples');
         } catch (err) {
             alert("Falha ao atualizar usuario . .");
@@ -144,13 +143,15 @@ export default function EditUser() {
                             value={lastName}
                             onChange={e => setLastName(e.target.value)}
                         />
-                        <input
-                            placeholder="CPF"
+                        <InputMask
+                            mask="999.999.999-99"
+                            placeholder='CPF'
                             value={cpf}
                             onChange={e => setCpf(e.target.value)}
                         />
-                        <input
-                            placeholder="RG"
+                        <InputMask
+                            mask="99.999.999-9"
+                            placeholder='RG'
                             value={rg}
                             onChange={e => setRg(e.target.value)}
                         />
@@ -165,11 +166,7 @@ export default function EditUser() {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
-                        <input
-                            placeholder="login"
-                            value={login}
-                            onChange={e => setLogin(e.target.value)}
-                        />
+
                     </div>
                 </div>
                 <div className="form-right">

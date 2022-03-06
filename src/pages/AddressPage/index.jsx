@@ -1,6 +1,5 @@
 import React, { useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
-import InputMask from 'react-input-mask'
 
 import Nav from '../Navigation/Nav'
 import api from '../../services/loginApi'

@@ -20,7 +20,7 @@ const DropDownCities = ({id, name, state, address, onChange =() =>{} }) => {
             {cities.map(city => {
                     const { id, nome } = city;
                     return (
-                        <option value={id} key={id} >{nome}</option>
+                        <option value={nome} key={id} >{nome}</option>
                         );
                 })
             }

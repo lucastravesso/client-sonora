@@ -9,6 +9,7 @@ import Register from './pages/RegisterPage/index';
 import AddressAdd from './pages/AddressPage/index';
 import NormalPerfil from './pages/NormalUser/index';
 import EditUser from './pages/EditUser/index';
+import AddCard from './pages/AddCard/index';
 
 export default function Routes(){
     return (
@@ -22,6 +23,7 @@ export default function Routes(){
                 <Route path='/perfilsimples' component={NormalPerfil} />
                 <Route path='/adicionarendereco' component={AddressAdd} />
                 <Route path='/editarperfil' component={EditUser} />
+                <Route path='/adicionarcartao' component={AddCard} />
             </Switch>
         </BrowserRouter>
     );

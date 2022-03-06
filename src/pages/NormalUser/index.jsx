@@ -3,7 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { FiPower } from 'react-icons/fi'
 
 import verifyAddress from "../../components/VerifyAddress/VerifyAddress";
-import verifyUserAddress from "../../components/ProgressBar/ProgressBar";
+import verifyUserInformations from "../../components/ProgressBar/ProgressBar";
 import api from '../../services/loginApi'
 import Nav from '../Navigation/Nav'
 
@@ -15,7 +15,8 @@ export default function NormalPerfil() {
 
     const [user, setUser] = useState([]);
     const [address, setAddress] = useState([]);
-
+    const [card, setCard] = useState([]);
+    const [id, setId] = useState([]);
 
     useEffect(() => {
 
@@ -29,11 +30,49 @@ export default function NormalPerfil() {
         })
     }, [])
 
+    useEffect(() => {
+
+        api.get('/card/listallbyid', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }).then(response => {
+            setCard(response.data)
+        })
+    }, [])
+
+
+    //ARRUMAR ESSA PORRA DE PARTE DO INFENRO
+
+    async function excludeCard(){
+
+        try {
+            api.delete(`/card/delete/${id}`,{
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            })
+        } catch (err) {
+            alert("Falha ao deletar cartao")
+        }
+    }
+
+    function cardFind(id){
+        card.find((c) =>{
+            if(c.id === id)
+            {
+                setId(id)
+                excludeCard();
+            }else{
+                return;
+            }
+        })
+    }
     
     async function deleteAccount(){
 
         let r = window.confirm("Voce deseja realmente excluir sua conta ?");
-        if (r==true)
+        if (r===true)
         {
             try {
                 api.delete(`/user/delete/${user.id}`,{
@@ -77,7 +116,7 @@ export default function NormalPerfil() {
                                 <td>RG : {user.rg}</td>
                             </tr>
                             <tr>
-                                <td>Aniversário : {user.born}</td>
+                                <td>Data de Nascimento : {user.born}</td>
                             </tr>
                             <tr>
                                 <td>Email : {user.email}</td>
@@ -112,6 +151,34 @@ export default function NormalPerfil() {
                                 <td>Complemento : {verifyAddress(address, "complement")}</td>
                             </tr>
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    <h1>Informação dos cartões</h1>
+                                </td>
+                            </tr>
+                            {
+                                card.map(card =>(
+                                    <>
+                                        <button className="button" onClick={() => cardFind(card.id)}>Excluir cartão</button>
+                                        <tr>
+                                            <td>Nome no cartão : {card.card_name}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bandeira : {card.card_flag}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Numero no cartão : {card.card_number}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Validade do cartão : {card.card_valid}</td>
+                                        </tr>
+                                        
+                                        <br /><br />
+                                    </>
+                                ))
+                            }
+                        </tfoot>
                     </table>                    
  
                </div>
@@ -120,7 +187,7 @@ export default function NormalPerfil() {
                         <thead>
                             
                             <tr>
-                                <td>{verifyUserAddress(user)}</td>
+                                <td>{verifyUserInformations(user, card)}</td>
                             </tr>
                         </thead>
                         <tbody>

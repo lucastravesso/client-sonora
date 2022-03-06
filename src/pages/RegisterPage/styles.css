@@ -3,6 +3,13 @@
     align-items: center;
 }
 
+.inputs-right .input{
+    margin-left: 20px;
+    width: 60%;
+    height: 60px;
+    color: rgb(0, 0, 0);    
+}
+
 .inputs-left input{
     width: 60%;
     height: 60px;
