@@ -5,39 +5,102 @@
 
 .full-container .cont-left{
     padding-left: 15%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.full-container .cont-left .table-left {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 8px 8px 1em #ff0008;
+    border-radius: 10px;
 }
 
 .full-container .cont-left .table-left tr td{
-    border-bottom: 2.5px solid black;
-    padding-top: 3%;
+    padding-top: 2.3%;
+    padding-left: 5%;
     font-size: 140%;
     width: 900px;
 }
 
 .full-container .cont-left .table-left tr td h1{
-    border-bottom: 2.5px solid black;
-    padding-top: 3%;
+    color: #BA2126;
+    padding-top: 20px;
     font-size: 140%;
-    text-align: center;
     width: 900px;
 }
 
+.table-foot{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.table-foot .each-row{
+
+    background-image: url("../../assets/bg-card.jpg");
+    margin: 27px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 8px 8px 1em #000000;
+    border-radius: 10px;
+}
+
+.table-foot .each-row tr td{
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: rgb(255, 255, 255) 0.0em 0.07em 0.07em;
+    background-image: linear-gradient(rgb(157, 0, 0), rgb(0, 0, 0));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.button-remove{
+    margin-left: 72%;
+    width: 25%;
+    height: 60px;
+    background: #BA2126;
+    border-radius: 20px;
+    border: 0;
+    color: white;
+    margin-top: 16px;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 60px;
+    box-shadow: 2px 2px 0.2em #000000;
+    transition: filter 0.2s;
+}
+
+.button-remove:hover{
+    filter: brightness(80%);
+}
 
 .full-container .cont-right .table-right {
     width: 100%;
+    margin: 0;
+    padding-right: 12%;
+    padding-top: 50px;
+    
+}
+
+.full-container .cont-right .table-right thead tr td{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 1em #ff0008;
+    border-radius: 10px;
 }
 
 .full-container .cont-right .table-right td{
-    padding: 2%;
+    padding: 8%;
     width: 100%;
 }
 
-.full-container .cont-right .table-right .offbutton{
-    text-align: center;
-}
-
-
 .full-container .cont-right table .button1{
+    
+    position: absolute;
+    margin-left: 370px;
+    margin-top: -15px;
     height: 60px;
     width: 60px;
     border-radius: 4px;
@@ -46,5 +109,122 @@
     transition: border-color 0.5s;
 }
 .full-container .cont-right table button:hover{
-    border: 2px solid rgb(177, 140, 140);
+    border: 2px solid rgb(255, 0, 0);
+}
+
+.full-container .cont-right .table-right tfoot tr td{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 1em #ff0008;
+    border-radius: 10px;
+
+}
+
+/*-----------------------------------------------*/
+
+
+
+@media screen and (max-width: 1500px){
+    .full-container{
+        display: grid;
+        grid-template-columns: 70% 30%;
+    }
+    
+    .full-container .cont-left{
+        padding-left: 5%;
+    }
+    
+    .full-container .cont-left .table-left tr td{
+        border-bottom: 2.5px solid black;
+        padding-top: 3%;
+        font-size: 140%;
+        width: 700px;
+    }
+    
+    .full-container .cont-left .table-left tr td h1{
+        border-bottom: 2.5px solid black;
+        padding-top: 3%;
+        font-size: 140%;
+        text-align: center;
+        width: 700px;
+    }
+    
+    
+    .full-container .cont-right .table-right {
+        width: 100%;
+    }
+    
+    .full-container .cont-right .table-right td{
+        padding: 2%;
+        width: 100%;
+    }
+    
+    .full-container .cont-right .table-right .offbutton{
+        text-align: center;
+    }
+    
+    
+    .full-container .cont-right table .button1{
+        height: 60px;
+        width: 60px;
+        border-radius: 4px;
+        border: 1px solid rgb(202, 101, 101);
+        background: transparent;
+        transition: border-color 0.5s;
+    }
+    .full-container .cont-right table button:hover{
+        border: 2px solid rgb(177, 140, 140);
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .full-container{
+        display: grid;
+        grid-template-columns: 60% 40%;
+    }
+    
+    .full-container .cont-left{
+        padding-left: 5%;
+    }
+    
+    .full-container .cont-left .table-left tr td{
+        border-bottom: 2.5px solid black;
+        padding-top: 3%;
+        font-size: 140%;
+        width: 550px;
+    }
+    
+    .full-container .cont-left .table-left tr td h1{
+        border-bottom: 2.5px solid black;
+        padding-top: 3%;
+        font-size: 140%;
+        text-align: center;
+        width: 550px;
+    }
+    
+    
+    .full-container .cont-right .table-right {
+        width: 100%;
+    }
+    
+    .full-container .cont-right .table-right td{
+        padding: 2%;
+        width: 100%;
+    }
+    
+    .full-container .cont-right .table-right .offbutton{
+        text-align: center;
+    }
+    
+    
+    .full-container .cont-right table .button1{
+        height: 60px;
+        width: 60px;
+        border-radius: 4px;
+        border: 1px solid rgb(202, 101, 101);
+        background: transparent;
+        transition: border-color 0.5s;
+    }
+    .full-container .cont-right table button:hover{
+        border: 2px solid rgb(177, 140, 140);
+    }
 }

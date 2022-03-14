@@ -141,6 +141,12 @@
     flex: 33%;
 }
 
+.Navbar .nav-main-right .nav-align-options .nav-align-options-center .pop-up{
+    position: absolute;
+    padding-left: 80px;
+    color: white;
+}
+
 .Navbar .nav-main-right .nav-align-options .nav-align-options-center button{
     color: white;
     background-color: #3B0B0C;
@@ -196,6 +202,7 @@
     width: 100%;
     height: 50px;
     background-color: #BA2126;
+    box-shadow: 5px 5px 1em #ff0008;
     display: flex;
 }
 

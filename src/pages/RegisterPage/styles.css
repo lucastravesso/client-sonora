@@ -1,28 +1,40 @@
 .form-container{
     display: flex;
     align-items: center;
+    box-shadow: 6px 6px 1em #000000;
+    background-color: rgb(238, 215, 186);
+    padding-top: 0.5%;
 }
 
-.inputs-right .input{
-    margin-left: 20px;
-    width: 60%;
+.input{
+    padding-bottom: 3%;
+    padding-top: 0.8%;
+    padding-left: 30%;
+    width: 100%;
     height: 60px;
     color: rgb(0, 0, 0);    
 }
 
+.input h1 p{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+}
+
 .inputs-left input{
+    box-shadow: 2px 2px 1em #000000;
+
     width: 60%;
     height: 60px;
     color: rgb(0, 0, 0);
-    border: 1px solid #3b3b3b;
     border-radius: 8px;
     margin: 10px 0 10px 260px;
 }
 .inputs-right input{
+    box-shadow: 2px 2px 1em #000000;
+
     width: 60%;
     height: 60px;
     color: rgb(0, 0, 0);
-    border: 1px solid #4b4b4b;
     border-radius: 8px;
     margin: 10px 0 10px 20px;
 }
@@ -46,11 +58,115 @@
 }
 
 
-/*-------------*/
+.right-form{
+    flex: 50%;
+    display: flex;
+    width: 60%;
+    margin: 55px auto;
+}
+
+
+@media screen and (max-width: 1200px){
+    .form-container{
+    display: flex;
+    align-items: center;
+}
+
+.input{
+    padding-top: 2%;
+    padding-left: 38%;
+    width: 60%;
+    height: 60px;
+    color: rgb(0, 0, 0);    
+}
+
+.inputs-left input{
+    width: 80%;
+    height: 60px;
+    color: rgb(0, 0, 0);
+    border: 1px solid #3b3b3b;
+    border-radius: 8px;
+    margin: 10px 0 10px 60px;
+}
+.inputs-right input{
+    width: 80%;
+    height: 60px;
+    color: rgb(0, 0, 0);
+    border: 1px solid #4b4b4b;
+    border-radius: 8px;
+    margin: 10px 0 10px 20px;
+}
+
+
+
+.inputs-right .button{
+    width: 80%;
+    height: 60px;
+    color: rgb(255, 255, 255);
+    border: 1px solid #DCDCE6;
+    border-radius: 8px;
+    margin: 10px 0 10px 20px;
+}
+
+.left-form{
+    flex: 50%;
+    display: flex;
+    width: 60%;
+    margin: 55px auto;
+}
+
 
 .right-form{
     flex: 50%;
     display: flex;
     width: 60%;
     margin: 55px auto;
+}
+
+}
+
+@media screen and (max-width: 600px){
+
+    .input{
+        text-align: center;
+    }
+
+
+    .form-container{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .left-form{
+        width: 100%;
+        margin: 0;
+        padding-top: 10px;
+    }
+    
+    .right-form{
+        width: 100%;
+        margin: 0;
+    }
+
+.inputs-left input{
+    width: 80%;
+    color: rgb(0, 0, 0);
+    border: 1px solid #3b3b3b;
+    border-radius: 8px;
+}
+.inputs-right input{
+    width: 80%;
+    color: rgb(0, 0, 0);
+    border: 1px solid #4b4b4b;
+    border-radius: 8px;
+}
+
+.inputs-right .button{
+    width: 80%;
+    color: rgb(255, 255, 255);
+    border: 1px solid #DCDCE6;
+    border-radius: 8px;
+}
+
+
 }

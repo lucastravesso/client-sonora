@@ -42,19 +42,20 @@
 .box .percent .half circle:nth-child(1)
 {
   stroke-dashoffset:calc(440 - (440 * 55) / 100);
-  stroke:#000000;
+  stroke:#c7ca01;
+  stroke-width: 10px;
 }
 .box .percent .half circle:nth-child(2)
 {
   stroke-dashoffset:calc(440 - (440 * 55) / 100);
-  stroke:#ddff8d;
+  stroke:#e7eb00;
   stroke-width: 7px;
 }
 
 .box .percent .semi-full circle:nth-child(1)
 {
   stroke-dashoffset:calc(440 - (440 * 87) / 100);
-  stroke:#000000;
+  stroke:#46d305;
   stroke-width: 10px;
 }
 .box .percent .semi-full circle:nth-child(2)
@@ -67,7 +68,7 @@
 .box .percent .full circle:nth-child(1)
 {
   stroke-dashoffset:calc(440 - (440 * 100) / 100);
-  stroke:#000000;
+  stroke:#46d305;
   stroke-width: 10px;
 }
 .box .percent .full circle:nth-child(2)

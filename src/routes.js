@@ -10,6 +10,7 @@ import AddressAdd from './pages/AddressPage/index';
 import NormalPerfil from './pages/NormalUser/index';
 import EditUser from './pages/EditUser/index';
 import AddCard from './pages/AddCard/index';
+import CartPage from "./pages/CartPage";
 
 export default function Routes(){
     return (
@@ -24,6 +25,7 @@ export default function Routes(){
                 <Route path='/adicionarendereco' component={AddressAdd} />
                 <Route path='/editarperfil' component={EditUser} />
                 <Route path='/adicionarcartao' component={AddCard} />
+                <Route path='/carrinho' component={CartPage}/>
             </Switch>
         </BrowserRouter>
     );

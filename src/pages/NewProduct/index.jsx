@@ -173,7 +173,7 @@ export default function NewProduct(){
                    <select name="select_category" onChange={e => setCategoryId(e.target.value)}>
                        <option value={categoryId}>{categoryName}</option>
                         {categoryList.map(cat =>(
-                            <option value={cat.id} >
+                            <option key ={cat.id} value={cat.id} >
                                 {cat.categoryName}
                             </option>
                         ))}

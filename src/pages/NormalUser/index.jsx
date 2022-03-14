@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { FiPower } from 'react-icons/fi'
 
 import verifyAddress from "../../components/VerifyAddress/VerifyAddress";
 import verifyUserInformations from "../../components/ProgressBar/ProgressBar";
 import api from '../../services/loginApi'
 import Nav from '../Navigation/Nav'
+import Bottom from '../BottomInfo/Bottom'
 
 import './styles.css'
 
@@ -16,59 +17,61 @@ export default function NormalPerfil() {
     const [user, setUser] = useState([]);
     const [address, setAddress] = useState([]);
     const [card, setCard] = useState([]);
-    const [id, setId] = useState([]);
 
-    useEffect(() => {
-
-        api.get('user/findByToken', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        }).then(response => {
-            setUser(response.data)
-            setAddress(response.data.addressDto)
-        })
-    }, [])
-
-    useEffect(() => {
-
-        api.get('/card/listallbyid', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        }).then(response => {
-            setCard(response.data)
-        })
-    }, [])
-
-
-    //ARRUMAR ESSA PORRA DE PARTE DO INFENRO
-
-    async function excludeCard(){
-
+    async function getUser(){
         try {
-            api.delete(`/card/delete/${id}`,{
+            await api.get('user/findByToken', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
+            }).then(response => {
+                setUser(response.data)
+                setAddress(response.data.addressDto)
             })
         } catch (err) {
-            alert("Falha ao deletar cartao")
+            alert("Falha ao traer as informações de usuario")
         }
     }
+    useEffect(() => {getUser()}, [])
 
-    function cardFind(id){
-        card.find((c) =>{
+
+    async function getCard(){
+        try {
+            await api.get('/card/listallbyid', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            }).then(response => {
+                setCard(response.data)
+            })
+        } catch (err) {
+            alert("Nao foi possivel trazer o cartão")
+        }
+    }
+    useEffect(() => {getCard()}, [])
+
+    async function cardFind(id){
+        return card.find((c) =>{
             if(c.id === id)
             {
-                setId(id)
-                excludeCard();
-            }else{
-                return;
+                let r = window.confirm("Voce deseja realmente excluir este cartão ?");
+                if (r===true){
+                    try {
+                        api.delete(`/card/delete/${id}`,{
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                            }
+                        })
+                        getCard();
+                    } catch (err) {
+                        return alert("Falha ao deletar cartao . .")
+                    }
+                }
             }
+            return null;
         })
     }
-    
+
     async function deleteAccount(){
 
         let r = window.confirm("Voce deseja realmente excluir sua conta ?");
@@ -121,9 +124,11 @@ export default function NormalPerfil() {
                             <tr>
                                 <td>Email : {user.email}</td>
                             </tr>
+                            <tr>
+                                <td>Telefone : {user.phone}</td>
+                            </tr>
                         </thead>
                         <tbody>
-                            <br />
                             <tr>
                                 <td>
                                     <h1>Informações de endereço</h1>
@@ -151,33 +156,35 @@ export default function NormalPerfil() {
                                 <td>Complemento : {verifyAddress(address, "complement")}</td>
                             </tr>
                         </tbody>
-                        <tfoot>
+                        <tfoot >
                             <tr>
                                 <td>
                                     <h1>Informação dos cartões</h1>
                                 </td>
                             </tr>
-                            {
-                                card.map(card =>(
-                                    <>
-                                        <button className="button" onClick={() => cardFind(card.id)}>Excluir cartão</button>
-                                        <tr>
-                                            <td>Nome no cartão : {card.card_name}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bandeira : {card.card_flag}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Numero no cartão : {card.card_number}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Validade do cartão : {card.card_valid}</td>
-                                        </tr>
-                                        
-                                        <br /><br />
-                                    </>
-                                ))
-                            }
+                            <div className="table-foot">
+                                {
+                                    card.map(card =>(
+                                        <div className="each-row">
+                                            <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
+                                            <tr>
+                                                <td>Nome no cartão : {card.card_name}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bandeira : {card.card_flag}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Numero no cartão : {card.card_number}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Validade do cartão : {card.card_valid}</td>
+                                            </tr>
+                                
+                                            <br /><br />
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </tfoot>
                     </table>                    
  
@@ -185,40 +192,21 @@ export default function NormalPerfil() {
                 <div className="cont-right">
                     <table className="table-right">
                         <thead>
-                            
-                            <tr>
-                                <td>{verifyUserInformations(user, card)}</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="offbutton">
+                            <tr> 
+                                <td>
                                     <button className="button1" onClick={logout} type="button">
                                         <FiPower size={18} color='251fc5' />
                                     </button>
+                                    {verifyUserInformations(user, card)}
                                 </td>
                             </tr>
-                        </tbody>
+                        </thead>
+                        <br />
                         <tfoot>
-                            <tr>
-                                <td>
-                                    Deseja começar a vender?
-                                    Clique no botão abaixo!
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <Link className="button" to="/perfilvendedor">Ativar conta</Link>
-                                </td>
-                            </tr>
                             <tr>
                                 <td>
                                     Deseja excluir sua conta ?
                                     Clique no botão abaixo!
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     <button id ="alert" className="button" onClick={deleteAccount}>Excluir conta</button>
                                 </td>
                             </tr>
@@ -226,6 +214,7 @@ export default function NormalPerfil() {
                     </table>
                 </div>
             </div>
+            <Bottom />
         </>
     );
 }

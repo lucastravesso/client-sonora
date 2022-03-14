@@ -13,7 +13,6 @@ export default function AddressAdd() {
     const history = useHistory();
 
     const [user, setUser] = useState([]);
-    const accessToken = localStorage.getItem('accessToken');
 
     const [state, setState] = useState('');
     const [city, setCity] = useState('');
@@ -25,7 +24,7 @@ export default function AddressAdd() {
     useEffect(() => {
         api.get('user/findByToken',{
             headers: {
-                 Authorization : `Bearer ${accessToken}`
+                 Authorization : `Bearer ${localStorage.getItem('accessToken')}`
                 }
         }).then(response =>{
             setUser(response.data)
@@ -60,7 +59,7 @@ export default function AddressAdd() {
         try {
             api.put(`/user/update/${user.id}`, data, {
                 headers:{
-                    Authorization: `Bearer ${accessToken}`
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
             history.push('/perfilsimples')

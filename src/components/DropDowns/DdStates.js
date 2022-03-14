@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { fetchStates, parseStates } from "../../services/ibgeApi";
-import api from "../../services/loginApi";
 
 import './styles.css'
 

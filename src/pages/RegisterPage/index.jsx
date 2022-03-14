@@ -1,10 +1,10 @@
 import React, { useState} from "react";
-import {useHistory} from 'react-router-dom'
-import InputMask from 'react-input-mask'
+import {useHistory} from 'react-router-dom';
+import InputMask from 'react-input-mask';
 
 import Nav from '../Navigation/Nav'
 import api from '../../services/loginApi'
-
+import Bottom from '../BottomInfo/Bottom'
 
 import './styles.css'
 
@@ -21,6 +21,7 @@ export default function Register() {
     const [cpf, setCpf] = useState('');
     const [rg, setRg] = useState('');
     const [born, setBorn] = useState('');
+    const [phone, setPhone] = useState('');
     //const [register, setRegister] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -37,10 +38,10 @@ export default function Register() {
             lastName,
             cpf,
             rg,
+            phone,
             born,
             register : null,
             password,
-            login: null,
             email,
         }
 
@@ -87,6 +88,10 @@ export default function Register() {
             type: 'error',
             message: 'Necessario preencher o campo rg . .'
         })
+        else if(!phone) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo telefone . .'
+        })
         else if(!born) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo data de nascimento . .'
@@ -107,7 +112,9 @@ export default function Register() {
     return (
         <>
             <Nav />
-
+            <div className="input">                        
+                <h1>{status.type === 'error' ? <p style={{ color: "red"}}>{status.message}</p> : ""}</h1>
+            </div>
             <form onSubmit={registerForm}>
                 <div className="form-container">
                     <div className="left-form">
@@ -143,6 +150,12 @@ export default function Register() {
                     </div>
                     <div className="right-form">
                         <div className="inputs-right">
+                            <InputMask
+                                mask="(99)99999-9999"
+                                placeholder='Telefone'
+                                value={phone}
+                                onChange={e => setPhone(e.target.value)}
+                            />
                             <input
                                 placeholder='Email'
                                 type="email"
@@ -162,13 +175,12 @@ export default function Register() {
                                 onChange={e => setPasswordConf(e.target.value)}
                             />
                             <button className="button" type='submit'>Enviar</button>
-                            <div className="input">                        
-                                {status.type === 'error' ? <p style={{ color: "red"}}>{status.message}</p> : ""}
-                            </div>
                         </div>
                     </div>
                 </div>
             </form>
+            <br />
+            <Bottom />
         </>
     );
 }

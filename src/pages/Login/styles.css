@@ -1,19 +1,23 @@
 .main-login{
     display: flex;
     align-items: center;
+    padding-top: 6.3%;
 }
 
 .login-container{
     flex: 50%;
     display: flex;  
+    
 }
 
 .main-login .login-container form{
     width: 60%;
     margin: 55px auto;
-    border: 1px solid black;
+    background-color: rgb(236, 209, 174);
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 8px 8px 1em #000000;
+
 }
 
 .main-login .login-container form h1{
@@ -32,10 +36,12 @@
 .align-register{
     width: 60%;
     height: 315px;
+    background-color: rgb(236, 209, 174);
     margin: auto;
     padding: 20px;    
-    border: 1px solid black ;
     border-radius: 10px;
+    box-shadow: 8px 8px 1em #000000;
+
 }
 
 

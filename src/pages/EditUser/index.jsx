@@ -7,6 +7,7 @@ import DropDownStates from "../../components/DropDowns/DdStates";
 
 import Nav from '../Navigation/Nav'
 import api from '../../services/loginApi'
+import Bottom from '../BottomInfo/Bottom'
 
 import './styles.css'
 
@@ -18,6 +19,7 @@ export default function EditUser() {
     const [lastName, setLastName] = useState('');
     const [cpf, setCpf] = useState('');
     const [rg, setRg] = useState('');
+    const [phone, setPhone] = useState('');
     const [born, setBorn] = useState('');
     const [register, setRegister] = useState('');
     const [password, setPassword] = useState('');
@@ -64,6 +66,7 @@ export default function EditUser() {
                 setLastName(res.data.lastName)
                 setCpf(res.data.cpf)
                 setRg(res.data.rg)
+                setPhone(res.data.phone)
                 setBorn(res.data.born)
                 setPassword(res.data.password)
                 setRegister(res.data.register)
@@ -81,7 +84,7 @@ export default function EditUser() {
         } catch (err) {
             alert("Falha ao encontrar usuario . .")
         }
-    }, [])
+    }, [accessToken])
 
     async function updateUser(e) {
         e.preventDefault();
@@ -102,6 +105,7 @@ export default function EditUser() {
             lastName: lastName,
             cpf: cpf,
             rg: rg,
+            phone: phone,
             born: born,
             register: register,
             password: password,
@@ -155,6 +159,12 @@ export default function EditUser() {
                             value={rg}
                             onChange={e => setRg(e.target.value)}
                         />
+                        <InputMask
+                            mask="(99)99999-9999"
+                            placeholder='Telefone'
+                            value={phone}
+                            onChange={e => setPhone(e.target.value)}
+                        />
                         <input
                             type="date"
                             placeholder="Nascimento"
@@ -197,6 +207,9 @@ export default function EditUser() {
                     </div>
                 </div>
             </form>
+            <br />
+            <br />
+        <Bottom />
         </>
     );
 }

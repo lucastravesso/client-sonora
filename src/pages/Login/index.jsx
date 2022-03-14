@@ -3,6 +3,7 @@ import {useHistory} from 'react-router-dom'
 import './styles.css'
 
 import Nav from '../Navigation/Nav'
+import Bottom from "../BottomInfo/Bottom";
 
 import api from '../../services/loginApi'
 
@@ -69,6 +70,10 @@ export default function Login () {
                         </div>
                 </div>
             </div>
+            <br />
+            <br />
+            <br />
+            <Bottom />
             </>
     );
 }

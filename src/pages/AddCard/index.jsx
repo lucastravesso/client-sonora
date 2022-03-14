@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useState} from "react";
 import {useHistory} from 'react-router-dom'
 import InputMask from 'react-input-mask'
 
@@ -6,6 +6,7 @@ import InputMask from 'react-input-mask'
 import Nav from '../Navigation/Nav'
 import api from '../../services/loginApi'
 import DropDownCardFlag from '../../components/DropDowns/DdCardFlags'
+import Bottom from "../BottomInfo/Bottom";
 
 import './styles.css'
 
@@ -13,6 +14,10 @@ export default function AddCard(){
 
     const history = useHistory();
     const accessToken = localStorage.getItem('accessToken');
+    const [status, setStatus] = useState({
+        type: '',
+        message: ''
+    });
 
     const [card_name, setCard_name] = useState('');
     const [card_flag, setCard_flag] = useState('');
@@ -29,6 +34,8 @@ export default function AddCard(){
             card_number : card_number,
             card_valid : card_valid,
         }
+
+        if(!validate()) return; 
 
         try {
             api.post('/card/register', data, {
@@ -47,11 +54,33 @@ export default function AddCard(){
         setCard_flag(e.target.value);
     }
 
+    function validate(){
+        if(!card_name) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo Nome no cartão . .'
+        })
+        else if(!card_flag) return setStatus({
+            type: 'error',
+            message: 'Necessario escolher a bandeira do cartão . .'
+        })
+        else if(!card_number) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo numero do cartão . .'
+        })
+        else if(!card_valid) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo validade do cartão . .'
+        })
+        else{return true;}
+    }
+
     return (
         <>
         <Nav></Nav>
         <div className="container">
             <form className="form-save" onSubmit={addCard}>
+            {status.type === 'error' ? <p style={{ color: "red"}}>{status.message}</p> : ""}
+
                 <DropDownCardFlag onChange={handleInputChangeFlag}/>
                 <InputMask
                     placeholder='Nome no cartão'
@@ -73,6 +102,8 @@ export default function AddCard(){
                 <button className="button" type="submit">Registrar cartão</button>
             </form>
         </div>
+        <br />
+        <Bottom />
         </>
     );
 

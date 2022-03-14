@@ -54,7 +54,7 @@ export default function Products () {
     /* -------------------------------------  HOOKS PARA MANTER API ATIVA -------------------------------------  -------------------------------------  */
 
     useEffect(() => {
-        api.get(`products/listBy`,{
+        api.get(`products/list`,{
             headers: {
                  Authorization : `Bearer ${accessToken}`
                 }

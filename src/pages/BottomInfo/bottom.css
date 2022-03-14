@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,700&family=Roboto:wght@400;500;700&display=swap');
+
+.bottom-page{
+
+    width: 100%;
+    display: flex;
+    height: 150px;
+    align-items: center;
+    background-color: #3B0B0C;
+    border-top: 12px solid #BA2126;
+    box-shadow: 5px 5px 1em #ff0008;
+
+}
+
+p{
+    font-family: Roboto;
+    width: 100%;
+    color: white;
+    padding-left: 5%;
+}
+
+/*--------------------------*/
+
+.bottom-page .bot-left{
+    flex: 20%;
+    display: flex;
+}
+
+.bottom-page .bot-left .nav-img-logo{
+    width: 80%;
+}
+
+/*-----------------------------------*/
+
+.bottom-page .bot-center{
+    flex: 60%;
+    display: flex;
+}
+
+.bottom-page .bot-center table{
+    width: 100%;
+}
+
+
+
+/*-----------------------------------*/
+
+.bottom-page .bot-right{
+    flex: 20%;
+    display: flex;
+}
+
+.bottom-page .bot-right button{
+    padding: 10px;
+    background-color: #3B0B0C;
+}
+
+.bottom-page .bot-right .icons{
+    color: white;
+    background-color: #3B0B0C;
+    margin: auto;
+    transition: 300ms;
+    font-size: 240%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .bottom-page{
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        height: 150px;
+        align-items: center;
+        background-color: #3B0B0C;
+        border-top: 12px solid #BA2126;
+    }
+    
+    p{
+        font-family: Roboto;
+        font-size: 14px;
+        width: 100%;
+        color: rgb(255, 255, 255);
+        padding-left: 5%;
+    }
+    
+    /*--------------------------*/
+    
+    .bottom-page .bot-left{
+        flex: 20%;
+        display: flex;
+    }
+    
+    .bottom-page .bot-left .nav-img-logo{
+        width: 90%;
+    }
+    
+    /*-----------------------------------*/
+    
+    .bottom-page .bot-center{
+        flex: 60%;
+        display: flex;
+    }
+    
+    .bottom-page .bot-center table{
+        width: 100%;
+    }
+    
+    
+    
+    /*-----------------------------------*/
+    
+    .bottom-page .bot-right{
+        flex: 20%;
+        display: flex;
+    }
+    
+    .bottom-page .bot-right button{
+        padding: 10px;
+        background-color: #3B0B0C;
+    }
+    
+    .bottom-page .bot-right .icons{
+        color: white;
+        background-color: #3B0B0C;
+        margin: auto;
+        transition: 300ms;
+        font-size: 100%;
+    }
+}
