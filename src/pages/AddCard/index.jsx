@@ -8,7 +8,7 @@ import api from '../../services/loginApi'
 import DropDownCardFlag from '../../components/DropDowns/DdCardFlags'
 import Bottom from "../BottomInfo/Bottom";
 
-import './styles.css'
+import './cardStyles.css'
 
 export default function AddCard(){
 
@@ -77,8 +77,8 @@ export default function AddCard(){
     return (
         <>
         <Nav></Nav>
-        <div className="container">
-            <form className="form-save" onSubmit={addCard}>
+        <div className="container-card">
+            <form className="form-save-card" onSubmit={addCard}>
             {status.type === 'error' ? <p style={{ color: "red"}}>{status.message}</p> : ""}
 
                 <DropDownCardFlag onChange={handleInputChangeFlag}/>

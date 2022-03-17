@@ -1,28 +1,28 @@
-.full-container{
+.full-container-user{
     display: grid;
     grid-template-columns: 70% 30%;
 }
 
-.full-container .cont-left{
+.full-container-user .cont-left-user{
     padding-left: 15%;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
-.full-container .cont-left .table-left {
+.full-container-user .cont-left-user .table-left-user {
     background-color: rgb(255, 255, 255);
     box-shadow: 8px 8px 1em #ff0008;
     border-radius: 10px;
 }
 
-.full-container .cont-left .table-left tr td{
+.full-container-user .cont-left-user .table-left-user tr td{
     padding-top: 2.3%;
     padding-left: 5%;
     font-size: 140%;
     width: 900px;
 }
 
-.full-container .cont-left .table-left tr td h1{
+.full-container-user .cont-left-user .table-left-user tr td h1{
     color: #BA2126;
     padding-top: 20px;
     font-size: 140%;
@@ -44,10 +44,9 @@
 }
 
 .table-foot .each-row tr td{
-    font-size: 3rem;
     font-weight: bold;
     line-height: 1;
-    text-shadow: rgb(255, 255, 255) 0.0em 0.07em 0.07em;
+    text-shadow: rgb(255, 255, 255) 0.0em 0.06em 0.06em;
     background-image: linear-gradient(rgb(157, 0, 0), rgb(0, 0, 0));
     background-clip: text;
     -webkit-background-clip: text;
@@ -77,7 +76,7 @@
     filter: brightness(80%);
 }
 
-.full-container .cont-right .table-right {
+.full-container-user .cont-right-user .table-right-user {
     width: 100%;
     margin: 0;
     padding-right: 12%;
@@ -85,18 +84,18 @@
     
 }
 
-.full-container .cont-right .table-right thead tr td{
+.full-container-user .cont-right-user .table-right-user thead tr td{
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 1em #ff0008;
     border-radius: 10px;
 }
 
-.full-container .cont-right .table-right td{
+.full-container-user .cont-right-user .table-right-user td{
     padding: 8%;
     width: 100%;
 }
 
-.full-container .cont-right table .button1{
+.full-container-user .cont-right-user table tr td .button1{
     
     position: absolute;
     margin-left: 370px;
@@ -108,11 +107,20 @@
     background: transparent;
     transition: border-color 0.5s;
 }
-.full-container .cont-right table button:hover{
+.full-container-user .cont-right-user table tr td button:hover{
     border: 2px solid rgb(255, 0, 0);
 }
 
-.full-container .cont-right .table-right tfoot tr td{
+.full-container-user .cont-right-user .table-right-user tbody tr td{
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 4px 4px 1em #ff0008;
+    border-radius: 10px;
+
+}
+
+.full-container-user .cont-right-user .table-right-user tfoot tr td{
+    text-align: center;
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 1em #ff0008;
     border-radius: 10px;
@@ -124,23 +132,30 @@
 
 
 @media screen and (max-width: 1500px){
-    .full-container{
+    .full-container-user
+{
         display: grid;
         grid-template-columns: 70% 30%;
     }
     
-    .full-container .cont-left{
+    .full-container-user
+ .cont-left--user
+user{
         padding-left: 5%;
     }
     
-    .full-container .cont-left .table-left tr td{
+    .full-container-user
+ .cont-left--user
+user .table-left-user tr td{
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
         width: 700px;
     }
     
-    .full-container .cont-left .table-left tr td h1{
+    .full-container-user
+ .cont-left--user
+user .table-left-user tr td h1{
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
@@ -149,21 +164,29 @@
     }
     
     
-    .full-container .cont-right .table-right {
+    .full-container-user
+ .cont-right-user
+ .table-right-user {
         width: 100%;
     }
     
-    .full-container .cont-right .table-right td{
+    .full-container-user
+ .cont-right-user
+ .table-right-user td{
         padding: 2%;
         width: 100%;
     }
     
-    .full-container .cont-right .table-right .offbutton{
+    .full-container-user
+ .cont-right-user
+ .table-right-user .offbutton{
         text-align: center;
     }
     
     
-    .full-container .cont-right table .button1{
+    .full-container-user
+ .cont-right-user
+ table .button1{
         height: 60px;
         width: 60px;
         border-radius: 4px;
@@ -171,29 +194,38 @@
         background: transparent;
         transition: border-color 0.5s;
     }
-    .full-container .cont-right table button:hover{
+    .full-container-user
+ .cont-right-user
+ table button:hover{
         border: 2px solid rgb(177, 140, 140);
     }
 }
 
 @media screen and (max-width: 1050px){
-    .full-container{
+    .full-container-user
+{
         display: grid;
         grid-template-columns: 60% 40%;
     }
     
-    .full-container .cont-left{
+    .full-container-user
+ .cont-left--user
+user{
         padding-left: 5%;
     }
     
-    .full-container .cont-left .table-left tr td{
+    .full-container-user
+ .cont-left--user
+user .table-left-user tr td{
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
         width: 550px;
     }
     
-    .full-container .cont-left .table-left tr td h1{
+    .full-container-user
+ .cont-left--user
+user .table-left-user tr td h1{
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
@@ -202,21 +234,29 @@
     }
     
     
-    .full-container .cont-right .table-right {
+    .full-container-user
+ .cont-right-user
+ .table-right-user {
         width: 100%;
     }
     
-    .full-container .cont-right .table-right td{
+    .full-container-user
+ .cont-right-user
+ .table-right-user td{
         padding: 2%;
         width: 100%;
     }
     
-    .full-container .cont-right .table-right .offbutton{
+    .full-container-user
+ .cont-right-user
+ .table-right-user .offbutton{
         text-align: center;
     }
     
     
-    .full-container .cont-right table .button1{
+    .full-container-user
+ .cont-right-user
+ table .button1{
         height: 60px;
         width: 60px;
         border-radius: 4px;
@@ -224,7 +264,9 @@
         background: transparent;
         transition: border-color 0.5s;
     }
-    .full-container .cont-right table button:hover{
+    .full-container-user
+ .cont-right-user
+ table button:hover{
         border: 2px solid rgb(177, 140, 140);
     }
 }

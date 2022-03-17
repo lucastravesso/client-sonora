@@ -8,7 +8,7 @@ import api from '../../services/loginApi'
 import Nav from '../Navigation/Nav'
 import Bottom from '../BottomInfo/Bottom'
 
-import './styles.css'
+import './normalUserStyles.css'
 
 export default function NormalPerfil() {
 
@@ -100,9 +100,9 @@ export default function NormalPerfil() {
     return (
         <>
             <Nav />
-            <div className="full-container">
-                <div className="cont-left">
-                    <table className="table-left">
+            <div className="full-container-user">
+                <div className="cont-left-user">
+                    <table className="table-left-user">
                         <thead>
                             <tr>
                                 <td>
@@ -189,8 +189,8 @@ export default function NormalPerfil() {
                     </table>                    
  
                </div>
-                <div className="cont-right">
-                    <table className="table-right">
+                <div className="cont-right-user">
+                    <table className="table-right-user">
                         <thead>
                             <tr> 
                                 <td>
@@ -202,10 +202,20 @@ export default function NormalPerfil() {
                             </tr>
                         </thead>
                         <br />
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Deseja acompanhar seus pedidos ?<br />
+                                    Clique no botão abaixo!
+                                    <button className="button">Ver meus pedidos</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <br />
                         <tfoot>
                             <tr>
                                 <td>
-                                    Deseja excluir sua conta ?
+                                    Deseja excluir sua conta ?<br />
                                     Clique no botão abaixo!
                                     <button id ="alert" className="button" onClick={deleteAccount}>Excluir conta</button>
                                 </td>

@@ -4,6 +4,7 @@
     max-width: 1080px;    
 }
 
+
 .products ul {
     padding: 3%;
     display: grid;
@@ -64,5 +65,5 @@
 }
 
 .products ul button{
-    cursor: crosshair;
+    cursor: pointer;
 }

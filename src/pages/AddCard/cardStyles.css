@@ -1,0 +1,31 @@
+.container-card{
+    width: 100%;
+    padding-top: 1.1%;
+}
+
+.container-card .form-save-card{
+    background-color: rgb(251, 253, 240);
+    box-shadow: 5px 5px 1em #000000;
+    border-radius: 12px;
+    width: 50%;
+    padding: 3%;
+    margin-left: 25%;
+    margin-top: 2%;
+    margin-bottom: 35px;
+}
+
+.container-card .form-save-card select{
+    box-shadow: 1px 1px 0.5em #000000;
+}
+
+.container-card .form-save-card input{
+    box-shadow: 1px 1px 0.5em #000000;
+}
+
+.container-card .form-save-card p{
+    margin-top: -5%;
+    margin-left: 15%;
+    font-size: 110%;
+
+}
+

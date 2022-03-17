@@ -7,7 +7,7 @@ import Bottom from '../BottomInfo/Bottom'
 
 import instrument from '../../assets/guitarra-fender-american-acoustasonic-telecaster-canhota-097-2018-221-2.jpg'
 
-import './styles.css'
+import './landPageStyles.css'
 
 export default function LandPage() {
 
@@ -24,7 +24,6 @@ export default function LandPage() {
                     Authorization: `Bearer ${accessToken}`,
                 }
             })
-            alert("Prod add")
         }catch(err){
             alert("Falha ao adicionar no carrinho, necessario criar uma conta para continuar . .");
             history.push('/login');

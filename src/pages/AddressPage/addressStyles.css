@@ -1,0 +1,19 @@
+.container-address {
+    width: 100%;
+}
+
+
+.container-address .form-save-address .panel-address{
+    width: 60%;
+    margin: 2% 2% 2% 20%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 8px 8px 1em #ff0008;
+    border-radius: 10px;
+}
+
+.container-address .form-save-address .panel-address input,select,.button{
+    width: 98%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 0.3em #000000;
+}

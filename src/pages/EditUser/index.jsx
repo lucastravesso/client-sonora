@@ -9,7 +9,7 @@ import Nav from '../Navigation/Nav'
 import api from '../../services/loginApi'
 import Bottom from '../BottomInfo/Bottom'
 
-import './styles.css'
+import './editUserStyles.css'
 
 export default function EditUser() {
 

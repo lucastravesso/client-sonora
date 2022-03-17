@@ -1,7 +1,7 @@
 .main-login{
     display: flex;
     align-items: center;
-    padding-top: 6.3%;
+    padding-top: 5.8%;
 }
 
 .login-container{
@@ -48,6 +48,7 @@
 
 .align-register h1{
     margin-top: 60px;
+    margin-left: 8%;
 }
 
 

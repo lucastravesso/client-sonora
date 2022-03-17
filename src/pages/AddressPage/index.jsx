@@ -2,10 +2,11 @@ import React, { useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
 
 import Nav from '../Navigation/Nav'
+import Bottom from '../BottomInfo/Bottom'
 import api from '../../services/loginApi'
 import DropDownStates from "../../components/DropDowns/DdStates";
 
-import './styles.css'
+import './addressStyles.css'
 import DropDownCities from "../../components/DropDowns/DdCities";
 
 export default function AddressAdd() {
@@ -93,34 +94,37 @@ export default function AddressAdd() {
     return (
         <>
             <Nav />
-            <div className="container">
-                <form name='form-save' onSubmit={addAddress}>
-                    <DropDownStates id="state" name="state" onChange={handleInputChangeState}/>
-                    <DropDownCities id="city" name="city" onChange={handleInputChangeCity} state={formValuesState.state}/>
-                    <input
-                        placeholder="Bairro"
-                        value={district}
-                        onChange={e => setDistrict(e.target.value)}
-                     />
-                     <input
-                        placeholder="Rua"
-                        value={street}
-                        onChange={e => setStreet(e.target.value)}
-                     />
-                     <input
-                        type="number"
-                        placeholder="Numero"
-                        value={number}
-                        onChange={e => setNumber(e.target.value)}
-                     />
-                     <input
-                        placeholder="Complemento"
-                        value={complement}
-                        onChange={e => setComplement(e.target.value)}
-                     />
-                     <button className="button" type="submit">Registrar endereço</button>
+            <div className="container-address">
+                <form className ="form-save-address" name='form-save-address' onSubmit={addAddress}>
+                    <div className="panel-address">
+                        <DropDownStates id="state" name="state" onChange={handleInputChangeState}/>
+                        <DropDownCities id="city" name="city" onChange={handleInputChangeCity} state={formValuesState.state}/>
+                        <input
+                            placeholder="Bairro"
+                            value={district}
+                            onChange={e => setDistrict(e.target.value)}
+                         />
+                         <input
+                            placeholder="Rua"
+                            value={street}
+                            onChange={e => setStreet(e.target.value)}
+                         />
+                         <input
+                            type="number"
+                            placeholder="Numero"
+                            value={number}
+                            onChange={e => setNumber(e.target.value)}
+                         />
+                         <input
+                            placeholder="Complemento"
+                            value={complement}
+                            onChange={e => setComplement(e.target.value)}
+                         />
+                         <button className="button" type="submit">Registrar endereço</button>
+                    </div>
                 </form>
             </div>
+            <Bottom />
         </>
     );
 }

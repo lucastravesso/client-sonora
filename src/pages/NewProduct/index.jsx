@@ -6,7 +6,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import logo from '../../assets/instrumentos.png'
 import api from '../../services/loginApi'
 
-import './styles.css'
+import './newProdStyles.css'
 
 
 export default function NewProduct(){

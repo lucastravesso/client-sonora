@@ -1,0 +1,110 @@
+.full-container-conf{
+    padding-top: 50px;
+    display: flex;
+    width: 100%;
+}
+
+
+.full-container-conf .cont-left-conf{
+    flex: 70%;
+    padding: 2%;
+}
+
+.full-container-conf .cont-left-conf table{
+    text-align: center;
+    vertical-align: middle; 
+    background-color:rgb(255, 255, 255);
+    width: 100%;
+    box-shadow:inset 0.8px 0.8px 0.6em black;
+    border-radius: 20px;
+    padding: 0.5%;
+    width: 100%;
+}
+
+.full-container-conf .cont-left-conf table tr td{
+    font-size: 120%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.full-container-conf .cont-left-conf .results{
+    margin: 1.5% auto;
+    padding: 0.8%;
+    box-shadow: 0.8px 0.8px 0.6em black;
+    border-radius: 20px;
+    background-color: white;
+    font-size: 120%;
+    text-align: center;
+    vertical-align: middle; 
+
+}
+
+
+.full-container-conf .cont-right-conf{
+    flex: 30%;
+    padding: 2%;
+
+}
+
+.full-container-conf .cont-right-conf table{
+    background-color: rgb(225, 208, 186);
+    width: 100%;
+    padding: 3.5%;
+    box-shadow: 1px 1px 1em black;
+    border-radius: 20px;
+}
+
+.full-container-conf .cont-right-conf table thead{
+
+    background-color:rgb(255, 255, 255);
+    width: 100%;
+    box-shadow:inset 0.8px 0.8px 0.6em black;
+    border-radius: 10px;
+
+}
+
+.full-container-conf .cont-right-conf table thead tr td{
+
+    width: 100%;
+    text-align: center;
+    vertical-align: middle; 
+    padding: 1%;
+}
+.full-container-conf .cont-right-conf table thead tr td input{
+
+    box-shadow: 1px 1px 0.1em black;
+
+    width: 40%;
+    height: 50px;
+    font-size: 130%;
+    padding-left: 7%;
+    color: rgb(0, 0, 0);
+    border: 1.5px solid #727272;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.full-container-conf .cont-right-conf table thead tr td .button{
+    margin-bottom: 20px;
+    width: 80%;
+    text-align: center;
+    vertical-align: middle; 
+    padding: 1%;
+}
+
+.full-container-conf .cont-right-conf table tbody .cartao{
+    padding: 1%;
+    background-image: url("../../assets/bg-card.jpg");
+    margin: 27px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 8px 8px 1em #000000;
+    border-radius: 10px;
+}
+
+
+.full-container-conf .cont-right-conf table tbody .cartao button{
+    margin: 10px;
+    text-align: center;
+    width: 70%;
+    margin-left: 15%;
+}

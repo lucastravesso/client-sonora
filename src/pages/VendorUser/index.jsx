@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {useHistory, Link} from 'react-router-dom'
 import { FiPower, FiEdit, FiTrash2 } from 'react-icons/fi'
 
-import './styles.css'
+import './vendorPageStyles.css'
 
 import Nav from '../Navigation/Nav'
 

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useHistory} from 'react-router-dom'
-import './styles.css'
+import './loginStyles.css'
 
 import Nav from '../Navigation/Nav'
 import Bottom from "../BottomInfo/Bottom";
