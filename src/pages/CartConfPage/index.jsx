@@ -17,8 +17,7 @@ export default function CartConfPage() {
 
     const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
-    const [user, setUser] = useState([]);
-    const [address, setAddress] = useState([]);
+
     const [card, setCard] = useState([]);
 
     const [status, setStatus] = useState({
@@ -30,7 +29,6 @@ export default function CartConfPage() {
 
     useEffect(() => { getCard() }, [])
     useEffect(() => { getProducts() }, []);
-    useEffect(() => { getUser() }, [])
 
     async function getProducts() {
         try {
@@ -45,21 +43,6 @@ export default function CartConfPage() {
 
         } catch (err) {
             alert("Nao foi possivel buscar produtos")
-        }
-    }
-
-    async function getUser() {
-        try {
-            await api.get('user/findByToken', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            }).then(response => {
-                setUser(response.data)
-                setAddress(response.data.addressDto)
-            })
-        } catch (err) {
-            alert("Falha ao traer as informações de usuario")
         }
     }
 
@@ -93,10 +76,14 @@ export default function CartConfPage() {
 
     async function selectCard(id) {
 
-        return setStatus({
-            type: 'card',
-            message: 'Selecionado'
-        });
+        api.get(`/card/find/${id}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+            }).then(response =>{
+                localStorage.setItem('id_cartão', response.data.id);
+                history.push('/confirmacaodepedido')
+            });        
     }
 
     return (
@@ -147,8 +134,10 @@ export default function CartConfPage() {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                card.map(card => (
+                            <tr>
+                                <td>{status.type === 'card' ? <p style={{ color: "red"}}>{status.message}</p> : ""}</td>
+                            </tr>
+                            {card.map(card => (
                                     <div className="cartao">
                                         <tr>
                                             <td>Nome no cartão : {card.card_name}</td>
@@ -166,8 +155,8 @@ export default function CartConfPage() {
                                         <button className="button" onClick={() => selectCard(card.id)}>Selecionar e prosseguir</button>
                                         <br /><br />
                                     </div>
-                                ))
-                            }
+                                ))}
+                                
                         </tbody>
                     </table>
                 </div>
