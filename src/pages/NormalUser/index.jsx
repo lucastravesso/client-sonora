@@ -207,7 +207,7 @@ export default function NormalPerfil() {
                                 <td>
                                     Deseja acompanhar seus pedidos ?<br />
                                     Clique no botão abaixo!
-                                    <button className="button">Ver meus pedidos</button>
+                                    <button className="button" onClick={() => history.push("/pedidos")}>Ver meus pedidos</button>
                                 </td>
                             </tr>
                         </tbody>

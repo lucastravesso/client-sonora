@@ -12,7 +12,8 @@ import EditUser from './pages/EditUser/index';
 import AddCard from './pages/AddCard/index';
 import CartPage from "./pages/CartPage";
 import CartConfPage from "./pages/CartConfPage";
-import OrderConfPage from "./pages/OrderConfPage"
+import OrderConfPage from "./pages/OrderConfPage";
+import OrdersPage from "./pages/OrdersPage";
 
 export default function Routes(){
     return (
@@ -30,6 +31,7 @@ export default function Routes(){
                 <Route path='/carrinho' component={CartPage}/>
                 <Route path='/confirmacaodecompra' component={CartConfPage}/>
                 <Route path='/confirmacaodepedido' component={OrderConfPage} />
+                <Route path='/pedidos' component={OrdersPage} />
             </Switch>
         </BrowserRouter>
     );

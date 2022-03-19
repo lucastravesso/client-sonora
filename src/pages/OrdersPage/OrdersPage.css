@@ -1,0 +1,19 @@
+.container-orders{
+    width: 100%;
+}
+
+.container-orders table{
+    width: 90%;
+    margin: 100px;
+}
+
+.container-orders table  tr{
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.container-orders table tr td{
+    padding: 2%;
+    margin: 2%;
+    box-shadow:inset  1px 1px 1em black;
+}
