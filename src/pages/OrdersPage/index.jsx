@@ -11,9 +11,9 @@ import api from "../../services/loginApi";
 
 export default function OrdersPage() {
 
-    const [isModalVisible, setIsModalVisible] = useState(true);
-
     const [orders, setOrders] = useState([]);
+
+    const history = useHistory();
 
     async function getOrders(){
         try {
@@ -33,7 +33,11 @@ export default function OrdersPage() {
 
     useEffect(() => {getOrders()}, [])
 
-    
+    async function handleRedirect(id){
+
+        localStorage.setItem('order-id', id)
+        history.push('/pedido')
+    }
 
     return (
         <>
@@ -42,11 +46,13 @@ export default function OrdersPage() {
                 <table>
                     {orders.map(o =>(
                         <>
-                            <tr key={o.id}>
-                                <td>{o.id}</td>
-                                <td>{o.status}</td>
-                                <td>{o.orderDate}</td>
-                            </tr>
+                            <button onClick={() => handleRedirect(o.id)}>
+                                <tr key={o.id}>
+                                    <td>{'ID do Pedido ' +  o.id}</td>
+                                    <td>{'Status do Pedido ' + o.status}</td>
+                                    <td>{'Data do Pedido  ' + o.orderDate}</td>
+                                </tr>
+                            </button >
                             <br />
                         </>
                     ))}

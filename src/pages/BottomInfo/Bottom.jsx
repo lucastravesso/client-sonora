@@ -21,7 +21,7 @@ export default function Bottom() {
                                 <p>Inscrição Estadual: 123.123.123.123</p>
                             </td>
                             <td>
-                                <p>Endereço: Rua das Cenouras, 99</p>
+                                <p>Endereço: Rua dos Instrumentos, 99</p>
                                 <p>São Paulo, SP - 08900.0000</p>
                             </td>
                         </tr>

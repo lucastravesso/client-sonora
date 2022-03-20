@@ -14,6 +14,7 @@ import CartPage from "./pages/CartPage";
 import CartConfPage from "./pages/CartConfPage";
 import OrderConfPage from "./pages/OrderConfPage";
 import OrdersPage from "./pages/OrdersPage";
+import OrderSelectedPage from "./pages/OrderSelectedPage"
 
 export default function Routes(){
     return (
@@ -32,6 +33,7 @@ export default function Routes(){
                 <Route path='/confirmacaodecompra' component={CartConfPage}/>
                 <Route path='/confirmacaodepedido' component={OrderConfPage} />
                 <Route path='/pedidos' component={OrdersPage} />
+                <Route path='/pedido' component={OrderSelectedPage} />
             </Switch>
         </BrowserRouter>
     );

@@ -52,7 +52,6 @@ function Nav() {
       })
 
     } catch (err) {
-      alert("Nao foi possivel buscar produtos")
     }
   }
 

@@ -71,6 +71,7 @@ export default function OrderConfPage() {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             });
+            alert('Pedido confirmado, poderá visualizar na pagina de pedidos')
             history.push('/perfilsimples')
         } catch (err) {
             alert("Falha ao processar compra")

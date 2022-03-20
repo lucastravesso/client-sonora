@@ -5,15 +5,33 @@
 .container-orders table{
     width: 90%;
     margin: 100px;
+
 }
 
-.container-orders table  tr{
-    width: 100%;
-    margin-bottom: 100px;
+.container-orders table button{
+    margin-left: 320px;
+    width: 60%;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 1em black;
+    border-radius: 20px;
 }
 
-.container-orders table tr td{
-    padding: 2%;
-    margin: 2%;
-    box-shadow:inset  1px 1px 1em black;
+.container-orders table button:hover{
+    margin-left: 320px;
+    width: 60%;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 1em rgb(139, 0, 0);
+    border-radius: 20px;
+
+}
+
+.container-orders table tr td:nth-child(1){
+    padding: 15px 50px 15px 15px;
+}
+
+.container-orders table tr td:nth-child(2){
+    padding: 15px 30px 15px 85px;
+}
+.container-orders table tr td:nth-child(3){
+    padding: 15px -10px 15px 30px;
 }
