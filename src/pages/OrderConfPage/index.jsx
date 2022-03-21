@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import InputMask from 'react-input-mask'
 
 import './OrderConfPage.css'
 
@@ -127,13 +128,13 @@ export default function OrderConfPage() {
                         <tbody>
                             <div className="cartao">
                                 <tr>
-                                    <td>Nome no cartão : {card.card_name}</td>
+                                    <td>Nome : {card.card_name}</td>
                                 </tr>
                                 <tr>
                                     <td>Bandeira : {card.card_flag}</td>
                                 </tr>
                                 <tr>
-                                    <td>Numero no cartão : {card.card_number}</td>
+                                    <td>Numero : {card.card_number}</td>
                                 </tr>
                                 <tr>
                                     <td>Validade do cartão : {card.card_valid}</td>
@@ -142,7 +143,10 @@ export default function OrderConfPage() {
                             </div>
                             <tr className="cv">
                                 <td>
-                                    <input type="text" placeholder="Código de Segurança do cartão" />
+                                    <InputMask
+                                        mask="999"
+                                        placeholder='Codigo do cartão'
+                                    />
                                 </td>
                             </tr>
                         </tbody>

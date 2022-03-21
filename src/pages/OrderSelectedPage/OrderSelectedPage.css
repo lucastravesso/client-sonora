@@ -10,38 +10,49 @@
 }
 
 .container-order-selected .selected-left .top-table{
-    width: 112%;
-    padding: 1%;
+    width: 100%;
+    margin-left: 20px;
+    padding: 4px 12px 4px 20px;
     box-shadow: inset 0.5px 0.5px 1em rgb(156, 0, 0), 2px 2px 0.5em black;
     background-color: rgba(252, 50, 50, 0.425);
     border-radius: 20px;
+    animation: colored infinite 3s;
+
 }
 
 .container-order-selected .selected-left .top-table tr td{
-    padding: 1%;
+    padding: 12px 12px 12px 20px;
     font-size: 20px;
     font-style: oblique;
 }
 
+@keyframes colored {
+    100% {  box-shadow: inset 0.5px 0.5px 1em rgb(255, 0, 0), 2px 2px 0.5em black;}
+    50% {    box-shadow: inset 0.5px 0.5px 1em rgb(0, 0, 0), 2px 2px 0.5em black;}
+    0% {  box-shadow: inset 0.5px 0.5px 1em rgb(255, 0, 0), 2px 2px 0.5em black;}
 
-.container-order-selected .selected-left .middle-table{
-    margin-top: 30px;
-    margin-left: 60px;
-    width: 99%;
-    padding: 1%;
-    box-shadow: inset 0.5px 0.5px 1em rgb(110, 0, 0), 1px 1px 0.5em black;
-    background-color: rgba(253, 156, 156, 0.459);
-    border-radius: 20px;
 }
 
 
-.container-order-selected .selected-left .middle-table .bar td{
-    background-color: rgba(202, 0, 0, 0.459);
-    padding: 10px;
-    font-size: 23px;
-    text-align: center;
-    box-shadow: inset 0.5px 0.5px 1em rgb(110, 0, 0), 1px 1px 0.5em black;
+.container-order-selected .selected-left .middle-table{
+    margin-top: 40px;
+    margin-left: 80px;
+    background-color:rgb(255, 255, 255);
+    width: 90%;
+    box-shadow:inset 0.8px 0.8px 0.6em black;
+    border-radius: 40px;
+    padding: 1.5%;
+}
+
+.container-order-selected .selected-left .middle-table .bar {
+    box-shadow: inset 0.5px 0.5px 0.5em black;
     border-radius: 20px;
+}
+
+.container-order-selected .selected-left .middle-table .bar td{
+    padding: 5px 14px 5px 14px;
+    color: #BA2126;
+    font-size: 110%;
 }
 
 

@@ -94,7 +94,15 @@ export default function OrderSelectedPage() {
                     </table>
                 </div>
                 <div className="selected-right">
-
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </div>
             </div>
             <Bottom />

@@ -8,6 +8,23 @@
 
 }
 
+.container-orders table tr td h1{
+    margin-top: -50px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 150%;
+    padding: 1%;
+    background-color: white;
+    border-radius: 40px;
+    animation: anim infinite 4s;
+}
+
+@keyframes anim{
+    0% { color: brown;     box-shadow:inset 1px 1px 1em red, 1px 1px 1em black;}
+    50% { color: rgb(0, 0, 0);     box-shadow:inset 1px 1px 1em black,  1px 1px 1.5em rgb(255, 0, 0);}
+    100% { color: brown;     box-shadow:inset 1px 1px 1em red,  1px 1px 1em black;}
+}
+
 .container-orders table button{
     margin-left: 320px;
     width: 60%;

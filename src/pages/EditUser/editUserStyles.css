@@ -29,11 +29,24 @@ body {
     margin: auto;
 }
 
+.form-edit-user .form-left .align-left input,select,.button{
+    width: 98%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 0.3em #000000;
+}
+
 .form-edit-user .form-right .align-rigth{
     width: 600px;
     margin: auto;
 }
 
+.form-edit-user .form-right .align-rigth input,select,.button{
+    width: 98%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 0.3em #000000;
+}
 
 @media screen and (max-width: 1714px) {
     

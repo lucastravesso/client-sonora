@@ -44,6 +44,9 @@ export default function OrdersPage() {
             <Nav />
             <div className="container-orders">
                 <table>
+                    <tr>
+                        <td><h1>TODOS OS PEDIDOS DA CONTA</h1></td>
+                    </tr>
                     {orders.map(o =>(
                         <>
                             <button onClick={() => handleRedirect(o.id)}>

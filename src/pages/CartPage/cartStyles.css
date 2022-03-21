@@ -27,6 +27,10 @@
     border-radius: 40px;
 }
 
+.container-cart .cont-left-cart table thead tr td{
+    padding: 1%;
+}
+
 .container-cart .cont-left-cart table thead tr td b{
 
     padding: 1%;
@@ -54,6 +58,7 @@
     width: 50px;
     margin: 0 auto;
     color: #BA2126;
+    background-color: white;
 }
 
 .container-cart .cont-left-cart table tbody tr button{

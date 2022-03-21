@@ -43,14 +43,14 @@
 .full-container-order .cont-right-order{
     flex: 30%;
     padding: 1% 1% 1% 3%;
-    background-color: antiquewhite;
     vertical-align: center;   
      
 }
 
 .full-container-order .cont-right-order table{
     box-shadow: 0.8px 0.8px 0.6em black;
-    width: 80%;
+    background-color: white;
+    width: 90%;
     padding: 2%;
     border-radius: 20px;
 }
@@ -82,8 +82,9 @@
     padding: 1%;
     background-image: url("../../assets/bg-card.jpg");
     margin: 27px;
+    font-size: 50%;
     background-color: rgb(255, 255, 255);
-    box-shadow: inset 1px 1px 0.4em #000000;
+    box-shadow:  1px 1px 0.4em #000000;
     border-radius: 10px;
 }
 
