@@ -1,7 +1,7 @@
 .Navbar {
     width: 100%;
     display: flex;
-    height: 150px;
+    height: 185px;
     align-items: center;
     background-color: #3B0B0C;
 }
@@ -37,6 +37,16 @@
 .Navbar .nav-main-left .nav-img-logo{
     width: 300px;
     margin:auto;
+    animation: logo infinite 3s;
+}
+
+@keyframes logo{
+    0%{    width: 300px;
+    }
+    50%{    width: 320px;
+    }
+    100%{    width: 300px;
+    }
 }
 /* FIM - ESTILIZAÇÃO DA DIREITA */
 
@@ -46,6 +56,13 @@
 /* INICIO - ESTILIZAÇÃO DO MEIO */
 .Navbar .nav-main-center{
     flex: 40%;
+    
+}
+
+@keyframes neon-search{
+ 0%{box-shadow: 1px 1px 0.7em white;}
+ 50%{box-shadow: 1px 1px 1em rgb(255, 0, 0);}
+ 100%{box-shadow: 1px 1px 0.7em white;}
 }
 
 .Navbar .nav-main-center .nav-align-search-button{
@@ -53,6 +70,7 @@
     background-color: white;
     border-radius: 50px;
     align-items: center;
+    animation: neon-search infinite 4s;
 }
 
 .Navbar .nav-main-center .nav-align-search-button .nav-icon-mic{
@@ -202,7 +220,7 @@
     width: 100%;
     height: 50px;
     background-color: #BA2126;
-    box-shadow: 5px 5px 1em #ff0008;
+    box-shadow: 5px 5px 0.5em #380e10;
     display: flex;
 }
 

@@ -85,6 +85,13 @@ export default function OrderConfPage() {
             <div className="full-container-order">
                 <div className="cont-left-order">
                     <table>
+                        <thead>
+                            <tr>
+                                <td>Produto</td>
+                                <td>Quantidade</td>
+                                <td>Preço</td>
+                            </tr>
+                        </thead>
                         <tbody>
                             {cartProducts.map(p => (
                                 <tr key={p.productDTO.id}>
@@ -106,22 +113,22 @@ export default function OrderConfPage() {
                             <tr>
                                 <td><h1>Usuario . .</h1></td>
                             </tr>
-                            <tr>
+                            <tr className="lines-right">
                                 <td>{user.firstName + " " + user.lastName}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-right">
                                 <td>{user.cpf}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-right">
                                 <td>{user.email}</td>
                             </tr>
                             <tr>
                                 <td><h1>Endereço de entrega . .</h1></td>
                             </tr>
-                            <tr>
+                            <tr className="lines-right">
                                 <td>{address.state + ", " + address.city + " - " + address.district}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-right">
                                 <td>{address.street + ", " + address.number}</td>
                             </tr>
                         </thead>
@@ -145,7 +152,7 @@ export default function OrderConfPage() {
                                 <td>
                                     <InputMask
                                         mask="999"
-                                        placeholder='Codigo do cartão'
+                                        placeholder='CVC'
                                     />
                                 </td>
                             </tr>

@@ -16,6 +16,8 @@ export default function CartPage() {
 
     const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
+    const [address, setAddress] = useState([]);
+
 
     const history = useHistory();
 
@@ -68,7 +70,7 @@ export default function CartPage() {
     function showTopTable() {
 
         if (cartProducts.length === 0) {
-            return <th><b>Nada a exibir</b></th>
+            return <td><b>Nada a exibir</b></td>
         } else {
             return (<>
                 <td><b>Produto</b></td>
@@ -80,7 +82,6 @@ export default function CartPage() {
         }
     }
 
-    const [address, setAddress] = useState([]);
 
     useEffect(() => {
         try {
@@ -112,9 +113,6 @@ export default function CartPage() {
         }
     }
 
-
-    const [cep, setCep] = useState()
-
     return (
         <>
             <Nav />
@@ -129,7 +127,9 @@ export default function CartPage() {
                             </tr>
                         </thead>
                         <tbody>
-                            {cartProducts.map(p => (
+                            {cartProducts
+                            .sort((a, b) => {return a.productDTO.prod_name.localeCompare(b.productDTO.prod_name)})
+                            .map(p => (
                                 <tr key={p.productDTO.id}>
                                     <td>{p.productDTO.prod_name}</td>
                                     <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.productDTO.prod_price)}</td>
@@ -147,7 +147,7 @@ export default function CartPage() {
                     <div className="cont-final">
                         <div className="cont-price">
                             <ul>
-                                <li className="title"><b>Preço total</b></li>
+                                <li className="title">Preço total</li>
                                 <li>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</li>
                             </ul>
                         </div>

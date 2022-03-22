@@ -66,10 +66,16 @@ export default function OrderSelectedPage() {
 
                     <table className="top-table">
                         <tr>
-                            <td>{'Pedido : ' + order.id}</td>
-                            <td >{'Status do Pedido : ' + order.status}</td>
-                            <td>{'Data do Pedido : ' + order.orderDate}</td>
-                            <td colSpan={2}>{'Preço total do pedido : ' + Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
+                            <td><b>Nº Pedido</b></td>
+                            <td><b>Status do Pedido</b></td>
+                            <td><b>Data do Pedido</b></td>
+                            <td colSpan={2}><b>Preço total do pedido</b></td>
+                        </tr>
+                        <tr>
+                            <td>{order.id}</td>
+                            <td>{order.status}</td>
+                            <td>{order.orderDate}</td>
+                            <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
                         </tr>
                     </table>
                     <table className="middle-table">
@@ -98,8 +104,12 @@ export default function OrderSelectedPage() {
                         <table>
                             <thead>
                                 <tr>
-                                    <td></td>
+                                    <td>Deseja trocar o produto ?</td>
                                 </tr>
+                                <tr>
+                                    <td><button className="button" >Trocar pedido</button></td>
+                                </tr>
+
                             </thead>
                         </table>
                     </div>

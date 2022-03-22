@@ -104,60 +104,60 @@ export default function NormalPerfil() {
                 <div className="cont-left-user">
                     <table className="table-left-user">
                         <thead>
-                            <tr>
+                            <tr className="title-bar">
                                 <td>
                                     <h1>Informações do usuário</h1>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Nome : {user.firstName + ' ' + user.lastName}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>CPF : {user.cpf}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>RG : {user.rg}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Data de Nascimento : {user.born}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Email : {user.email}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Telefone : {user.phone}</td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr className="title-bar">
                                 <td>
                                     <h1>Informações de endereço</h1>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Pais : {verifyAddress(address, "country")}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Estado : {verifyAddress(address, "state")}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Cidade : {verifyAddress(address, "city")}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Bairro : {verifyAddress(address, "district")}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Rua : {verifyAddress(address, "street")}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Numero : {verifyAddress(address, "number")}</td>
                             </tr>
-                            <tr>
+                            <tr className="lines-table">
                                 <td>Complemento : {verifyAddress(address, "complement")}</td>
                             </tr>
                         </tbody>
                         <tfoot >
-                            <tr>
+                            <tr className="title-bar">
                                 <td>
                                     <h1>Informação dos cartões</h1>
                                 </td>
@@ -167,16 +167,16 @@ export default function NormalPerfil() {
                                     card.map(card =>(
                                         <div className="each-row">
                                             <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
-                                            <tr>
+                                            <tr className="lines-table">
                                                 <td>Nome no cartão : {card.card_name}</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="lines-table">
                                                 <td>Bandeira : {card.card_flag}</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="lines-table">
                                                 <td>Numero no cartão : {card.card_number}</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="lines-table">
                                                 <td>Validade do cartão : {card.card_valid}</td>
                                             </tr>
                                 

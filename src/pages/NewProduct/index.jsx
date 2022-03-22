@@ -16,6 +16,7 @@ export default function NewProduct(){
     const [prod_price,setProd_price] = useState('');
     const [prod_spec,setProd_spec] = useState('');
     const [prod_builder,setProd_builder] = useState('');
+    const [prod_quantity,setProd_quantity] = useState('');
     const [categoryId,setCategoryId] = useState();
     const [categoryName,setCategoryName] = useState('');
     const [userId, setUserId] = useState();
@@ -75,6 +76,7 @@ export default function NewProduct(){
             setProd_builder(response.data.prod_builder);
             setProd_spec(response.data.prod_spec);
             setProd_price(response.data.prod_price);            
+            setProd_quantity(response.data.prod_quantity);
             setCategoryId(response.data.categoryDto.categoryId)
             setCategoryName(response.data.categoryDto.categoryName)
         
@@ -103,6 +105,7 @@ export default function NewProduct(){
             prod_builder,
             prod_price ,
             prod_spec, 
+            prod_quantity,
             categoryDto,
             userDto
         }
@@ -169,6 +172,11 @@ export default function NewProduct(){
                         placeholder="Preço"
                         value={prod_price}
                         onChange={e => setProd_price(e.target.value)}
+                      />
+                      <input
+                        placeholder="Quantidade"
+                        value={prod_quantity}
+                        onChange={e => setProd_quantity(e.target.value)}
                       />
                    <select name="select_category" onChange={e => setCategoryId(e.target.value)}>
                        <option value={categoryId}>{categoryName}</option>

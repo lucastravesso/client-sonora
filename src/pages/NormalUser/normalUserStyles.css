@@ -11,23 +11,31 @@
 
 .full-container-user .cont-left-user .table-left-user {
     background-color: rgb(255, 255, 255);
-    box-shadow: 8px 8px 1em #ff0008;
+    box-shadow: 6px 6px 0.7em #cf0007;
     border-radius: 10px;
 }
 
-.full-container-user .cont-left-user .table-left-user tr td{
-    padding-top: 2.3%;
-    padding-left: 5%;
-    font-size: 140%;
+
+.full-container-user .cont-left-user .table-left-user .title-bar td h1{
+    color: #ffffff;
+    box-shadow: inset 1000px 1000px 100em #660f12, 2px 2px 0.2em black;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-left: 25px;
+    padding: 14px 14px 14px 22px;
+    font-size: 120%;
+    width: 845px;
+    
+}
+
+.full-container-user .cont-left-user .table-left-user .lines-table td{
+    
+    padding-top: 15px;
+    padding-left: 50px;
+    font-size: 120%;
     width: 900px;
 }
 
-.full-container-user .cont-left-user .table-left-user tr td h1{
-    color: #BA2126;
-    padding-top: 20px;
-    font-size: 140%;
-    width: 900px;
-}
 
 .table-foot{
     width: 80%;
@@ -39,7 +47,7 @@
     background-image: url("../../assets/bg-card.jpg");
     margin: 27px;
     background-color: rgb(255, 255, 255);
-    box-shadow: 8px 8px 1em #000000;
+    box-shadow: 4px 4px 0.5em #000000;
     border-radius: 10px;
 }
 

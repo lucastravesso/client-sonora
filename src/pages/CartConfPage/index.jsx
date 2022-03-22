@@ -86,12 +86,35 @@ export default function CartConfPage() {
             });        
     }
 
+    async function verifyCupon(){
+        let cupom = document.getElementsByName("cupom")
+        if(cupom[0].value === "CUPONZAO"){
+            return setStatus({
+                type: 'cupom',
+                message: 'VOCE GANHOU 20% DE DESCONTO COM NOSSO CUPOM !'
+            })
+        }else{
+            return setStatus({
+                type: 'cupom',
+                message: 'Cupom invalido . .'
+            })
+        }
+    }
+
+
     return (
         <>
             <Nav />
             <div className="full-container-conf">
                 <div className="cont-left-conf">
                     <table>
+                        <thead>
+                            <tr>
+                                <td>Produto</td>
+                                <td>Quantidade</td>
+                                <td>Preço</td>
+                            </tr>
+                        </thead>
                         <tbody>
                             {cartProducts.map(p => (
                                 <tr key={p.productDTO.id}>
@@ -134,8 +157,21 @@ export default function CartConfPage() {
                             </tr>
                         </thead>
                         <tbody>
+                            <tr className="cupom">
+                                <td><h1>Insira o cupom promocional</h1></td>
+                            </tr>
+                            <tr className="cupom">
+                                <td>
+                                    <input type="text" name="cupom" placeholder="Cupom"/>
+                                </td>
+                            </tr>
+                            <tr className="cupom">
+                                <td>
+                                    <button className="button" onClick={() => verifyCupon()}>Verificar cupom</button>
+                                </td>
+                            </tr>
                             <tr>
-                                <td>{status.type === 'card' ? <p style={{ color: "red"}}>{status.message}</p> : ""}</td>
+                                <td>{status.type === 'cupom' ? <p>{status.message}</p> : ""}</td>
                             </tr>
                             {card.map(card => (
                                     <div className="cartao">

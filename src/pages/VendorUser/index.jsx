@@ -91,6 +91,8 @@ export default function Products () {
                         <p>{prod.prod_builder}</p>
                         <strong>Especificação:</strong>
                         <p>{prod.prod_spec}</p>
+                        <strong>Quantidade em estoque:</strong>
+                        <p>{prod.prod_quantity}</p>
 
                         <strong>Categoria:</strong>
                         <p>{prod.categoryDto.categoryName}</p>

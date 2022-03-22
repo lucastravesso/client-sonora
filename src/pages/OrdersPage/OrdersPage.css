@@ -14,22 +14,19 @@
     text-align: center;
     font-size: 150%;
     padding: 1%;
+    box-shadow: inset 1000px 1000px 100em #660f12, 2px 2px 0.2em black;
+    color: white;
     background-color: white;
-    border-radius: 40px;
-    animation: anim infinite 4s;
+    border-radius: 10px;
 }
 
-@keyframes anim{
-    0% { color: brown;     box-shadow:inset 1px 1px 1em red, 1px 1px 1em black;}
-    50% { color: rgb(0, 0, 0);     box-shadow:inset 1px 1px 1em black,  1px 1px 1.5em rgb(255, 0, 0);}
-    100% { color: brown;     box-shadow:inset 1px 1px 1em red,  1px 1px 1em black;}
-}
 
 .container-orders table button{
     margin-left: 320px;
     width: 60%;
     margin-bottom: 20px;
-    box-shadow: 1px 1px 1em black;
+    box-shadow: inset 1000px 1000px 100em #BA2126, 2px 2px 0.2em black;
+    color: white;
     border-radius: 20px;
 }
 
@@ -37,9 +34,9 @@
     margin-left: 320px;
     width: 60%;
     margin-bottom: 20px;
-    box-shadow: 1px 1px 1em rgb(139, 0, 0);
+    box-shadow: inset 1000px 1000px 100em #660f12, 2px 2px 0.2em black;
+    color: white;
     border-radius: 20px;
-
 }
 
 .container-orders table tr td:nth-child(1){
