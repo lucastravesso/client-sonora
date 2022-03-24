@@ -15,6 +15,10 @@ import CartConfPage from "./pages/CartConfPage";
 import OrderConfPage from "./pages/OrderConfPage";
 import OrdersPage from "./pages/OrdersPage";
 import OrderSelectedPage from "./pages/OrderSelectedPage"
+import AdminPanelHome from "./pages/AdminPanelHome"
+import ProductPage from "./pages/ProductPage"
+import ProductListPage from "./pages/ProductListPage"
+import ProductListCategoryPage from "./pages/ProductListCategoryPage"
 
 export default function Routes(){
     return (
@@ -34,6 +38,10 @@ export default function Routes(){
                 <Route path='/confirmacaodepedido' component={OrderConfPage} />
                 <Route path='/pedidos' component={OrdersPage} />
                 <Route path='/pedido' component={OrderSelectedPage} />
+                <Route path='/paineladministrativoinicio' component={AdminPanelHome} />
+                <Route path='/produto' component={ProductPage}/>
+                <Route path='/busca' component={ProductListPage}/>
+                <Route path='/categoria' component={ProductListCategoryPage}/>
             </Switch>
         </BrowserRouter>
     );

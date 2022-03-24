@@ -11,7 +11,7 @@ import api from '../../services/loginApi'
 
 export default function Products () {
     
-    const[products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
     const email = localStorage.getItem('email')
     const accessToken = localStorage.getItem('accessToken')

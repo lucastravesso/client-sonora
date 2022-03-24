@@ -71,10 +71,9 @@
 /*----------------------------------------*/
 .container-cart .cont-right-cart{
     flex: 30%;
-    margin: 40px;
-    padding: 70px 0 40px 80px;
+    padding: 10px;
     box-shadow: inset 1000px 1000px 100em #ffffff, 2px 2px 0.2em black;
-    border-radius: 100%;
+    border-radius: 10px;
 }
 
 .container-cart .cont-final .cont-price ul li{

@@ -104,7 +104,7 @@ export default function CartPage() {
             alert('Nenhum item no carrinho')
             history.push('/')
         } else {
-            if (address.length === 0) {
+            if (address === null) {
                 alert("Necessira preencher um endereço para entrega")
                 history.push('/adicionarendereco');
             } else {

@@ -74,7 +74,7 @@ export default function NormalPerfil() {
 
     async function deleteAccount(){
 
-        let r = window.confirm("Voce deseja realmente excluir sua conta ?");
+        let r = window.confirm("Voce deseja realmente inativar sua conta ?");
         if (r===true)
         {
             try {
@@ -215,9 +215,9 @@ export default function NormalPerfil() {
                         <tfoot>
                             <tr>
                                 <td>
-                                    Deseja excluir sua conta ?<br />
+                                    Deseja inativar sua conta ?<br />
                                     Clique no botão abaixo!
-                                    <button id ="alert" className="button" onClick={deleteAccount}>Excluir conta</button>
+                                    <button id ="alert" className="button" onClick={deleteAccount}>Inativar conta</button>
                                 </td>
                             </tr>
                         </tfoot>

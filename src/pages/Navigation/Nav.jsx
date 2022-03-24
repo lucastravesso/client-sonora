@@ -69,6 +69,20 @@ function Nav() {
 
   }
 
+  async function handleSubmit(e){
+    e.preventDefault()
+    let pesquisa = document.querySelector("#search")
+    localStorage.setItem('pesquisa', pesquisa.value)
+    history.push('/busca')
+    window.location.reload();
+  }
+
+  async function handleCategory(id){
+    localStorage.setItem('categoria', id)
+    history.push('/categoria')
+    window.location.reload();
+  }
+
   return (
     <div>
       <div className='Navbar'>
@@ -77,13 +91,15 @@ function Nav() {
           <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")} />
         </div>
         <div className='nav-main-center'>
-          <div className='nav-align-search-button'>
-            <BsFillMicFill className='nav-icon-mic' />
-            <input type="text" placeholder='o que procura hoje?' className='nav-search-button' />
-            <button className='nav-button-icon-glass'>
-              <GiMagnifyingGlass className='nav-icon-glass' />
-            </button>
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className='nav-align-search-button'>
+              <BsFillMicFill className='nav-icon-mic' />
+              <input type="text" placeholder='o que procura hoje?' id ="search" className='nav-search-button' />
+              <button className='nav-button-icon-glass' type='submit'>
+                <GiMagnifyingGlass className='nav-icon-glass' />
+              </button>
+            </div>
+          </form>
         </div>
         <div className='nav-main-right'>
           <div className='nav-align-options'>
@@ -103,19 +119,19 @@ function Nav() {
       <div className='nav-header-botom' id={showLinks ? "hidden" : ""}>
         <div className='nav-align-header-bottom'>
           <div className='nav-align-options-guitar'>
-            <button><GiGuitarBassHead className='nav-icon-guitar' />⠀Corda</button>
+            <button><GiGuitarBassHead className='nav-icon-guitar' onClick={() => handleCategory(1)}/>⠀Corda</button>
           </div>
           <div className='nav-align-options-sax'>
-            <button><GiSaxophone className='nav-icon-sax' />⠀Sopro</button>
+            <button><GiSaxophone className='nav-icon-sax' onClick={() => handleCategory(2)}/>⠀Sopro</button>
           </div>
           <div className='nav-align-options-drum'>
-            <button><GiDrumKit className='nav-icon-drum' />⠀Percussão</button>
+            <button><GiDrumKit className='nav-icon-drum' onClick={() => handleCategory(3)}/>⠀Percussão</button>
           </div>
           <div className='nav-align-options-piano'>
-            <button><GiUnplugged className='nav-icon-piano' />⠀Eletrofones</button>
+            <button><GiUnplugged className='nav-icon-piano' onClick={() => handleCategory(4)}/>⠀Eletrofones</button>
           </div>
           <div className='nav-align-options-menu'>
-            <button><FiMenu className='nav-icon-menu' />⠀Outros</button>
+            <button><FiMenu className='nav-icon-menu' onClick={() => handleCategory(5)}/>⠀Outros</button>
           </div>
         </div>
       </div>

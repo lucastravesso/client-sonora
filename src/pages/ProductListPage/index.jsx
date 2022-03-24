@@ -7,22 +7,25 @@ import Bottom from '../BottomInfo/Bottom'
 
 import instrument from '../../assets/guitarra-fender-american-acoustasonic-telecaster-canhota-097-2018-221-2.jpg'
 
-import './landPageStyles.css'
+import './ProductListPage.css'
 
-export default function LandPage() {
+export default function ProductListPage() {
+
 
     const [products, setProducts] = useState([]);
-    const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();
 
     async function getProducts(){
+        
         try {
-            await api.get(`products/list`).then(resProd => {
+            await api.get(`products/listall/${localStorage.getItem('pesquisa')}`).then(resProd => {
                 setProducts(resProd.data)
             })
+            
         } catch (err) {
-            alert("Nao foi possivel trazer os produtos")
+            alert("Nenhum produto encontrado")
+            history.push('/')
         }
     }
 
@@ -38,7 +41,7 @@ export default function LandPage() {
     return (
         <>
             <Nav />
-            <div className='products'>
+            <div className='products-listed'>
                 <ul>
                     {products.map(prod => (
                         <li key={prod.id}>

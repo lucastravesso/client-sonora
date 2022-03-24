@@ -19,10 +19,12 @@ export default function Bottom() {
                             <td className="">
                                 <p>Sonora s.a / CNPJ: 99.999.999/0009-99 </p>
                                 <p>Inscrição Estadual: 123.123.123.123</p>
+                                <p>Email para contato : sonorastore@sonora.net</p>
                             </td>
                             <td>
                                 <p>Endereço: Rua dos Instrumentos, 99</p>
                                 <p>São Paulo, SP - 08900.0000</p>
+                                <p>telefone para contato : 11 982736485</p>
                             </td>
                         </tr>
                     </thead>
