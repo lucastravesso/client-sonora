@@ -106,25 +106,21 @@ export default function Cupon() {
                         <input
                             placeholder="Nome do cupom"
                             value={name}
-                            name='nome'
                             onChange={e => setName(e.target.value)}
                         />
                         <input
                             placeholder="Porcentagem de desconto"
                             value={procentagem}
-                            name='porcentagem'
                             onChange={e => setProcentagem(e.target.value)}
                         />
-                        <InputMask
-                            name='data-inicio'
-                            mask="99-99-9999"
+                        <input
+                            type='date'
                             placeholder='Data de inicio'
                             value={dataInicio}
                             onChange={e => setDataInicio(e.target.value)}
                         />
-                        <InputMask
-                            name='data-fim'
-                            mask="99-99-9999"
+                        <input  
+                            type='date'
                             placeholder='Data de termino'
                             value={dataFinal}
                             onChange={e => setDataFinal(e.target.value)}

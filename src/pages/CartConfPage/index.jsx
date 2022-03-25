@@ -13,10 +13,12 @@ import api from "../../services/loginApi";
 
 export default function CartConfPage() {
 
+
     const [cep, setCep] = useState('')
 
     const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
+    const [cup, setCup] = useState([]);
 
     const [card, setCard] = useState([]);
 
@@ -40,6 +42,7 @@ export default function CartConfPage() {
                 setProducts(resProd.data)
                 setCartProducts(resProd.data.cartProducts)
             })
+            localStorage.removeItem('cupon')
 
         } catch (err) {
             alert("Nao foi possivel buscar produtos")
@@ -87,18 +90,31 @@ export default function CartConfPage() {
     }
 
     async function verifyCupon(){
+
         let cupom = document.getElementsByName("cupom")
-        if(cupom[0].value === "CUPONZAO"){
-            return setStatus({
-                type: 'cupom',
-                message: 'VOCE GANHOU 20% DE DESCONTO COM NOSSO CUPOM !'
+        try {
+            await api.get(`/cupon/listname/${cupom[0].value}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            }).then(res => {
+                setCup(res.data)
             })
-        }else{
-            return setStatus({
-                type: 'cupom',
-                message: 'Cupom invalido . .'
-            })
-        }
+
+            if(cup.length != 0)
+            {
+                setStatus({
+                    type: 'cupom',
+                    message: `PARABENS!! VOCE GANHOU ${cup.c_percentage}% DE DESCONTO COM NOSSO CUPOM ! CUPOM VALIDO ATÉ ${cup.c_final}`
+                })
+                localStorage.setItem('cupon', cup.c_name)
+            }else{
+                setStatus({
+                    type: 'cupom',
+                    message: 'Cupom invalido . .'
+                })
+            }
+        } catch (err) {}
     }
 
 
