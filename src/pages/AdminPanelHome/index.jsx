@@ -23,7 +23,7 @@ export default function AdminPanelHome() {
                                 </td>
                                 <td className="opt"><button> Usuarios </button></td>
                                 <td className="opt"><button> Produtos </button></td>
-                                <td className="opt"><button> Cupons </button></td>
+                                <td className="opt"><button onClick={() => history.push('/paineladministrativocupons')}> Cupons </button></td>
                                 <td className="opt"><button> Vendas </button></td>
                                 <td className="opt"><button> Trocas/cancelamentos </button></td>
                                 <td className="opt"><button> Sair </button></td>

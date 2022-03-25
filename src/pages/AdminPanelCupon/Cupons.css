@@ -1,0 +1,55 @@
+.container-home-cupons{
+    width: 80%;
+    padding: 20px;
+    vertical-align: center;
+    text-align: center;
+}
+
+.button-c{
+    width: 200px;
+    height: 60px;
+    background: #BA2126;
+    border-radius: 28px;
+    border: 0;
+    color: white;
+    font-weight: 700;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    line-height: 60px;
+    transition: filter 0.8s;
+}
+
+.button-c:hover{
+    filter: brightness(80%);
+}
+
+.container-home-cupons table{
+    width: 100%;
+    padding-left: 330px;
+    padding-top: 30px;
+}
+
+.container-home-cupons table tbody tr{
+    padding: 20px 10px 30px 10px;
+    box-shadow: 1px 1px 0.5em black;
+    border-radius: 10px;
+}
+
+.container-home-cupons table tbody tr td{
+    font-size: 130%;
+    padding: 10px;
+    
+}
+
+.container-home-cupons table thead tr{
+    box-shadow: 1px 1px 0.5em black;
+    border-radius: 10px;
+    
+}
+
+.container-home-cupons table thead tr td{
+    font-size: 180%;    
+}

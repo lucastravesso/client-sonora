@@ -19,6 +19,8 @@ import AdminPanelHome from "./pages/AdminPanelHome"
 import ProductPage from "./pages/ProductPage"
 import ProductListPage from "./pages/ProductListPage"
 import ProductListCategoryPage from "./pages/ProductListCategoryPage"
+import AllCupons from "./pages/AdminPanelCupon/AllCupons"
+import Cupon from "./pages/AdminPanelCupon/Cupon"
 
 export default function Routes(){
     return (
@@ -39,6 +41,8 @@ export default function Routes(){
                 <Route path='/pedidos' component={OrdersPage} />
                 <Route path='/pedido' component={OrderSelectedPage} />
                 <Route path='/paineladministrativoinicio' component={AdminPanelHome} />
+                <Route path='/paineladministrativocupons' component={AllCupons} />
+                <Route path='/paineladministrativocuponaddalt' component={Cupon} />
                 <Route path='/produto' component={ProductPage}/>
                 <Route path='/busca' component={ProductListPage}/>
                 <Route path='/categoria' component={ProductListCategoryPage}/>
