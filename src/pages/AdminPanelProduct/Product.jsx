@@ -6,7 +6,8 @@ import { FiArrowLeft } from "react-icons/fi";
 import logo from '../../assets/instrumentos.png'
 import api from '../../services/loginApi'
 
-import './newProdStyles.css'
+import './Product.css'
+import Logo2 from '../../assets/logo_Musica.png'
 
 
 export default function NewProduct(){
@@ -81,8 +82,8 @@ export default function NewProduct(){
             setCategoryName(response.data.categoryDto.categoryName)
         
         } catch (error) {
-            alert('Erro ao carregar o livro')
-            history.push('/products')
+            alert('Erro ao carregar o produto')
+            history.push('/paineladministrativo')
         }
     }
 
@@ -126,7 +127,7 @@ export default function NewProduct(){
                 })
             }
 
-            history.push('/perfilvendedor')
+            history.push('/paineladministrativo/produtos')
         } catch (err) {
             alert('Error while recoring product, try again')
         }
@@ -137,17 +138,26 @@ export default function NewProduct(){
     //-----------------------------------PAGE -----------------------------------------
 
     return(
+        <>        
+        <div className="navigation">
+            <table>
+                <thead>
+                    <tr>
+                        <td className="logo">
+                            <img src={Logo2} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")} />
+                        </td>
+                        <td className="opt"><button> Usuarios </button></td>
+                        <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>
+                        <td className="opt"><button onClick={() => history.push('/paineladministrativo/cupons')}> Cupons </button></td>
+                        <td className="opt"><button> Vendas </button></td>
+                        <td className="opt"><button> Trocas/cancelamentos </button></td>
+                        <td className="opt"><button> Sair </button></td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
         <div className="new-product-container"> 
             <div className="content">
-                <section className="form">
-                    <img src={logo} alt="logo" />
-                    <h1>Adicionar novo produto</h1>
-                    <p>Entre com as informações do produto e clique em adicionar</p>
-                    <Link className="back-link" to="/perfilvendedor">
-                        <FiArrowLeft size={16} color="blue"/>
-                        Voltar
-                    </Link>
-                </section>
                 <form name ="form-save" onSubmit={SaveOrUpdate}>
                     <input
                         placeholder="Nome"
@@ -190,6 +200,8 @@ export default function NewProduct(){
                 </form>
             </div>
         </div>
+        </>
+
     );
 
 }

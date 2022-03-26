@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-import './OrderSelectedPage.css'
+import './OrderChange.css'
 
 import Nav from '../Navigation/Nav'
 import Bottom from "../BottomInfo/Bottom";
@@ -9,7 +9,7 @@ import Bottom from "../BottomInfo/Bottom";
 import api from "../../services/loginApi";
 
 
-export default function OrderSelectedPage() {
+export default function OrderChange() {
 
     const [order, setOrder] = useState([]);
     const [products, setProducts] = useState([]);
@@ -61,31 +61,17 @@ export default function OrderSelectedPage() {
     return (
         <>
             <Nav />
-            <div className="container-order-selected">
-                <div className="selected-left">
-
-                    <table className="top-table">
-                        <tr>
-                            <td><b>Nº Pedido</b></td>
-                            <td><b>Status do Pedido</b></td>
-                            <td><b>Data do Pedido</b></td>
-                            <td colSpan={2}><b>Preço total do pedido</b></td>
-                        </tr>
-                        <tr>
-                            <td>{order.id}</td>
-                            <td>{order.status}</td>
-                            <td>{order.orderDate}</td>
-                            <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
-                        </tr>
-                    </table>
-                    <table className="middle-table">
+            <div className="container-order-change">
+                <div className="selected-change-left">
+                    <div><h1>Só podera trocar um produto por vez . </h1></div>
+                    <table className="middle-table-change">
                         <tr className="bar">
                             <td>Produto</td>
                             <td>Preço Unitario</td>
                             <td>Especificação</td>
                             <td>Fabricante</td>
                             <td>Quantidade total</td>
-                            <td>Preço Total</td>
+                            <td colSpan={2}>Preço Total</td>
                         </tr>
                         {cartProducts.map(p => (
                             <tr>
@@ -95,24 +81,14 @@ export default function OrderSelectedPage() {
                                 <td>{p.productDTO.prod_builder}</td>
                                 <td>{p.quantity}</td>
                                 <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.price)}</td>
+
+                                <td><button className="button" onClick={()=> {
+                                    localStorage.setItem('id-prod_troca',p.productDTO.id)
+                                    history.push('/troca/produto')
+                                }}>Trocar produto</button></td>
                             </tr>
                         ))}
                     </table>
-                </div>
-                <div className="selected-right">
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Deseja trocar algum produto ?</td>
-                                </tr>
-                                <tr>
-                                    <td><button className="button" onClick={() => history.push('/troca')}>Trocar pedido</button></td>
-                                </tr>
-
-                            </thead>
-                        </table>
-                    </div>
                 </div>
             </div>
             <Bottom />

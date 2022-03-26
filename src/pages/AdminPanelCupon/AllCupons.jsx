@@ -43,7 +43,7 @@ export default function AllCupons() {
 
         try {
             localStorage.setItem('cupon-id', id)
-            history.push(`/paineladministrativocuponaddalt`)
+            history.push(`/paineladministrativo/cupons/add-alt`)
         } catch (error) {
             alert("Fail to load cupon")
         }
@@ -60,8 +60,8 @@ export default function AllCupons() {
                                     <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")} />
                                 </td>
                                 <td className="opt"><button> Usuarios </button></td>
-                                <td className="opt"><button> Produtos </button></td>
-                                <td className="opt"><button onClick={() => history.push('/paineladministrativocupons')}> Cupons </button></td>
+                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>
+                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/cupons')}> Cupons </button></td>
                                 <td className="opt"><button> Vendas </button></td>
                                 <td className="opt"><button> Trocas/cancelamentos </button></td>
                                 <td className="opt"><button> Sair </button></td>

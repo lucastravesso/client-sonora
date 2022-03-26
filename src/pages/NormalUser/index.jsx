@@ -8,6 +8,7 @@ import api from '../../services/loginApi'
 import Nav from '../Navigation/Nav'
 import Bottom from '../BottomInfo/Bottom'
 
+
 import './normalUserStyles.css'
 
 export default function NormalPerfil() {
@@ -100,6 +101,7 @@ export default function NormalPerfil() {
     return (
         <>
             <Nav />
+            <button onClick={() => history.push('/paineladministrativo')}>a</button>
             <div className="full-container-user">
                 <div className="cont-left-user">
                     <table className="table-left-user">

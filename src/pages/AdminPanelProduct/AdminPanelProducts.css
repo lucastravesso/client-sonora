@@ -1,6 +1,5 @@
 .products-container{
     width: 100%;
-    max-width: 1080px;
     padding: 0 30px;
     margin: 32px auto;
     
@@ -59,7 +58,7 @@
 
 .products-container ul {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 24px;
     list-style: none;
 }

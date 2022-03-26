@@ -2,8 +2,6 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom"
 
 import Login from './pages/Login';
-import VendorUser from './pages/VendorUser/index';
-import NewProduct from './pages/NewProduct';
 import LandPage from './pages/LandPage/index';
 import Register from './pages/RegisterPage/index';
 import AddressAdd from './pages/AddressPage/index';
@@ -21,6 +19,11 @@ import ProductListPage from "./pages/ProductListPage"
 import ProductListCategoryPage from "./pages/ProductListCategoryPage"
 import AllCupons from "./pages/AdminPanelCupon/AllCupons"
 import Cupon from "./pages/AdminPanelCupon/Cupon"
+import OrderChange from "./pages/OrderChange";
+import OrderProductChange from "./pages/OrderProductChange";
+import AllProducts from "./pages/AdminPanelProduct/AllProducts";
+import NewProduct from "./pages/AdminPanelProduct/Product";
+
 
 export default function Routes(){
     return (
@@ -28,8 +31,6 @@ export default function Routes(){
             <Switch>
                 <Route path='/' exact component={LandPage}/>
                 <Route path='/login' component={Login}/>
-                <Route path='/perfilvendedor' exact component={VendorUser}/>
-                <Route path='/products/new/:prodId' component={NewProduct}/>
                 <Route path='/register' component={Register}/>
                 <Route path='/perfilsimples' component={NormalPerfil} />
                 <Route path='/adicionarendereco' component={AddressAdd} />
@@ -40,12 +41,16 @@ export default function Routes(){
                 <Route path='/confirmacaodepedido' component={OrderConfPage} />
                 <Route path='/pedidos' component={OrdersPage} />
                 <Route path='/pedido' component={OrderSelectedPage} />
-                <Route path='/paineladministrativoinicio' component={AdminPanelHome} />
-                <Route path='/paineladministrativocupons' component={AllCupons} />
-                <Route path='/paineladministrativocuponaddalt' component={Cupon} />
+                <Route path='/paineladministrativo' exact component={AdminPanelHome} />
+                <Route path='/paineladministrativo/cupons' exact component={AllCupons} />
+                <Route path='/paineladministrativo/cupons/add-alt' component={Cupon} />
+                <Route path='/paineladministrativo/produtos' exact component={AllProducts} />
+                <Route path='/paineladministrativo/produtos/add-alt/:prodId' exact component={NewProduct} />
                 <Route path='/produto' component={ProductPage}/>
                 <Route path='/busca' component={ProductListPage}/>
                 <Route path='/categoria' component={ProductListCategoryPage}/>
+                <Route path='/troca' exact component={OrderChange}/>
+                <Route path='/troca/produto' component={OrderProductChange}/>
             </Switch>
         </BrowserRouter>
     );

@@ -2,14 +2,13 @@ import React, {useState, useEffect} from 'react';
 import {useHistory, Link} from 'react-router-dom'
 import { FiPower, FiEdit, FiTrash2 } from 'react-icons/fi'
 
-import './vendorPageStyles.css'
-
-import Nav from '../Navigation/Nav'
+import './AdminPanelProducts.css'
 
 import api from '../../services/loginApi'
+import Logo from '../../assets/logo_Musica.png'
 
 
-export default function Products () {
+export default function AllProduct() {
     
     const [products, setProducts] = useState([]);
 
@@ -29,7 +28,7 @@ export default function Products () {
     async function editProduct(id)
     {
         try {
-            history.push(`products/new/${id}`)
+            history.push(`/paineladministrativo/produtos/add-alt/${id}`)
         } catch (err) {
             alert('Edit Failed')
         }
@@ -61,7 +60,7 @@ export default function Products () {
         }).then(resProd => {
             setProducts(resProd.data)
         })
-    })
+    },[])
 
     /** ----------------------------------------------------------- SEPARADOR ----------------------------------------------------------- */
 
@@ -69,11 +68,29 @@ export default function Products () {
 
     return (
         <>
-        <Nav />
+        <div className="container-adm-home">
+                <div className="navigation">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td className="logo">
+                                    <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")} />
+                                </td>
+                                <td className="opt"><button> Usuarios </button></td>
+                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>
+                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/cupons')}> Cupons </button></td>
+                                <td className="opt"><button> Vendas </button></td>
+                                <td className="opt"><button> Trocas/cancelamentos </button></td>
+                                <td className="opt"><button> Sair </button></td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
         <div className="products-container">
             <header>
                 <span>Bem vindo, <strong>{email}</strong></span>
-                <Link className="button" to="/products/new/0">Adicionar novo produto</Link>
+                <Link className="button" to="/paineladministrativo/produtos/add-alt/0">Adicionar novo produto</Link>
                 <button onClick={logout} type="button">
                     <FiPower size={18} color='251fc5' />
                 </button>
