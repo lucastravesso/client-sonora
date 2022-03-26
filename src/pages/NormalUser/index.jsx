@@ -212,6 +212,14 @@ export default function NormalPerfil() {
                                     <button className="button" onClick={() => history.push("/pedidos")}>Ver meus pedidos</button>
                                 </td>
                             </tr>
+                            <br />
+                            <tr>
+                                <td>
+                                    Deseja acompanhar seus pedidos de troca ?<br />
+                                    Clique no botão abaixo!
+                                    <button className="button" onClick={() => history.push("/trocas")}>Ver minhas trocas</button>
+                                </td>
+                            </tr>
                         </tbody>
                         <br />
                         <tfoot>

@@ -24,6 +24,8 @@ import OrderProductChange from "./pages/OrderProductChange";
 import AllProducts from "./pages/AdminPanelProduct/AllProducts";
 import NewProduct from "./pages/AdminPanelProduct/Product";
 import OrderCancel from "./pages/OrderCancel";
+import ProductChangeOrder from "./pages/ProductChangeOrder";
+import ProductChangeSelected from "./pages/ProductChangeSelected";
 
 
 export default function Routes(){
@@ -40,6 +42,8 @@ export default function Routes(){
                 <Route path='/carrinho' component={CartPage}/>
                 <Route path='/confirmacaodecompra' component={CartConfPage}/>
                 <Route path='/confirmacaodepedido' component={OrderConfPage} />
+                <Route path='/trocas' exact component={ProductChangeOrder} />
+                <Route path='/trocas/produto' component={ProductChangeSelected} />
                 <Route path='/pedidos' component={OrdersPage} />
                 <Route path='/pedido' component={OrderSelectedPage} />
                 <Route path='/paineladministrativo' exact component={AdminPanelHome} />
