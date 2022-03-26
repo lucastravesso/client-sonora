@@ -12,7 +12,6 @@ import api from "../../services/loginApi";
 
 export default function OrderConfPage() {
 
-
     const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
     const [card, setCard] = useState([]);

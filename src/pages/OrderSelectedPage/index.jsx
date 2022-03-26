@@ -109,7 +109,13 @@ export default function OrderSelectedPage() {
                                 <tr>
                                     <td><button className="button" onClick={() => history.push('/troca')}>Trocar pedido</button></td>
                                 </tr>
-
+                                <br />
+                                <tr>
+                                    <td>Deseja cancelar a compra ?</td>
+                                </tr>
+                                <tr>
+                                    <td><button className="button" onClick={() => history.push('/cancelamento')}>Cancelar compra</button></td>
+                                </tr>
                             </thead>
                         </table>
                     </div>

@@ -56,7 +56,6 @@ export default function OrderChange() {
 
     useEffect(() => { getOrder() }, [])
 
-    console.log(cartProducts)
 
     return (
         <>

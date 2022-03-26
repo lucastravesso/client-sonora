@@ -11,6 +11,7 @@ import api from "../../services/loginApi";
 export default function OrderProductChange(){
 
     const [product, setProduct] = useState([]);
+    const [change_reason, setChange_reason] = useState([]);
 
     const history = useHistory();
 
@@ -26,10 +27,30 @@ export default function OrderProductChange(){
         }
     }
 
+    async function handleRequest(e){
+        e.preventDefault();
+
+        const data = {
+            change_reason : change_reason,
+        }
+
+        try {
+            await api.post(`/change/create/${localStorage.getItem('id-prod_troca')}`, data, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                }
+            })
+            history.push('/')
+        } catch (err) {
+            alert("falha na requisição de troca")
+        }
+
+    }
+
     return (
         <>
             <Nav />
-                <table>
+                <table className="table-product-change">
                     <thead>
                         <tr>
                             <td>{product.prod_name}</td>
@@ -38,8 +59,15 @@ export default function OrderProductChange(){
                             <td>{product.prod_builder}</td>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    
                 </table>
+
+                <div className="form-troca">
+                    <form onSubmit={handleRequest}>
+                        <input type='text'onChange={e => setChange_reason(e.target.value)}/>
+                        <button className='button' type="submit">Enviar pedido de troca</button>
+                    </form>
+                </div>
             <Bottom />
         </>
     );

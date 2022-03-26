@@ -1,0 +1,9 @@
+.container-order-cancel{
+    width: 100%;
+    display: flex;
+}
+
+.container-order-cancel table form tr td{
+    width: 100%;
+    background-color: black;
+}

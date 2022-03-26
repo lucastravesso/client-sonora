@@ -1,0 +1,21 @@
+.table-product-change{
+    text-align: center;
+    width: 1100px;
+    margin-left: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.table-product-change thead tr td{
+    background-color: blue;
+    padding: 20px;
+}
+
+.form-troca{
+    width: 1100px;
+    margin-left: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: blue;
+    padding: 20px;
+}

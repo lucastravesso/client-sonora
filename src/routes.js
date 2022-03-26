@@ -23,6 +23,7 @@ import OrderChange from "./pages/OrderChange";
 import OrderProductChange from "./pages/OrderProductChange";
 import AllProducts from "./pages/AdminPanelProduct/AllProducts";
 import NewProduct from "./pages/AdminPanelProduct/Product";
+import OrderCancel from "./pages/OrderCancel";
 
 
 export default function Routes(){
@@ -50,6 +51,7 @@ export default function Routes(){
                 <Route path='/busca' component={ProductListPage}/>
                 <Route path='/categoria' component={ProductListCategoryPage}/>
                 <Route path='/troca' exact component={OrderChange}/>
+                <Route path='/cancelamento' exact component={OrderCancel}/>
                 <Route path='/troca/produto' component={OrderProductChange}/>
             </Switch>
         </BrowserRouter>
