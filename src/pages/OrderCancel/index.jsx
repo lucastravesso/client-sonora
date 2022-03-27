@@ -40,7 +40,6 @@ export default function OrderCancel() {
             <Nav />
             <div className="container-order-cancel">
                 <form action="">
-                    
                 </form>
             </div>
             <Bottom />

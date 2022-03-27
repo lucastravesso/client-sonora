@@ -5,6 +5,8 @@ import InputMask from 'react-input-mask';
 
 import api from '../../services/loginApi'
 import Logo from '../../assets/logo_Musica.png'
+import NavAdmin from '../NavAdmin/NavAdmin'
+
 
 import './Cupons.css'
 
@@ -81,25 +83,7 @@ export default function Cupon() {
 
     return (
         <>
-            <div className="container-adm-home">
-                <div className="navigation">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td className="logo">
-                                    <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")} />
-                                </td>
-                                <td className="opt"><button> Usuarios </button></td>
-                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>
-                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/cupons')}> Cupons </button></td>
-                                <td className="opt"><button> Vendas </button></td>
-                                <td className="opt"><button> Trocas/cancelamentos </button></td>
-                                <td className="opt"><button> Sair </button></td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
+            <NavAdmin />
             <div className="container-home-cupons">
                 <div className="form-cupom">
                     <form onSubmit={saveOrUpdate}>

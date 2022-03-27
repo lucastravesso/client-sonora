@@ -1,10 +1,10 @@
 import React from "react";
 import {useHistory} from 'react-router-dom'
 
-import './AdminPanelHome.css'
+import './AdminPanelCancel.css'
 import NavAdmin from '../NavAdmin/NavAdmin'
 
-export default function AdminPanelHome() {
+export default function AdminPanelCancel() {
 
     const history = useHistory();
 
@@ -13,7 +13,7 @@ export default function AdminPanelHome() {
         <>
             <NavAdmin />
             <div className="container-home">
-
+                <h1>teste cancelamento</h1>
             </div>
         </>
     );

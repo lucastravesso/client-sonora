@@ -5,6 +5,8 @@ import { FiArrowLeft } from "react-icons/fi";
 
 import logo from '../../assets/instrumentos.png'
 import api from '../../services/loginApi'
+import NavAdmin from '../NavAdmin/NavAdmin'
+
 
 import './Product.css'
 import Logo2 from '../../assets/logo_Musica.png'
@@ -139,23 +141,7 @@ export default function NewProduct(){
 
     return(
         <>        
-        <div className="navigation">
-            <table>
-                <thead>
-                    <tr>
-                        <td className="logo">
-                            <img src={Logo2} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")} />
-                        </td>
-                        <td className="opt"><button> Usuarios </button></td>
-                        <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>
-                        <td className="opt"><button onClick={() => history.push('/paineladministrativo/cupons')}> Cupons </button></td>
-                        <td className="opt"><button> Vendas </button></td>
-                        <td className="opt"><button> Trocas/cancelamentos </button></td>
-                        <td className="opt"><button> Sair </button></td>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+        <NavAdmin />
         <div className="new-product-container"> 
             <div className="content">
                 <form name ="form-save" onSubmit={SaveOrUpdate}>
