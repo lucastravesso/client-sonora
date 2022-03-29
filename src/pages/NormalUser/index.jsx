@@ -97,11 +97,29 @@ export default function NormalPerfil() {
         history.push('/login')
     }
 
+    const [auth, setAuth] = useState([]);
+
+    async function handleAdmin(){
+        api.get('/auth/me', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }).then(res =>{
+            setAuth(res.data)
+        })
+
+        if(auth.profiles[0].name != "ROLE_ADMIN")
+        {
+            alert("Voce não é um administrador.")
+        }else{
+            history.push('/paineladministrativo');
+        }
+    }
 
     return (
         <>
             <Nav />
-            <button onClick={() => history.push('/paineladministrativo')}>a</button>
+            <button className="button-adm" onClick={() => handleAdmin()}>Painel administrativo</button>
             <div className="full-container-user">
                 <div className="cont-left-user">
                     <table className="table-left-user">

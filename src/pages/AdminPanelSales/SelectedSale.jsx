@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import {useHistory} from 'react-router-dom'
 
-import './OrderSelectedPage.css'
+import api from '../../services/loginApi'
+import './AdminPanelSales.css'
+import NavAdmin from '../NavAdmin/NavAdmin'
+import DropDownStatus from '../../components/DropDowns/DdStatusChange'
 
-import Nav from '../Navigation/Nav'
-import Bottom from "../BottomInfo/Bottom";
-
-import api from "../../services/loginApi";
-
-
-export default function OrderSelectedPage() {
+export default function SelectedSales() {
 
     const [order, setOrder] = useState([]);
     const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
+    const [status, setStatus] = useState('');
 
     const history = useHistory();
 
     async function getProducts() {
         try {
-            await api.get(`/order/prod/${localStorage.getItem('order-id')}`, {
+            await api.get(`/order/prod/${localStorage.getItem('selected-order')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -41,7 +39,7 @@ export default function OrderSelectedPage() {
 
         try {
 
-            await api.get(`/order/${localStorage.getItem('order-id')}`, {
+            await api.get(`/order/${localStorage.getItem('selected-order')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
@@ -56,12 +54,25 @@ export default function OrderSelectedPage() {
 
     useEffect(() => { getOrder() }, [])
 
+    async function handleChangeStatus(){
+
+        try {
+            api.put(`/order/updateStatus/${localStorage.getItem('selected-order')}`, {status: status} , {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            })
+            document.location.reload()
+        } catch (err) {
+            alert("Falha ao alterar status do pedido")
+        }
+    }
+
     return (
         <>
-            <Nav />
-            <div className="container-order-selected">
+            <NavAdmin />
+            <div className="container-sales">
                 <div className="selected-left">
-
                     <table className="top-table">
                         <tr>
                             <td><b>Nº Pedido</b></td>
@@ -76,6 +87,17 @@ export default function OrderSelectedPage() {
                             <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
                         </tr>
                     </table>
+                    <br />
+                    <table className="top-table">
+                        <tr>
+                            <td className="unique">Alterar Status do Pedido</td>
+                            <td>
+                                <DropDownStatus onChange={(e) => setStatus(e.target.value)}/>
+                            </td>
+                            <td><button className="button" onClick={() => handleChangeStatus()}>Alterar</button></td>
+                        </tr>
+                    </table>
+                    <br />
                     <table className="middle-table">
                         <tr className="bar">
                             <td>Produto</td>
@@ -97,30 +119,7 @@ export default function OrderSelectedPage() {
                         ))}
                     </table>
                 </div>
-                <div className="selected-right">
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Deseja trocar algum produto ?</td>
-                                </tr>
-                                <tr>
-                                    <td><button className="button" onClick={() => history.push('/troca')}>Trocar pedido</button></td>
-                                </tr>
-                                <br />
-                                <tr>
-                                    <td>Deseja cancelar a compra ?</td>
-                                </tr>
-                                <tr>
-                                    <td><button className="button" onClick={() => history.push('/cancelamento')}>Cancelar compra</button></td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
             </div>
-            <Bottom />
         </>
     );
-
 }

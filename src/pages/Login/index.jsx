@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useHistory} from 'react-router-dom'
 import './loginStyles.css'
 
@@ -10,7 +10,6 @@ import api from '../../services/loginApi'
 export default function Login () {
 
     const history = useHistory();
-
 
     //VERIFICAR TIPO DE PERFIL
     if(localStorage.getItem('email') != null)

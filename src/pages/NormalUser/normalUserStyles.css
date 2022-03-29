@@ -3,6 +3,14 @@
     grid-template-columns: 70% 30%;
 }
 
+.button-adm{
+    position:absolute;
+    margin: 15px 10px 10px 1660px;
+    background: none;
+    border: none;
+    box-shadow: 0.5px 0.5px 0.2em black;
+}
+
 .full-container-user .cont-left-user{
     padding-left: 15%;
     padding-top: 50px;
@@ -132,7 +140,7 @@
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 1em #ff0008;
     border-radius: 10px;
-
+    
 }
 
 /*-----------------------------------------------*/

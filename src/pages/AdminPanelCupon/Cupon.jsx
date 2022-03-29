@@ -62,7 +62,7 @@ export default function Cupon() {
                     }
                 })
                 alert("Cupon inserido com sucesso")
-                history.push('/paineladministrativocupons')
+                history.push('/paineladministrativo/cupons')
             } catch (err) {
                 alert("falha ao inserir cupom")
             }
@@ -74,7 +74,7 @@ export default function Cupon() {
                     }
                 })
                 alert("Cupon atualizado com sucesso")
-                history.push('/paineladministrativocupons')
+                history.push('/paineladministrativo/cupons')
             } catch (error) {
                 alert("falha ao atualizar cupom")
             }

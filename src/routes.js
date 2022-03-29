@@ -26,7 +26,8 @@ import NewProduct from "./pages/AdminPanelProduct/Product";
 import OrderCancel from "./pages/OrderCancel";
 import ProductChangeOrder from "./pages/ProductChangeOrder";
 import ProductChangeSelected from "./pages/ProductChangeSelected";
-import AdminPanelSales from "./pages/AdminPanelSales";
+import AdminPanelSales from "./pages/AdminPanelSales/index";
+import AdminPanelSale from "./pages/AdminPanelSales/SelectedSale";
 import AdminPanelCancel from "./pages/AdminPanelCancel";
 import AdminPanelUsers from "./pages/AdminPanelUsers";
 import AdminPanelChanges from "./pages/AdminPanelChanges"
@@ -55,6 +56,7 @@ export default function Routes(){
                 <Route path='/paineladministrativo/cupons/add-alt' component={Cupon} />
                 <Route path='/paineladministrativo/produtos' exact component={AllProducts} />
                 <Route path='/paineladministrativo/vendas' exact component={AdminPanelSales} />
+                <Route path='/paineladministrativo/vendas/venda' exact component={AdminPanelSale} />
                 <Route path='/paineladministrativo/usuarios' exact component={AdminPanelUsers} />
                 <Route path='/paineladministrativo/trocas' exact component={AdminPanelChanges} />
                 <Route path='/paineladministrativo/cancelamentos' exact component={AdminPanelCancel} />

@@ -12,7 +12,6 @@ import './landPageStyles.css'
 export default function LandPage() {
 
     const [products, setProducts] = useState([]);
-    const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();
 
