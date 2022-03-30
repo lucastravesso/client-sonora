@@ -27,17 +27,25 @@ export default function LandPage() {
         }
     }
 
+    
     async function addCart(){
-        try {
-            await api.post(`/cart/add-cart/${localStorage.getItem('id-produto-selecionado')}`, null, {
-                headers: {
-                    Authorization : `Bearer ${localStorage.getItem('accessToken')}`
-                   }
-            })
-                history.push('/')
-        } catch (err) {
-            alert('Necessario estar logado para adicionar ao carrinho . .')
-            history.push('/login')
+
+        if(product.prod_quantity === 0)
+        {
+            alert("Produto fora de estoque .")
+            history.push('/')
+        }else{
+            try {
+                await api.post(`/cart/add-cart/${localStorage.getItem('id-produto-selecionado')}`, null, {
+                    headers: {
+                        Authorization : `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                    history.push('/carrinho')
+            } catch (err) {
+                alert('Necessario estar logado para adicionar ao carrinho . .')
+                history.push('/login')
+            }
         }
     }
 

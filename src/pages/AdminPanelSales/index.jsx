@@ -16,9 +16,7 @@ export default function AdminPanelSales() {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
-            }).then(res => {
-                setOrders(res.data)
-            })
+            }).then(res => {setOrders(res.data)})
         } catch (err) {
             alert("Não foi encontrado nenhuma venda")
         }

@@ -30,7 +30,8 @@ import AdminPanelSales from "./pages/AdminPanelSales/index";
 import AdminPanelSale from "./pages/AdminPanelSales/SelectedSale";
 import AdminPanelCancel from "./pages/AdminPanelCancel";
 import AdminPanelUsers from "./pages/AdminPanelUsers";
-import AdminPanelChanges from "./pages/AdminPanelChanges"
+import AdminPanelChanges from "./pages/AdminPanelChanges";
+import SelectedChange from "./pages/AdminPanelChanges/SelectedChange";
 
 
 export default function Routes(){
@@ -59,6 +60,7 @@ export default function Routes(){
                 <Route path='/paineladministrativo/vendas/venda' exact component={AdminPanelSale} />
                 <Route path='/paineladministrativo/usuarios' exact component={AdminPanelUsers} />
                 <Route path='/paineladministrativo/trocas' exact component={AdminPanelChanges} />
+                <Route path='/paineladministrativo/trocas/troca' exact component={SelectedChange} />
                 <Route path='/paineladministrativo/cancelamentos' exact component={AdminPanelCancel} />
                 <Route path='/paineladministrativo/produtos/add-alt/:prodId' exact component={NewProduct} />
                 <Route path='/produto' component={ProductPage}/>

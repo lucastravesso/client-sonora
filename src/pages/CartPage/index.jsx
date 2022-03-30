@@ -41,7 +41,9 @@ export default function CartPage() {
         getProducts()
     }, []);
 
+
     async function addCart(id) {
+
         try {
             await api.post(`cart/add-cart/${id}`, null, {
                 headers: {
@@ -50,7 +52,7 @@ export default function CartPage() {
             })
             getProducts()
         } catch (err) {
-            alert("Falha ao adicionar no carrinho, necessario criar uma conta para continuar . .");
+            alert("Impossivel adicionar mais produtos, fora de estoque.");
         }
     }
 
@@ -82,6 +84,7 @@ export default function CartPage() {
         }
     }
 
+    
 
     useEffect(() => {
         try {
@@ -97,7 +100,6 @@ export default function CartPage() {
         }
     }, [])
 
-
     async function verifyAndProc() {
 
         if (cartProducts.length === 0) {
@@ -108,11 +110,19 @@ export default function CartPage() {
                 alert("Necessira preencher um endereço para entrega")
                 history.push('/adicionarendereco');
             } else {
-                history.push('/confirmacaodecompra')
+                for(let i = 0; i<cartProducts.length; i++)
+                {
+                    if(cartProducts[i].productDTO.prod_quantity < cartProducts[i].quantity)
+                    {
+                        alert('Algum produto pode estar indisponivel em estoque')
+                        return history.push('/')
+                    }else{
+                        history.push('/confirmacaodecompra')
+                    }
+                }
             }
         }
     }
-
     return (
         <>
             <Nav />
@@ -131,12 +141,22 @@ export default function CartPage() {
                             .sort((a, b) => {return a.productDTO.prod_name.localeCompare(b.productDTO.prod_name)})
                             .map(p => (
                                 <tr key={p.productDTO.id}>
-                                    <td>{p.productDTO.prod_name}</td>
+                                    <td><button className="button" onClick={() => {
+                                        localStorage.setItem('id-produto-selecionado', p.productDTO.id)
+                                        history.push('/produto')
+                                    }}>{p.productDTO.prod_name}</button></td>
                                     <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.productDTO.prod_price)}</td>
                                     <td>
                                         <button><BsFillDashCircleFill onClick={() => removeCart(p.productDTO.id)} /></button>
                                         {p.quantity}
-                                        <button><BsFillPlusCircleFill onClick={() => addCart(p.productDTO.id)} /></button>
+                                        <button><BsFillPlusCircleFill onClick={() => {
+                                            
+                                            if(p.productDTO.prod_quantity - 1 < p.quantity)
+                                            {
+                                                alert("Impossivel adicionar, quantidade fora de estoque")
+                                            }else{
+                                                addCart(p.productDTO.id)}
+                                            }} /></button>
                                     </td>
                                 </tr>
                             ))}
