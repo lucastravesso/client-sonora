@@ -23,7 +23,7 @@ import OrderChange from "./pages/OrderChange";
 import OrderProductChange from "./pages/OrderProductChange";
 import AllProducts from "./pages/AdminPanelProduct/AllProducts";
 import NewProduct from "./pages/AdminPanelProduct/Product";
-import OrderCancel from "./pages/OrderCancel";
+import OrderCancel from "./pages/OrderCancel/OrderCancel";
 import ProductChangeOrder from "./pages/ProductChangeOrder";
 import ProductChangeSelected from "./pages/ProductChangeSelected";
 import AdminPanelSales from "./pages/AdminPanelSales/index";
@@ -32,6 +32,9 @@ import AdminPanelCancel from "./pages/AdminPanelCancel";
 import AdminPanelUsers from "./pages/AdminPanelUsers";
 import AdminPanelChanges from "./pages/AdminPanelChanges";
 import SelectedChange from "./pages/AdminPanelChanges/SelectedChange";
+import OrderCancelList from "./pages/OrderCancel/OrderCancelList";
+import OrderCancelSelected from "./pages/OrderCancel/OrderCancelSelected";
+import SelectedCancel from "./pages/AdminPanelCancel/SelectedCancel";
 
 
 export default function Routes(){
@@ -62,12 +65,15 @@ export default function Routes(){
                 <Route path='/paineladministrativo/trocas' exact component={AdminPanelChanges} />
                 <Route path='/paineladministrativo/trocas/troca' exact component={SelectedChange} />
                 <Route path='/paineladministrativo/cancelamentos' exact component={AdminPanelCancel} />
+                <Route path='/paineladministrativo/cancelamentos/cancelamento' exact component={SelectedCancel}/>
                 <Route path='/paineladministrativo/produtos/add-alt/:prodId' exact component={NewProduct} />
                 <Route path='/produto' component={ProductPage}/>
                 <Route path='/busca' component={ProductListPage}/>
                 <Route path='/categoria' component={ProductListCategoryPage}/>
                 <Route path='/troca' exact component={OrderChange}/>
                 <Route path='/cancelamento' exact component={OrderCancel}/>
+                <Route path='/cancelamentos' exact component={OrderCancelList}/>
+                <Route path='/cancelamento/pedido' exact component={OrderCancelSelected}/>
                 <Route path='/troca/produto' component={OrderProductChange}/>
             </Switch>
         </BrowserRouter>

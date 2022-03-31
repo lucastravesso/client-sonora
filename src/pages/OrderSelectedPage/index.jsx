@@ -112,7 +112,10 @@ export default function OrderSelectedPage() {
                                     <td>Deseja cancelar a compra ?</td>
                                 </tr>
                                 <tr>
-                                    <td><button className="button" onClick={() => history.push('/cancelamento')}>Cancelar compra</button></td>
+                                    <td><button className="button" onClick={() => {
+                                        localStorage.setItem('id-pedido_cancel', order.id)
+                                        history.push('/cancelamento')}
+                                        }>Cancelar compra</button></td>
                                 </tr>
                             </thead>
                         </table>

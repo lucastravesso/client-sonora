@@ -27,18 +27,21 @@
 }
 
 .container-home-cupons table{
+    
     width: 100%;
     padding-left: 330px;
     padding-top: 30px;
 }
 
 .container-home-cupons table tbody tr{
+    
     padding: 20px 10px 30px 10px;
     box-shadow: 1px 1px 0.5em black;
     border-radius: 10px;
 }
 
 .container-home-cupons table tbody tr td{
+    
     font-size: 130%;
     padding: 10px;
     
@@ -51,5 +54,7 @@
 }
 
 .container-home-cupons table thead tr td{
+    box-shadow:inset 1px 1px 5em rgb(81, 14, 126);
+    color: white;
     font-size: 180%;    
 }

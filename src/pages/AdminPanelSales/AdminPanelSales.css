@@ -24,8 +24,9 @@
 
 .container-sales .table-sales thead tr{
     
-    box-shadow:inset 1px 1px 2em red, 1px 1px 0.5em black;
-    border-radius: 10px;
+    box-shadow:inset 1px 1px 5em rgb(81, 14, 126), 1px 1px 0.2em black;
+    border-radius: 1000px;
+    color: white;
 }
 
 .container-sales .table-sales thead tr td{

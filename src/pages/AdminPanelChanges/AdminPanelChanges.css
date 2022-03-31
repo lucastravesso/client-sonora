@@ -24,8 +24,9 @@
 
 .container-changes .table-changes thead tr{
     
-    box-shadow:inset 1px 1px 2em red, 1px 1px 0.5em black;
+    box-shadow:inset 1px 1px 5em rgb(81, 14, 126), 1px 1px 0.2em black;
     border-radius: 10px;
+    color: white;
 }
 
 .container-changes .table-changes thead tr td{
