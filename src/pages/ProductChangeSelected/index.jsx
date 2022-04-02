@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 
 import './PruductChangeSelected.css'
 
@@ -14,7 +13,7 @@ export default function ProductChangeSelected() {
     const [order, setOrder] = useState([]);
     const [product, setProduct] = useState([]);
 
-    const history = useHistory();
+    useEffect(() => {getChange()}, [])
 
     async function getChange(){
         try {
@@ -32,8 +31,6 @@ export default function ProductChangeSelected() {
             alert("Falha ao trazer pedido")
         }
     }
-
-    useEffect(() => {getChange()}, [])
 
     return (
         <>

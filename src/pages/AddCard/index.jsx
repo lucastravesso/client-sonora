@@ -24,7 +24,6 @@ export default function AddCard(){
     const [card_number, setCard_number] = useState('');
     const [card_valid, setCard_valid] = useState('');
 
-
     async function addCard(e){
         e.preventDefault();
 
@@ -48,12 +47,10 @@ export default function AddCard(){
             alert('Não foi possivel inserir um novo cartão . ')
         }
     }
-
     const handleInputChangeFlag = (e) =>{
         e.preventDefault();
         setCard_flag(e.target.value);
     }
-
     function validate(){
         if(!card_name) return setStatus({
             type: 'error',

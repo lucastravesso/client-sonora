@@ -11,10 +11,11 @@ import './ProdListCatPage.css'
 
 export default function ProductListCategoryPage() {
 
-
     const [products, setProducts] = useState([]);
 
     const history = useHistory();
+
+    useEffect(() => {getProducts()}, [])
 
     async function getProducts(){
         
@@ -28,10 +29,6 @@ export default function ProductListCategoryPage() {
             history.push('/')
         }
     }
-
-    useEffect(() => {
-        getProducts()
-    }, [])
 
     async function getProduct(id){
         localStorage.setItem('id-produto-selecionado', id)

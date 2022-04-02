@@ -15,8 +15,9 @@ export default function LandPage() {
     const [limits, setLimits] = useState([]);
     const [page, setPage] = useState(0);
 
-    
     const history = useHistory();
+
+    useEffect(() => {getProducts()}, [page])
 
     async function getProducts(){
         try {
@@ -27,11 +28,7 @@ export default function LandPage() {
         } catch (err) {
             alert("Nao foi possivel trazer os produtos")
         }
-    }
-
-    useEffect(() => {
-        getProducts()
-    }, [page])
+    } 
 
     async function increment(){
         if(page < limits.totalPages -1){
@@ -48,13 +45,10 @@ export default function LandPage() {
         }
     }
 
-
     async function getProduct(id){
         localStorage.setItem('id-produto-selecionado', id)
         history.push('/produto')
     }
-
-    console.log(limits.totalPages)
 
     return (
         <>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import {useHistory} from 'react-router-dom'
 import './loginStyles.css'
 
@@ -11,16 +11,15 @@ export default function Login () {
 
     const history = useHistory();
 
-    //VERIFICAR TIPO DE PERFIL
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     if(localStorage.getItem('email') != null)
     {
         history.push('/perfilsimples');
     }
 
-        const [email, setEmail] = useState('');
-        const [password, setPassword] = useState('');
-
-        async function login(e){
+    async function login(e){
             e.preventDefault();
 
             const data = {
@@ -37,9 +36,7 @@ export default function Login () {
             } catch (err) {
                 alert("Login failed !")
             }
-        };
-
-
+    };
 
         return (
             <>

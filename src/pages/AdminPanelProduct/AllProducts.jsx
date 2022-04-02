@@ -5,24 +5,28 @@ import { FiPower, FiEdit, FiTrash2 } from 'react-icons/fi'
 import './AdminPanelProducts.css'
 
 import api from '../../services/loginApi'
-import Logo from '../../assets/logo_Musica.png'
 import NavAdmin from '../NavAdmin/NavAdmin'
 
 
 export default function AllProduct() {
     
+    const [products, setProducts] = useState([]);
+    const [limits, setLimits] = useState([]);
+    const [page, setPage] = useState(0);
 
     const email = localStorage.getItem('email')
     const accessToken = localStorage.getItem('accessToken')
+    const history = useHistory();
 
-    // ---------------------------------------------CALLBACK FUNCTIONS------------------------------------------------------------------------------------------
+    useEffect(() => {
+        getProducts()
+    }, [page])
 
     async function logout()
     {
         localStorage.clear()
         history.push('/login')
     }
-
     async function editProduct(id)
     {
         try {
@@ -31,7 +35,6 @@ export default function AllProduct() {
             alert('Edit Failed')
         }
     }
-
     async function deleteProduct(id)
     {
         try {
@@ -46,17 +49,6 @@ export default function AllProduct() {
             alert('Falha ao deletar')
         }
     }
-
-
-    /* -------------------------------------  HOOKS PARA MANTER API ATIVA -------------------------------------  -------------------------------------  */
-
-    const [products, setProducts] = useState([]);
-    const [limits, setLimits] = useState([]);
-    const [page, setPage] = useState(0);
-
-    
-    const history = useHistory();
-
     async function getProducts(){
         try {
             await api.get(`products/list?page=${page}&&size=6`).then(resProd => {
@@ -67,11 +59,6 @@ export default function AllProduct() {
             alert("Nao foi possivel trazer os produtos")
         }
     }
-
-    useEffect(() => {
-        getProducts()
-    }, [page])
-
     async function increment(){
         if(page < limits.totalPages -1){
             setPage(page + 1)
@@ -86,10 +73,6 @@ export default function AllProduct() {
            return alert("Pagina indisponivel");;
         }
     }
-
-    /** ----------------------------------------------------------- SEPARADOR ----------------------------------------------------------- */
-
-
 
     return (
         <>

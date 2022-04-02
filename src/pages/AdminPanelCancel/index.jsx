@@ -11,6 +11,8 @@ export default function AdminPanelCancel() {
     const history = useHistory();
     const [cancel, setCancel] = useState([]);
 
+    useEffect(()=>{getCancels()},[])
+
     async function getCancels(){
         try {
             await api.get('/cancel/list', {
@@ -22,7 +24,6 @@ export default function AdminPanelCancel() {
             alert("Falha ao trazer trocas")
         }
     }
-    useEffect(()=>{getCancels()},[])
 
     return (
         <>

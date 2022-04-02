@@ -14,7 +14,8 @@ export default function AddressAdd() {
     const history = useHistory();
 
     const [user, setUser] = useState([]);
-
+    const [formValuesState, setFormValuesState] = useState({});
+    const [formValuesCity, setFormValuesCity] = useState({});
     const [state, setState] = useState('');
     const [city, setCity] = useState('');
     const [district, setDistrict] = useState('');
@@ -69,13 +70,6 @@ export default function AddressAdd() {
         }
     
     }
-    
-
-
-
-    const [formValuesState, setFormValuesState] = useState({});
-    const [formValuesCity, setFormValuesCity] = useState({});
-
     const handleInputChangeState = (e) =>{
         e.preventDefault();
         const {value, name} = e.target;
@@ -88,9 +82,7 @@ export default function AddressAdd() {
         setFormValuesCity({...formValuesCity, [name]:value});
         setCity(value)
     }
-
     
-
     return (
         <>
             <Nav />

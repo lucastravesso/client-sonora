@@ -22,11 +22,9 @@ export default function Register() {
     const [rg, setRg] = useState('');
     const [born, setBorn] = useState('');
     const [phone, setPhone] = useState('');
-    //const [register, setRegister] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConf, setPasswordConf] = useState('');
-
 
     async function registerForm(e){
         e.preventDefault();
@@ -61,15 +59,6 @@ export default function Register() {
                 alert("Confirmação de senha invalida . . . .")
             }
     }
-
-    /*
-    function passValidate(){
-        if(!password.length < 8) return setStatus({type:'error', message:'Senha com menos de 8 digitos . .'})
-        else if(!(password.length) > 8 && (password.match(/[a-z]+/))) return setStatus({type:'error', message:'Senha deve conter ao minimo uma letra maiuscula . .'})
-        else if(!(password.length) > 8 && (password.match(/[A-Z]+/))) return setStatus({type:'error', message:'Senha deve conter ao minimo um caracter especial . .'})
-        else return true;
-    }
-    */
 
     function validate(){
         if(!firstName) return setStatus({
@@ -106,8 +95,6 @@ export default function Register() {
         })
         else{return true;}
     }
-
-
     
     return (
         <>

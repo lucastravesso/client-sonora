@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {useHistory} from 'react-router-dom'
 
 import api from '../../services/loginApi'
-import Logo from '../../assets/logo_Musica.png'
 
 import './Cupons.css'
 import NavAdmin from "../NavAdmin/NavAdmin";

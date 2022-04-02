@@ -15,6 +15,8 @@ export default function OrdersPage() {
 
     const history = useHistory();
 
+    useEffect(() => {getOrders()}, [])
+
     async function getOrders(){
         try {
             
@@ -30,8 +32,6 @@ export default function OrdersPage() {
             alert("Falha ao buscar pedidos . .")
         }
     }
-
-    useEffect(() => {getOrders()}, [])
 
     async function handleRedirect(id){
 

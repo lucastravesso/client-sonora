@@ -16,6 +16,8 @@ export default function OrderCancel() {
 
     const history = useHistory();
 
+    useEffect(() => { getOrder() }, [])
+
     async function getOrder() {
 
         try {
@@ -32,8 +34,6 @@ export default function OrderCancel() {
             alert("Falha ao trazer pedido")
         }
     }
-
-    useEffect(() => { getOrder() }, [])
 
     async function handleRequest(e){
         e.preventDefault();
@@ -54,7 +54,6 @@ export default function OrderCancel() {
         }
 
     }
-
 
     return (
         <>

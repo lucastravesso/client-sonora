@@ -12,10 +12,14 @@ import api from "../../services/loginApi";
 export default function OrderSelectedPage() {
 
     const [order, setOrder] = useState([]);
+    const [cup, setCup] = useState([]);
     const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
 
     const history = useHistory();
+    
+    useEffect(() => {getOrder() }, [])
+    useEffect(() => {getProducts()}, []);
 
     async function getProducts() {
         try {
@@ -33,20 +37,17 @@ export default function OrderSelectedPage() {
         }
     }
 
-    useEffect(() => {
-        getProducts()
-    }, []);
-
-    async function getOrder() {
+    function getOrder() {
 
         try {
 
-            await api.get(`/order/${localStorage.getItem('order-id')}`, {
+             api.get(`/order/${localStorage.getItem('order-id')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
             }).then(res => {
                 setOrder(res.data)
+                setCup(res.data.cupon)
             })
 
         } catch (err) {
@@ -54,29 +55,48 @@ export default function OrderSelectedPage() {
         }
     }
 
-    useEffect(() => { getOrder() }, [])
+    function handleOrderStatus(){
+        if(order.cupon !== null)
+        {
+           return <table className="top-table"> 
+                <tr>
+                    <td><b>Nº Pedido</b></td>
+                    <td><b>Status do Pedido</b></td>
+                    <td><b>Data do Pedido</b></td>
+                    <td><b>Preço total com cupom : {cup.c_name}</b></td>
+                </tr>
+                <tr>
+                    <td>{order.id}</td>
+                    <td>{order.status}</td>
+                    <td>{order.orderDate}</td>
+                    <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * cup.c_percentage)}</td>
+                </tr>
+            </table>
+        }else{
+           return <table className="top-table"> 
+                <tr>
+                    <td><b>Nº Pedido</b></td>
+                    <td><b>Status do Pedido</b></td>
+                    <td><b>Data do Pedido</b></td>
+                    <td><b>Preço total do pedido</b></td>
+                </tr>
+                <tr>
+                    <td>{order.id}</td>
+                    <td>{order.status}</td>
+                    <td>{order.orderDate}</td>
+                    <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
+                </tr>
+            </table>
+        }
+    }
 
     return (
         <>
             <Nav />
             <div className="container-order-selected">
                 <div className="selected-left">
-
-                    <table className="top-table">
-                        <tr>
-                            <td><b>Nº Pedido</b></td>
-                            <td><b>Status do Pedido</b></td>
-                            <td><b>Data do Pedido</b></td>
-                            <td colSpan={2}><b>Preço total do pedido</b></td>
-                        </tr>
-                        <tr>
-                            <td>{order.id}</td>
-                            <td>{order.status}</td>
-                            <td>{order.orderDate}</td>
-                            <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
-                        </tr>
-                    </table>
-                    <table className="middle-table">
+                    {handleOrderStatus()}
+                   <table className="middle-table">
                         <tr className="bar">
                             <td>Produto</td>
                             <td>Preço Unitario</td>

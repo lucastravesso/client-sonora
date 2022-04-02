@@ -8,7 +8,6 @@ import api from '../../services/loginApi'
 import Nav from '../Navigation/Nav'
 import Bottom from '../BottomInfo/Bottom'
 
-
 import './normalUserStyles.css'
 
 export default function NormalPerfil() {
@@ -18,6 +17,10 @@ export default function NormalPerfil() {
     const [user, setUser] = useState([]);
     const [address, setAddress] = useState([]);
     const [card, setCard] = useState([]);
+    const [auth, setAuth] = useState([]);
+
+    useEffect(() => {getCard()}, [])
+    useEffect(() => {getUser()}, [])
 
     async function getUser(){
         try {
@@ -33,8 +36,6 @@ export default function NormalPerfil() {
             alert("Falha ao traer as informações de usuario")
         }
     }
-    useEffect(() => {getUser()}, [])
-
 
     async function getCard(){
         try {
@@ -49,7 +50,6 @@ export default function NormalPerfil() {
             alert("Nao foi possivel trazer o cartão")
         }
     }
-    useEffect(() => {getCard()}, [])
 
     async function cardFind(id){
         return card.find((c) =>{
@@ -97,8 +97,6 @@ export default function NormalPerfil() {
         history.push('/login')
     }
 
-    const [auth, setAuth] = useState([]);
-
     async function handleAdmin(){
         api.get('/auth/me', {
             headers: {
@@ -108,7 +106,7 @@ export default function NormalPerfil() {
             setAuth(res.data)
         })
 
-        if(auth.profiles[0].name != "ROLE_ADMIN")
+        if(auth.profiles[0].name !== "ROLE_ADMIN")
         {
             alert("Voce não é um administrador.")
         }else{

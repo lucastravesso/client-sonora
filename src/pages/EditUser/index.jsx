@@ -13,7 +13,6 @@ import './editUserStyles.css'
 
 export default function EditUser() {
 
-
     const [userId, setUserId] = useState(null);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -33,6 +32,7 @@ export default function EditUser() {
     const [number, setNumber] = useState('');
     const [complement, setComplement] = useState('');
 
+    const history = useHistory();
     const accessToken = localStorage.getItem('accessToken');
 
     const [formValuesState, setFormValuesState] = useState({});
@@ -51,8 +51,6 @@ export default function EditUser() {
         setFormValuesCity({ ...formValuesCity, [name]: value });
         setCity(value)
     }
-
-
 
     useEffect(() => {
         try {
@@ -126,10 +124,6 @@ export default function EditUser() {
         }
 
     }
-
-
-
-    const history = useHistory();
 
     return (
         <>

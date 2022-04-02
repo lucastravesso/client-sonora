@@ -11,11 +11,11 @@ import api from "../../services/loginApi";
 
 export default function OrderChange() {
 
-    const [order, setOrder] = useState([]);
-    const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
 
     const history = useHistory();
+    
+    useEffect(() => {getProducts()}, []);
 
     async function getProducts() {
         try {
@@ -24,7 +24,6 @@ export default function OrderChange() {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             }).then(resProd => {
-                setProducts(resProd.data)
                 setCartProducts(resProd.data.cartProducts)
             })
 
@@ -32,30 +31,6 @@ export default function OrderChange() {
             alert("Nao foi possivel buscar produtos")
         }
     }
-
-    useEffect(() => {
-        getProducts()
-    }, []);
-
-    async function getOrder() {
-
-        try {
-
-            await api.get(`/order/${localStorage.getItem('order-id')}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            }).then(res => {
-                setOrder(res.data)
-            })
-
-        } catch (err) {
-            alert("Falha ao trazer pedido")
-        }
-    }
-
-    useEffect(() => { getOrder() }, [])
-
 
     return (
         <>

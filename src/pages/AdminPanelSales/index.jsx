@@ -10,6 +10,8 @@ export default function AdminPanelSales() {
     const history = useHistory();
     const [orders, setOrders] = useState([]);
 
+    useEffect(() =>{getOrders()}, [])
+
     async function getOrders(){
         try {
             await api.get('/order/findAll', {
@@ -21,9 +23,7 @@ export default function AdminPanelSales() {
             alert("Não foi encontrado nenhuma venda")
         }
     }
-    useEffect(() =>{getOrders()}, [])
     
-
     return (
         <>
             <NavAdmin />

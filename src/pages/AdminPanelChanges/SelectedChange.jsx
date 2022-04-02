@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import {useHistory} from 'react-router-dom'
 
 import api from '../../services/loginApi'
 import './AdminPanelChanges.css'
@@ -8,12 +7,12 @@ import DropDownStatus from '../../components/DropDowns/DdStatusChange'
 
 export default function SelectedChange() {
 
-    const history = useHistory();
-
     const [change, setChange] = useState([]);
     const [product, setProduct] = useState([]);
     const [status, setStatus] = useState('');
     const [message, setMessage] = useState('');
+   
+    useEffect(()=>{getChange()}, [])
 
     async function getChange(){
         try {
@@ -29,9 +28,6 @@ export default function SelectedChange() {
             alert("Falha ao trazer troca")
         }
     }
-
-    useEffect(()=>{getChange()}, [])
-
 
     async function handleChangeStatus(){
 

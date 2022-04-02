@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {useHistory, Link, useParams} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import NumberFormat from 'react-number-format'
-import { FiArrowLeft } from "react-icons/fi";
 
-import logo from '../../assets/instrumentos.png'
 import api from '../../services/loginApi'
 import NavAdmin from '../NavAdmin/NavAdmin'
 
 
 import './Product.css'
-import Logo2 from '../../assets/logo_Musica.png'
-
 
 export default function NewProduct(){
 
@@ -30,9 +26,6 @@ export default function NewProduct(){
     const accessToken = localStorage.getItem('accessToken');
 
     const history = useHistory();
-
-    //--------------------------------HOOKS----------------------------------------
-    //--------------------------------HOOKS----------------------------------------
 
     useEffect(() => {
         api.get('category/list',{
@@ -59,10 +52,6 @@ export default function NewProduct(){
         })
     })
 
-    //----------------------------------functions------------------------------------
-    //----------------------------------functions------------------------------------
-    
-
     async function loadProd()
     {
         
@@ -88,7 +77,6 @@ export default function NewProduct(){
             history.push('/paineladministrativo')
         }
     }
-
 
     function SaveOrUpdate(e)
     {
@@ -134,10 +122,6 @@ export default function NewProduct(){
             alert('Error while recoring product, try again')
         }
     }
-
-    //-----------------------------------PAGE -----------------------------------------
-    //-----------------------------------PAGE -----------------------------------------
-    //-----------------------------------PAGE -----------------------------------------
 
     return(
         <>        

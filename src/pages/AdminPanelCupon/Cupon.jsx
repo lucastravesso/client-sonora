@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {useHistory} from 'react-router-dom'
-import InputMask from 'react-input-mask';
-
 
 import api from '../../services/loginApi'
-import Logo from '../../assets/logo_Musica.png'
 import NavAdmin from '../NavAdmin/NavAdmin'
-
 
 import './Cupons.css'
 
@@ -19,6 +15,11 @@ export default function Cupon() {
     const [dataInicio, setDataInicio] = useState('')
     const [dataFinal, setDataFinal] = useState('')
     const [quantidade, setQuantidade] = useState('')
+
+    useEffect(() => {
+        if (localStorage.getItem('cupon-id') === '0') return;
+        else loadCupon();
+    }, [])
 
     async function loadCupon(){
         try {
@@ -39,12 +40,6 @@ export default function Cupon() {
             alert("Falha ao carregar cupom")
         }
     }
-
-    useEffect(() => {
-        if (localStorage.getItem('cupon-id') === '0') return;
-        else loadCupon();
-    }, [])
-
 
     async function saveOrUpdate(e){
         e.preventDefault()

@@ -13,15 +13,11 @@ import api from "../../services/loginApi";
 
 export default function CartConfPage() {
 
-
     const [cep, setCep] = useState('')
-
     const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
     const [cup, setCup] = useState([]);
-
     const [card, setCard] = useState([]);
-
     const [status, setStatus] = useState({
         type: '',
         message: ''
@@ -100,8 +96,8 @@ export default function CartConfPage() {
             }).then(res => {
                 setCup(res.data)
             })
-
-            if(cup.length != 0)
+            
+            if(cup.length !== 0 && cup.c_quantity > 0)
             {
                 setStatus({
                     type: 'cupom',
@@ -116,7 +112,6 @@ export default function CartConfPage() {
             }
         } catch (err) {}
     }
-
 
     function showCards(){
         if(card.length === 0)
@@ -150,7 +145,6 @@ export default function CartConfPage() {
             ))
         }
     }
-
 
     return (
         <>

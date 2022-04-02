@@ -11,6 +11,8 @@ export default function AdminPanelChanges() {
     const history = useHistory();
     const [changes, setChanges] = useState([]);
 
+    useEffect(()=>{getChanges()},[])
+
     async function getChanges(){
         try {
             await api.get('/change/list', {
@@ -22,8 +24,6 @@ export default function AdminPanelChanges() {
             alert("Falha ao trazer trocas")
         }
     }
-    useEffect(()=>{getChanges()},[])
-
 
     return (
         <>

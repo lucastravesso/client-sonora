@@ -26,8 +26,7 @@ export default function LandPage() {
             alert('Impossivel trazer produto . .')
         }
     }
-
-    
+   
     async function addCart(){
 
         if(product.prod_quantity === 0)

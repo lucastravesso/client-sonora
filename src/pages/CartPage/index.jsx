@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import './cartStyles.css'
-import InputMask from 'react-input-mask'
-
 
 import Nav from '../Navigation/Nav'
 import Bottom from "../BottomInfo/Bottom";
@@ -18,8 +16,22 @@ export default function CartPage() {
     const [cartProducts, setCartProducts] = useState([]);
     const [address, setAddress] = useState([]);
 
-
     const history = useHistory();
+
+    useEffect(() => {getProducts()}, []);
+    useEffect(() => {
+        try {
+            api.get('user/findByToken', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            }).then(response => {
+                setAddress(response.data.addressDto)
+            })
+        } catch (err) {
+            alert("Falha ao trazer as informações de usuario")
+        }
+    }, [])
 
     async function getProducts() {
         try {
@@ -36,11 +48,6 @@ export default function CartPage() {
             alert("Nao foi possivel buscar produtos")
         }
     }
-
-    useEffect(() => {
-        getProducts()
-    }, []);
-
 
     async function addCart(id) {
 
@@ -84,22 +91,6 @@ export default function CartPage() {
         }
     }
 
-    
-
-    useEffect(() => {
-        try {
-            api.get('user/findByToken', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            }).then(response => {
-                setAddress(response.data.addressDto)
-            })
-        } catch (err) {
-            alert("Falha ao trazer as informações de usuario")
-        }
-    }, [])
-
     async function verifyAndProc() {
 
         if (cartProducts.length === 0) {
@@ -123,6 +114,7 @@ export default function CartPage() {
             }
         }
     }
+    
     return (
         <>
             <Nav />

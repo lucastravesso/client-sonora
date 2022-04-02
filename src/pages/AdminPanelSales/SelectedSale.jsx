@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import {useHistory} from 'react-router-dom'
 
 import api from '../../services/loginApi'
 import './AdminPanelSales.css'
@@ -14,7 +13,8 @@ export default function SelectedSales() {
     const [cartProducts, setCartProducts] = useState([]);
     const [status, setStatus] = useState('');
 
-    const history = useHistory();
+    useEffect(() => {getProducts()}, []);
+    useEffect(() => { getOrder() }, [])
 
     async function getProducts() {
         try {
@@ -33,10 +33,6 @@ export default function SelectedSales() {
         }
     }
 
-    useEffect(() => {
-        getProducts()
-    }, []);
-
     async function getOrder() {
 
         try {
@@ -53,8 +49,6 @@ export default function SelectedSales() {
             alert("Falha ao trazer pedido")
         }
     }
-
-    useEffect(() => { getOrder() }, [])
 
     async function handleChangeStatus(){
 

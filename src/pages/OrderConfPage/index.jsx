@@ -16,11 +16,23 @@ export default function OrderConfPage() {
     const [cartProducts, setCartProducts] = useState([]);
     const [card, setCard] = useState([]);
     const [cup, setCup] = useState([]);
+    const [user, setUser] = useState([]);
+    const [address, setAddress] = useState([]);
 
     const history = useHistory();
 
-    const [user, setUser] = useState([]);
-    const [address, setAddress] = useState([]);
+    useEffect(() => { getUser() }, [])
+    useEffect(() => { getCard() }, [])
+    useEffect(() => { getProducts() }, []);
+    useEffect(() => {
+        api.get(`/cupon/list/${localStorage.getItem('cupon')}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }).then(res => {
+            setCup(res.data)
+        })
+    }, [])
 
     async function getUser() {
         try {
@@ -36,9 +48,6 @@ export default function OrderConfPage() {
             alert("Falha ao traer as informações de usuario")
         }
     }
-    useEffect(() => { getUser() }, [])
-    useEffect(() => { getCard() }, [])
-    useEffect(() => { getProducts() }, []);
 
     async function getProducts() {
         try {
@@ -67,28 +76,55 @@ export default function OrderConfPage() {
     }
 
     async function confirmarCompra(){
-        try {
-            await api.post('/order', null ,{
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            });
-            alert('Pedido confirmado, poderá visualizar na pagina de pedidos')
-            history.push('/perfilsimples')
-        } catch (err) {
-            alert("Falha ao processar compra")
+
+        if(cup.length !== 0){
+            try {
+                await api.post('/order/with', cup ,{
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                });
+                alert('Pedido confirmado, poderá visualizar na pagina de pedidos')
+                history.push('/perfilsimples')
+                localStorage.clear('cupon')
+            } catch (err) {
+                alert("Falha ao processar compra")
+            }
+        }else if(cup.length === 0){
+            try {
+                await api.post('/order', null ,{
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                    }
+                });
+                alert('Pedido confirmado, poderá visualizar na pagina de pedidos')
+                history.push('/perfilsimples')
+            } catch (err) {
+                alert("Falha ao processar compra")
+            }
         }
     }
 
-    useEffect(() => {
-        api.get(`/cupon/list/${localStorage.getItem('cupon')}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        }).then(res => {
-            setCup(res.data)
-        })
-    }, [])
+    function getResults(){
+
+        if(cup.length !== 0)
+        {
+            return <div className="results">
+            <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
+                Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
+                Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * cup.c_percentage)}</h1>
+            </div>
+        }else{
+            return <div className="results">
+            <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
+                Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
+            </h1>
+            </div>
+        }
+
+        
+        
+    }
 
     return (
         <>
@@ -113,11 +149,7 @@ export default function OrderConfPage() {
                             ))}
                         </tbody>
                     </table>
-                    <div className="results">
-                        <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
-                            Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
-                            Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * cup.c_percentage)}</h1>
-                    </div>
+                    {getResults()}
                 </div>
                 <div className="cont-right-order">
                     <table>
