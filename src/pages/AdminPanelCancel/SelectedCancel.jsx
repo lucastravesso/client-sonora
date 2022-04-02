@@ -77,7 +77,7 @@ export default function SelectedCancel() {
                     </table>
                     <table className="bot-table">
                         <tr className="bar">
-                            <td>Motivo da troca</td>
+                            <td>Motivo do cancelamento</td>
                         </tr>
                         <tr>
                             <td>{cancel.change_reason}</td>

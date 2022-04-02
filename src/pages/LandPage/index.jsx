@@ -12,13 +12,17 @@ import './landPageStyles.css'
 export default function LandPage() {
 
     const [products, setProducts] = useState([]);
+    const [limits, setLimits] = useState([]);
+    const [page, setPage] = useState(0);
 
+    
     const history = useHistory();
 
     async function getProducts(){
         try {
-            await api.get(`products/list`).then(resProd => {
-                setProducts(resProd.data)
+            await api.get(`products/list?page=${page}&&size=6`).then(resProd => {
+                setLimits(resProd.data)
+                setProducts(resProd.data.content)
             })
         } catch (err) {
             alert("Nao foi possivel trazer os produtos")
@@ -27,12 +31,30 @@ export default function LandPage() {
 
     useEffect(() => {
         getProducts()
-    }, [])
+    }, [page])
+
+    async function increment(){
+        if(page < limits.totalPages -1){
+            setPage(page + 1)
+        }else{
+           return alert("Pagina indisponivel");
+        }
+    }
+    async function decrement(){
+        if(page > 0){
+            setPage(page - 1)
+        }else if(page === 0){
+           return alert("Pagina indisponivel");;
+        }
+    }
+
 
     async function getProduct(id){
         localStorage.setItem('id-produto-selecionado', id)
         history.push('/produto')
     }
+
+    console.log(limits.totalPages)
 
     return (
         <>
@@ -48,12 +70,16 @@ export default function LandPage() {
                             <strong>Especificação</strong>
                             <p>{prod.prod_spec}</p>
                             <strong>Categoria</strong>
-                            <p>{prod.categoryDto.categoryName}</p>
+                            <p>{prod.category.categoryName}</p>
                             <img src={instrument} alt=""/>
                             <button className='buy' onClick={() => getProduct(prod.id)}>Ver produto</button>
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div>
+                <button className="button" onClick={() => increment()}>Proxima Pagina</button>
+                <button className="button" onClick={() => decrement()}>Pagina Anterior</button>
             </div>
             <Bottom />
         </>

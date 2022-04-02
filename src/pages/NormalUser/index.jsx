@@ -63,7 +63,7 @@ export default function NormalPerfil() {
                                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                             }
                         })
-                        getCard();
+                        setCard(card.filter(card => card.id !== id))
                     } catch (err) {
                         return alert("Falha ao deletar cartao . .")
                     }
@@ -258,6 +258,7 @@ export default function NormalPerfil() {
                             </tr>
                         </tfoot>
                     </table>
+                    <br />
                 </div>
             </div>
             <Bottom />

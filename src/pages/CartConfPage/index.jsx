@@ -107,7 +107,7 @@ export default function CartConfPage() {
                     type: 'cupom',
                     message: `PARABENS!! VOCE GANHOU ${cup.c_percentage}% DE DESCONTO COM NOSSO CUPOM ! CUPOM VALIDO ATÉ ${cup.c_final}`
                 })
-                localStorage.setItem('cupon', cup.c_name)
+                localStorage.setItem('cupon', cup.id)
             }else{
                 setStatus({
                     type: 'cupom',
@@ -115,6 +115,40 @@ export default function CartConfPage() {
                 })
             }
         } catch (err) {}
+    }
+
+
+    function showCards(){
+        if(card.length === 0)
+        {
+            return <tr>
+                <td>
+                    <button className="button" onClick={
+                       ()=> history.push('/perfilsimples')
+                    }>Adicionar um cartão</button>
+                </td>
+            </tr>
+        }else{
+            return card.map(card => (
+                <div className="cartao">
+                    <tr>
+                        <td>Nome no cartão : {card.card_name}</td>
+                    </tr>
+                    <tr>
+                        <td>Bandeira : {card.card_flag}</td>
+                    </tr>
+                    <tr>
+                        <td>Numero no cartão : {card.card_number}</td>
+                    </tr>
+                    <tr>
+                        <td>Validade do cartão : {card.card_valid}</td>
+                    </tr>
+
+                    <button className="button" onClick={() => selectCard(card.id)}>Selecionar e prosseguir</button>
+                    <br /><br />
+                </div>
+            ))
+        }
     }
 
 
@@ -189,26 +223,9 @@ export default function CartConfPage() {
                             <tr>
                                 <td>{status.type === 'cupom' ? <p>{status.message}</p> : ""}</td>
                             </tr>
-                            {card.map(card => (
-                                    <div className="cartao">
-                                        <tr>
-                                            <td>Nome no cartão : {card.card_name}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Bandeira : {card.card_flag}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Numero no cartão : {card.card_number}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Validade do cartão : {card.card_valid}</td>
-                                        </tr>
-
-                                        <button className="button" onClick={() => selectCard(card.id)}>Selecionar e prosseguir</button>
-                                        <br /><br />
-                                    </div>
-                                ))}
+                            {showCards()}
                                 
+                            
                         </tbody>
                     </table>
                 </div>

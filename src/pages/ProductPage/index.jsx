@@ -61,18 +61,17 @@ export default function LandPage() {
                 <div className="cont-prod-center">
                     <div className="product-info-left">
                         <ul>
-                            <li>{product.prod_name}</li>
-                            <li>{product.prod_builder}</li>
-                            <li>{product.prod_spec}</li>
-                            <li>{product.prod_price}</li>
+                            <li><b style={{fontSize:35}}> Nome </b><br /><br />{product.prod_name}</li>
+                            <li><b style={{fontSize:35}}> Fabricante </b><br /><br />{product.prod_builder}</li>
+                            <li><b style={{fontSize:35}}> Especificações </b><br /><br />{product.prod_spec}</li>
                         </ul>
                     </div>
                 </div>
                 <div className="cont-prod-right">
                     <div className="product-info-right">
                         <ul>
-                            <li>Quantidade em estoque</li>
-                            <li>{product.prod_quantity}</li>
+                            <li><b style={{fontSize:22}}> Preço - </b>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.prod_price)}</li>
+                            <li><b style={{fontSize:22}}> Quantidade em estoque - </b>{product.prod_quantity}</li>
                             <li><button className="button" onClick={() => addCart()}>Adicionar ao carrinho</button></li>
                         </ul>
                     </div>

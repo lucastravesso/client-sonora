@@ -34,6 +34,7 @@ export default function AllCupons() {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
+            setCupons(cupons.filter(cup => cup.id !== id))
             alert("Cupom deletado com sucesso")
         } catch (err) {
             alert("Falha ao deletar cupom")
