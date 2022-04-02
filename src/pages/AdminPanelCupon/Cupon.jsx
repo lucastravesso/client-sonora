@@ -18,6 +18,7 @@ export default function Cupon() {
     const [procentagem, setProcentagem] = useState('')
     const [dataInicio, setDataInicio] = useState('')
     const [dataFinal, setDataFinal] = useState('')
+    const [quantidade, setQuantidade] = useState('')
 
     async function loadCupon(){
         try {
@@ -31,6 +32,7 @@ export default function Cupon() {
                 setProcentagem(res.data.c_percentage)
                 setDataInicio(res.data.c_register)
                 setDataFinal(res.data.c_final)
+                setQuantidade(res.data.c_quantity)
             })
 
         } catch (err) {
@@ -52,6 +54,7 @@ export default function Cupon() {
             c_percentage : procentagem,
             c_register : dataInicio,
             c_final: dataFinal,
+            c_quantity: quantidade,
         }
 
         if (localStorage.getItem('cupon-id') === '0'){
@@ -108,6 +111,11 @@ export default function Cupon() {
                             placeholder='Data de termino'
                             value={dataFinal}
                             onChange={e => setDataFinal(e.target.value)}
+                        />
+                        <input
+                            placeholder='Quantidade'
+                            value={quantidade}
+                            onChange={e => setQuantidade(e.target.value)}
                         />
                         <button type="submit" className="button">Atualizar / Inserir</button>
                     </form>

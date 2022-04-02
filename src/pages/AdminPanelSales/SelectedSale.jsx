@@ -10,6 +10,7 @@ export default function SelectedSales() {
 
     const [order, setOrder] = useState([]);
     const [products, setProducts] = useState([]);
+    const [user, setUser] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
     const [status, setStatus] = useState('');
 
@@ -22,6 +23,7 @@ export default function SelectedSales() {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
             }).then(resProd => {
+                setUser(resProd.data.user)
                 setProducts(resProd.data)
                 setCartProducts(resProd.data.cartProducts)
             })
@@ -85,6 +87,19 @@ export default function SelectedSales() {
                             <td>{order.status}</td>
                             <td>{order.orderDate}</td>
                             <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
+                        </tr>
+                        <br />
+                        <tr>
+                            <td><b>Usuario</b></td>
+                            <td><b>CPF</b></td>
+                            <td><b>Email</b></td>
+                            <td><b>Telefone</b></td>
+                        </tr>
+                        <tr>
+                            <td>{user.firstName + " " + user.lastName}</td>
+                            <td>{user.cpf}</td>
+                            <td>{user.email}</td>
+                            <td>{user.phone}</td>
                         </tr>
                     </table>
                     <br />

@@ -11,6 +11,7 @@ export default function SelectedCancel() {
     const history = useHistory();
 
     const [cancel, setCancel] = useState([]);
+    const [user, setUser] = useState([]);
     const [status, setStatus] = useState('');
     const [message, setMessage] = useState('');
 
@@ -22,6 +23,7 @@ export default function SelectedCancel() {
                 }
             }).then(res => {
                 setCancel(res.data)
+                setUser(res.data.user)
             })
         } catch (err) {
             alert("Falha ao trazer troca")
@@ -60,6 +62,16 @@ export default function SelectedCancel() {
                             <td>{cancel.id}</td>
                             <td>{cancel.status}</td>
                             <td>{cancel.change_date}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Nome</b></td>
+                            <td><b>Email</b></td>
+                            <td><b>Telefone</b></td>
+                        </tr>
+                        <tr>
+                            <td>{user.firstName + " " + user.lastName}</td>
+                            <td>{user.email}</td>
+                            <td>{user.phone}</td>
                         </tr>
                         <tr>
                             <td className="unique">Alterar Status do Pedido</td>

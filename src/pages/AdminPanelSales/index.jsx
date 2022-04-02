@@ -47,7 +47,7 @@ export default function AdminPanelSales() {
                                 <td>ID : {o.id}</td>
                                 <td>STATUS : {o.status}</td>
                                 <td>Data do pedido : {o.orderDate}</td>
-                                <td>Quantidade de produtos : {o.products.length}</td>
+                                <td>Email : {o.user.email}</td>
                             </tr>
                         </button>
                     ))}

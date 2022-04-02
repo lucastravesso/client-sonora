@@ -11,12 +11,9 @@ import NavAdmin from '../NavAdmin/NavAdmin'
 
 export default function AllProduct() {
     
-    const [products, setProducts] = useState([]);
 
     const email = localStorage.getItem('email')
     const accessToken = localStorage.getItem('accessToken')
-
-    const history = useHistory();
 
     // ---------------------------------------------CALLBACK FUNCTIONS------------------------------------------------------------------------------------------
 
@@ -53,15 +50,42 @@ export default function AllProduct() {
 
     /* -------------------------------------  HOOKS PARA MANTER API ATIVA -------------------------------------  -------------------------------------  */
 
+    const [products, setProducts] = useState([]);
+    const [limits, setLimits] = useState([]);
+    const [page, setPage] = useState(0);
+
+    
+    const history = useHistory();
+
+    async function getProducts(){
+        try {
+            await api.get(`products/list?page=${page}&&size=6`).then(resProd => {
+                setLimits(resProd.data)
+                setProducts(resProd.data.content)
+            })
+        } catch (err) {
+            alert("Nao foi possivel trazer os produtos")
+        }
+    }
+
     useEffect(() => {
-        api.get(`products/list`,{
-            headers: {
-                 Authorization : `Bearer ${accessToken}`
-                }
-        }).then(resProd => {
-            setProducts(resProd.data)
-        })
-    },[])
+        getProducts()
+    }, [page])
+
+    async function increment(){
+        if(page < limits.totalPages -1){
+            setPage(page + 1)
+        }else{
+           return alert("Pagina indisponivel");
+        }
+    }
+    async function decrement(){
+        if(page > 0){
+            setPage(page - 1)
+        }else if(page === 0){
+           return alert("Pagina indisponivel");;
+        }
+    }
 
     /** ----------------------------------------------------------- SEPARADOR ----------------------------------------------------------- */
 
@@ -95,7 +119,7 @@ export default function AllProduct() {
                         <p>{prod.prod_quantity}</p>
 
                         <strong>Categoria:</strong>
-                        <p>{prod.categoryDto.categoryName}</p>
+                        <p>{prod.category.categoryName}</p>
 
 
                         <button onClick={() => editProduct(prod.id)} type="button">
@@ -109,7 +133,11 @@ export default function AllProduct() {
                 ))}
 
             </ul>
-
+            <br /><br />
+            <div>
+                <button className="button" onClick={() => increment()}>Proxima Pagina</button>
+                <button className="button" onClick={() => decrement()}>Pagina Anterior</button>
+            </div>
         </div></>
     );
 }

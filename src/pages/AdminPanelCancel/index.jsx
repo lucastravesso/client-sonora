@@ -24,7 +24,6 @@ export default function AdminPanelCancel() {
     }
     useEffect(()=>{getCancels()},[])
 
-
     return (
         <>
             <NavAdmin />
@@ -47,6 +46,7 @@ export default function AdminPanelCancel() {
                                     <td>ID : {c.id}</td>
                                     <td>STATUS : {c.status}</td>
                                     <td>Data do pedido : {c.change_date}</td>
+                                    <td>Email : {c.user.email}</td>
                                 </tr>
                             </button>
                         ))}

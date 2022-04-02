@@ -81,7 +81,7 @@ export default function OrderConfPage() {
     }
 
     useEffect(() => {
-        api.get(`/cupon/listname/${localStorage.getItem('cupon')}`, {
+        api.get(`/cupon/list/${localStorage.getItem('cupon')}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
@@ -89,16 +89,6 @@ export default function OrderConfPage() {
             setCup(res.data)
         })
     }, [])
-
-    let percent;
-
-    if(cup != 0)
-    {
-        percent = cup.c_percentage
-    }else{
-        percent = 0;
-    }
-        
 
     return (
         <>
@@ -125,7 +115,8 @@ export default function OrderConfPage() {
                     </table>
                     <div className="results">
                         <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
-                            Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * percent)}</h1>
+                            Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
+                            Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * cup.c_percentage)}</h1>
                     </div>
                 </div>
                 <div className="cont-right-order">

@@ -58,7 +58,7 @@ export default function AllCupons() {
                 <table>
                     <thead>
                         <tr>
-                            <td colSpan={3}>Cupons disponíveis no site</td>
+                            <td colSpan={4}>Cupons disponíveis no site</td>
                             <td><button className="button-c" onClick={() => handleCupon(0)}>Incluir novo cupom</button></td>
                         </tr>
                     </thead>
@@ -69,7 +69,9 @@ export default function AllCupons() {
                             <td>Desconto</td>
                             <td>Data de lançamento</td>
                             <td>Data de fechamento</td>
+                            <td>Quantidade</td>
                         </tr>
+                        <br />
                         {cupons.map(c => (
                             <>
                                 <tr key={c.id}>
@@ -77,6 +79,7 @@ export default function AllCupons() {
                                     <td>{c.c_percentage + "%"}</td>
                                     <td>{c.c_register}</td>
                                     <td>{c.c_final}</td>
+                                    <td>{c.c_quantity}</td>
                                 </tr>
                                 <tr>
                                     <td ><button className="button-c" onClick={() => deleteCupon(c.id)}>Deletar</button></td>
