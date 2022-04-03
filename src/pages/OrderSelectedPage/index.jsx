@@ -8,6 +8,8 @@ import Bottom from "../BottomInfo/Bottom";
 
 import api from "../../services/loginApi";
 
+import shippingBar from '../../components/ProgressBar/ShippingBar'
+
 
 export default function OrderSelectedPage() {
 
@@ -61,13 +63,11 @@ export default function OrderSelectedPage() {
            return <table className="top-table"> 
                 <tr>
                     <td><b>Nº Pedido</b></td>
-                    <td><b>Status do Pedido</b></td>
                     <td><b>Data do Pedido</b></td>
                     <td><b>Preço total com cupom : {cup.c_name}</b></td>
                 </tr>
                 <tr>
                     <td>{order.id}</td>
-                    <td>{order.status}</td>
                     <td>{order.orderDate}</td>
                     <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * cup.c_percentage)}</td>
                 </tr>
@@ -76,13 +76,11 @@ export default function OrderSelectedPage() {
            return <table className="top-table"> 
                 <tr>
                     <td><b>Nº Pedido</b></td>
-                    <td><b>Status do Pedido</b></td>
                     <td><b>Data do Pedido</b></td>
                     <td><b>Preço total do pedido</b></td>
                 </tr>
                 <tr>
                     <td>{order.id}</td>
-                    <td>{order.status}</td>
                     <td>{order.orderDate}</td>
                     <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
                 </tr>
@@ -90,11 +88,14 @@ export default function OrderSelectedPage() {
         }
     }
 
+
     return (
         <>
             <Nav />
             <div className="container-order-selected">
                 <div className="selected-left">
+                    {shippingBar(order.status)}
+                    <br />
                     {handleOrderStatus()}
                    <table className="middle-table">
                         <tr className="bar">

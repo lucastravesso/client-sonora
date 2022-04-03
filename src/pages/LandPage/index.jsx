@@ -37,6 +37,7 @@ export default function LandPage() {
            return alert("Pagina indisponivel");
         }
     }
+
     async function decrement(){
         if(page > 0){
             setPage(page - 1)

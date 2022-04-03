@@ -1,5 +1,3 @@
-import react from "react";
-
 import '../BottomInfo/bottom.css'
 import Logo from '../../assets/logo_Musica.png'
 import { BsWhatsapp, BsFacebook, BsInstagram } from "react-icons/bs";

@@ -3,7 +3,7 @@
 }
 
 .container-cancel .table-cancel{
-    margin: 40px 50px 50px 50px;
+    margin: 40px 50px 50px 380px;
     text-align: center;
 
 }
@@ -14,8 +14,8 @@
 
 .container-cancel .table-cancel .button tr td{
 
-    padding: 0px 40px 0px 10px;
-    font-size: 20px;
+    padding: 0px 20px 0px 10px;
+    font-size: 18px;
 }
 
 .container-cancel .table-cancel thead{
