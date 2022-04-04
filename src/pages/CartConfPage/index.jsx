@@ -119,12 +119,14 @@ export default function CartConfPage() {
             return <tr>
                 <td>
                     <button className="button" onClick={
-                       ()=> history.push('/perfilsimples')
+                       ()=> history.push('/adicionarcartao')
                     }>Adicionar um cartão</button>
                 </td>
             </tr>
         }else{
-            return card.map(card => (
+            return (
+                <>
+                {card.map(card => (
                 <div className="cartao">
                     <tr>
                         <td>Nome no cartão : {card.card_name}</td>
@@ -142,7 +144,16 @@ export default function CartConfPage() {
                     <button className="button" onClick={() => selectCard(card.id)}>Selecionar e prosseguir</button>
                     <br /><br />
                 </div>
-            ))
+            ))}
+            <tr>
+                <td>
+                    <button className="button" onClick={
+                       ()=> history.push('/adicionarcartao')
+                    }>Adicionar outro cartão</button>
+                </td>
+            </tr>
+            </>
+            )
         }
     }
 

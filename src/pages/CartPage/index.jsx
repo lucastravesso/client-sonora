@@ -76,6 +76,19 @@ export default function CartPage() {
         }
     }
 
+    async function removeFromCart(prodId, qntd) {
+        try {
+            await api.delete(`cart/remove-cart/${prodId}/${qntd}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                }
+            })
+            getProducts()
+        } catch (err) {
+            alert("Falha ao tirar do carrinho")
+        }
+    }
+
     function showTopTable() {
 
         if (cartProducts.length === 0) {
@@ -86,7 +99,7 @@ export default function CartPage() {
 
                 <td><b>Preço</b></td>
 
-                <td><b>Quantidade</b></td>
+                <td colSpan={2}><b>Quantidade</b></td>
             </>);
         }
     }
@@ -142,7 +155,6 @@ export default function CartPage() {
                                         <button><BsFillDashCircleFill onClick={() => removeCart(p.productDTO.id)} /></button>
                                         {p.quantity}
                                         <button><BsFillPlusCircleFill onClick={() => {
-                                            
                                             if(p.productDTO.prod_quantity - 1 < p.quantity)
                                             {
                                                 alert("Impossivel adicionar, quantidade fora de estoque")
@@ -150,6 +162,7 @@ export default function CartPage() {
                                                 addCart(p.productDTO.id)}
                                             }} /></button>
                                     </td>
+                                    <td><button className="button-remove-cart" onClick={() => removeFromCart(p.productDTO.id, p.quantity)}>Remover</button></td>
                                 </tr>
                             ))}
                         </tbody>

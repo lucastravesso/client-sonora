@@ -61,9 +61,25 @@
     width: 20%;
 }
 
+.container-cart .cont-left-cart table tbody tr td .button-remove-cart{
+    width: 90px;
+    height: 30px;
+    background: #BA2126;
+    border-radius: 28px;
+    border: 0;
+    box-shadow: 1px 1px 0.4em black;
+    color: white;
+    font-weight: 600;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
 .container-cart .cont-left-cart table tbody tr td button{
     width: 50px;
-    margin: 0 auto;
+    margin: 0 1px 0 1px;
     color: #BA2126;
     background-color: white;
 }

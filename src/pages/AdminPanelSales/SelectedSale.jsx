@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import api from '../../services/loginApi'
 import './AdminPanelSales.css'
@@ -12,8 +12,9 @@ export default function SelectedSales() {
     const [user, setUser] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
     const [status, setStatus] = useState('');
+    const [cup, setCup] = useState([]);
 
-    useEffect(() => {getProducts()}, []);
+    useEffect(() => { getProducts() }, []);
     useEffect(() => { getOrder() }, [])
 
     async function getProducts() {
@@ -43,6 +44,7 @@ export default function SelectedSales() {
                 }
             }).then(res => {
                 setOrder(res.data)
+                setCup(res.data.cupon)
             })
 
         } catch (err) {
@@ -50,10 +52,10 @@ export default function SelectedSales() {
         }
     }
 
-    async function handleChangeStatus(){
+    async function handleChangeStatus() {
 
         try {
-            api.put(`/order/updateStatus/${localStorage.getItem('selected-order')}`, {status: status} , {
+            api.put(`/order/updateStatus/${localStorage.getItem('selected-order')}`, { status: status }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
@@ -61,6 +63,31 @@ export default function SelectedSales() {
             document.location.reload()
         } catch (err) {
             alert("Falha ao alterar status do pedido")
+        }
+    }
+
+    function handleVerifyCupon() {
+        if(cup !== null){
+            return <table className="top-table">
+                <tr>
+                    <td><b>Id do Cupom</b></td>
+                    <td><b>Nome do Cupom</b></td>
+                    <td><b>Porcentagem de desconto</b></td>
+                    <td><b>Preço final do pedido com cupom</b></td>
+                </tr>
+                <tr>
+                    <td>{cup.id}</td>
+                    <td>{cup.c_name}</td>
+                    <td>{cup.c_percentage + "%"}</td>
+                    <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice / 100) * cup.c_percentage)}</td>
+                </tr>
+            </table>
+        } else{
+            return <table className="top-table">
+                <tr>
+                    <td><b>Não utilizou cupom de desconto.</b></td>
+                </tr>
+            </table>
         }
     }
 
@@ -97,11 +124,15 @@ export default function SelectedSales() {
                         </tr>
                     </table>
                     <br />
+
+                    {handleVerifyCupon()}
+
+                    <br />
                     <table className="top-table">
                         <tr>
                             <td className="unique">Alterar Status do Pedido</td>
                             <td>
-                                <DropDownStatus onChange={(e) => setStatus(e.target.value)}/>
+                                <DropDownStatus onChange={(e) => setStatus(e.target.value)} />
                             </td>
                             <td><button className="button" onClick={() => handleChangeStatus()}>Alterar</button></td>
                         </tr>
@@ -117,7 +148,7 @@ export default function SelectedSales() {
                             <td>Preço Total</td>
                         </tr>
                         {cartProducts.map(p => (
-                            <tr>
+                            <tr key={p.productDTO.id}>
                                 <td>{p.productDTO.prod_name}</td>
                                 <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(p.productDTO.prod_price)}</td>
                                 <td>{p.productDTO.prod_spec}</td>
