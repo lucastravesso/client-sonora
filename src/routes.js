@@ -35,7 +35,8 @@ import SelectedChange from "./pages/AdminPanelChanges/SelectedChange";
 import OrderCancelList from "./pages/OrderCancel/OrderCancelList";
 import OrderCancelSelected from "./pages/OrderCancel/OrderCancelSelected";
 import SelectedCancel from "./pages/AdminPanelCancel/SelectedCancel";
-
+import QRCodePayment from "./pages/QRCodePayment/index"
+import QRPage from "./pages/QRPage";
 
 export default function Routes(){
     return (
@@ -75,6 +76,8 @@ export default function Routes(){
                 <Route path='/cancelamentos' exact component={OrderCancelList}/>
                 <Route path='/cancelamento/pedido' exact component={OrderCancelSelected}/>
                 <Route path='/troca/produto' component={OrderProductChange}/>
+                <Route path='/confirmacaodecompraqr' component={QRCodePayment}/>
+                <Route path='/qrcode' component={QRPage}/>
             </Switch>
         </BrowserRouter>
     );

@@ -229,7 +229,13 @@ export default function CartConfPage() {
                                 <td>{status.type === 'cupom' ? <p>{status.message}</p> : ""}</td>
                             </tr>
                             {showCards()}
-                                
+                            <tr>
+                                <td>
+                                    <button className="button" onClick={
+                                    ()=> history.push('/qrcode')
+                                    }>Pix via QR code</button>
+                                </td>
+                            </tr>
                             
                         </tbody>
                     </table>
