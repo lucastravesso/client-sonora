@@ -33,6 +33,11 @@
     background: #0C84D9;
     color: #ffffff;
 }
+.one1 {
+    left: 65px;
+    background: #ff0000;
+    color: #ffffff;
+}
 
 .two {
     left: 280px;
@@ -69,6 +74,12 @@
     color: #ffffff;
 }
 
+.four44 {
+    left: 700px;
+    background: #ff0000;
+    color: #ffffff;
+}
+
 .progress-bar {
     position: absolute;
     height: 10px;
@@ -78,11 +89,23 @@
     background: #bbb;
 }
 
+.progress-bar1 {
+    position: absolute;
+    height: 10px;
+    width: 52%;
+    top: 20px;
+    left: 10%;
+    background: rgb(255, 0, 0);
+}
+
 .first {
     
 }
 .first2 {
     background: #0C84D9;
+}
+.first22 {
+    background: #d90c0c;
 }
 
 .second {
@@ -92,6 +115,10 @@
     background: #0C84D9;
     left: 37%;
 }
+.second33 {
+    background: #ff0000;
+    left: 37%;
+}
 
 .third {
     left: 64%;
@@ -99,6 +126,11 @@
 .third4 {
     background: #0C84D9;
     left: 64%;
+}
+
+.third4 {
+    background: #ff0000;
+    left: 100%;
 }
 
 

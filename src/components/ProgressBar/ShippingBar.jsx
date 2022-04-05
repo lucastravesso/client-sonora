@@ -86,5 +86,22 @@ export default function ShippingBar(status) {
                 </div>
             </>
         );
+    }else if (status === "CANCELADO")
+    {
+        return (
+            <>
+                <div className="wrapper">
+                    <div className="margin-area">
+                        <div className="dot one1">!</div>
+                        <div className="dot four44">!</div>
+                        <div className="progress-bar1 first22"></div>
+                        <div className="progress-bar1 second33"></div>
+                        <div className="progress-bar1 third44"></div>
+                        <div className="message message-1">Pedido efetuado</div>
+                        <div className="message message-4">Cancelado</div>
+                    </div>
+                </div>
+            </>
+        );
     }
 }

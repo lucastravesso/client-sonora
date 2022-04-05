@@ -76,9 +76,9 @@ export default function CartPage() {
         }
     }
 
-    async function removeFromCart(prodId, qntd) {
+    async function removeFromCart(prodId) {
         try {
-            await api.delete(`cart/remove-cart/${prodId}/${qntd}`, {
+            await api.delete(`cart/remove-all-cart/${prodId}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
                 }
@@ -127,12 +127,26 @@ export default function CartPage() {
             }
         }
     }
+
+    async function clearCart(){
+        try {
+            await api.delete(`cart/remove-cart`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                }
+            })
+            getProducts()
+        } catch (err) {
+            alert("Falha ao tirar do carrinho")
+        }
+    }
     
     return (
         <>
             <Nav />
             <div className="container-cart">
                 <div className="cont-left-cart">
+                    <div className="limpar-carrinho"><button className="button" onClick={() => clearCart()}>Limpar carrinho</button></div>
                     <table>
                         <thead>
                             <tr>
@@ -162,7 +176,7 @@ export default function CartPage() {
                                                 addCart(p.productDTO.id)}
                                             }} /></button>
                                     </td>
-                                    <td><button className="button-remove-cart" onClick={() => removeFromCart(p.productDTO.id, p.quantity)}>Remover</button></td>
+                                    <td><button className="button-remove-cart" onClick={() => removeFromCart(p.productDTO.id)}>Remover</button></td>
                                 </tr>
                             ))}
                         </tbody>

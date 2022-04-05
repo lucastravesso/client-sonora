@@ -10,6 +10,12 @@
     padding: 2%;
 
 }
+.container-cart .cont-left-cart .limpar-carrinho{
+    position: absolute;
+    margin-top: -90px;
+    margin-left: 1090px;
+}
+
 
 .container-cart .cont-left-cart table{
     text-align: center;
