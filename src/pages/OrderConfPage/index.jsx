@@ -34,6 +34,23 @@ export default function OrderConfPage() {
         })
     }, [])
 
+    function xoption(){
+        return (
+                <select name="opt">
+                    <option>1x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)} - sem juros</option>
+                    <option>2x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 2) } - sem juros</option>
+                    <option>3x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 3)} - sem juros</option>
+                    <option>4x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 4)} - sem juros</option>
+                    <option>5x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 5)} - sem juros</option>
+                    <option>6x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 6)} - sem juros</option>
+                    <option>7x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 5) /7)} - 5% de juros</option>
+                    <option>8x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 5) /8)} - 5% de juros</option>
+                    <option>9x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 10) /9)} - 10% de juros</option>
+                    <option>10x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 10) /10)} - 10% de juros</option>
+                </select>
+        );
+    }
+
     async function getUser() {
         try {
             await api.get('user/findByToken', {
@@ -155,19 +172,19 @@ export default function OrderConfPage() {
                     <table>
                         <thead>
                             <tr>
-                                <td><h1>Usuario . .</h1></td>
+                                <td><h1>Usuario</h1></td>
                             </tr>
                             <tr className="lines-right">
-                                <td>{user.firstName + " " + user.lastName}</td>
+                                <td>Nome  -  {user.firstName + " " + user.lastName}</td>
                             </tr>
                             <tr className="lines-right">
-                                <td>{user.cpf}</td>
+                                <td>Cpf  -  {user.cpf}</td>
                             </tr>
                             <tr className="lines-right">
-                                <td>{user.email}</td>
+                                <td>Email  -  {user.email}</td>
                             </tr>
                             <tr>
-                                <td><h1>Endereço de entrega . .</h1></td>
+                                <td><h1>Endereço de entrega</h1></td>
                             </tr>
                             <tr className="lines-right">
                                 <td>{address.state + ", " + address.city + " - " + address.district}</td>
@@ -192,6 +209,9 @@ export default function OrderConfPage() {
                                 </tr>
 
                             </div>
+                            {xoption()}
+                            <br />
+                            <br />
                             <tr className="cv">
                                 <td>
                                     <InputMask

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import InputMask from 'react-input-mask'
 
 import './QRCodePayment.css'
 

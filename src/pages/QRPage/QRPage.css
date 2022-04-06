@@ -1,0 +1,15 @@
+.qr-container{
+    width: 100%;
+    padding-top: 80px;
+    vertical-align: center;
+    text-align: center;
+}
+
+.qr-container div h1{
+    font-size: 30px;
+}
+
+.qr-container .qr{
+    padding: 15px;
+    box-shadow: 1px 1px 0.5em red, inset 1px 1px 50em red;
+}
