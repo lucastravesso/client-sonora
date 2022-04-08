@@ -72,9 +72,9 @@ export default function LandPage() {
                     ))}
                 </ul>
             </div>
-            <div>
-                <button className="button" onClick={() => increment()}>Proxima Pagina</button>
-                <button className="button" onClick={() => decrement()}>Pagina Anterior</button>
+            <div className="buttons">
+                <button className="btn-effect" onClick={() => decrement()}>Pagina Anterior</button>
+                <button className="btn-effect" onClick={() => increment()}>Proxima Pagina</button>
             </div>
             <Bottom />
         </>

@@ -35,8 +35,9 @@
 }
 
 .Navbar .nav-main-left .nav-img-logo{
+    position: absolute;
     width: 300px;
-    margin:auto;
+    margin:-70px 10px 10px 100px;
     animation: logo infinite 3s;
 }
 

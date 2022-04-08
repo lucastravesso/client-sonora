@@ -60,7 +60,6 @@ export default function OrderCancel() {
             <Nav />
             <div className="container-order-selected">
                 <div className="selected-left">
-
                     <table className="top-table">
                         <tr>
                             <td><b>Nº Pedido</b></td>
@@ -73,12 +72,13 @@ export default function OrderCancel() {
                             <td>{order.orderDate}</td>
                         </tr>
                     </table>
-                    <div className="form-troca">
+                    <div className="form-cancelamento">
                     <form onSubmit={handleRequest}>
                         <input type='text'onChange={e => setCancel(e.target.value)}/>
                         <button className='button' type="submit">Enviar pedido de cancelamento</button>
                     </form>
                 </div>
+                <h1>Você irá receber uma resposta da loja em até 3 dias úteis após o pedido</h1>
                 </div>
             </div>
             <Bottom />

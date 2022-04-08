@@ -53,8 +53,14 @@ export default function OrderProductChange(){
                 <table className="table-product-change">
                     <thead>
                         <tr>
+                            <td className="top">Nome</td>
+                            <td className="top">Preço</td>
+                            <td className="top">Especificações</td>
+                            <td className="top">Fabricante</td>
+                        </tr>
+                        <tr>
                             <td>{product.prod_name}</td>
-                            <td>{product.prod_price}</td>
+                            <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(product.prod_price)}</td>
                             <td>{product.prod_spec}</td>
                             <td>{product.prod_builder}</td>
                         </tr>
@@ -68,6 +74,7 @@ export default function OrderProductChange(){
                         <button className='button' type="submit">Enviar pedido de troca</button>
                     </form>
                 </div>
+                <h1 className="span-change">Você receberá uma resposta da loja em até 3 dias úteis</h1>
             <Bottom />
         </>
     );

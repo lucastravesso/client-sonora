@@ -37,7 +37,7 @@ export default function OrderChange() {
             <Nav />
             <div className="container-order-change">
                 <div className="selected-change-left">
-                    <div><h1>Só podera trocar um produto por vez . </h1></div>
+                    <div><h1 className="alert">Só podera trocar um produto por vez . </h1></div>
                     <table className="middle-table-change">
                         <tr className="bar">
                             <td>Produto</td>

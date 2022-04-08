@@ -16,7 +16,7 @@
     background-color: rgb(236, 209, 174);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 8px 8px 1em #000000;
+    box-shadow: 2px 2px 0.5em #000000;
 
 }
 
@@ -40,7 +40,7 @@
     margin: auto;
     padding: 20px;    
     border-radius: 10px;
-    box-shadow: 8px 8px 1em #000000;
+    box-shadow: 2px 2px 0.5em #000000;
 
 }
 
