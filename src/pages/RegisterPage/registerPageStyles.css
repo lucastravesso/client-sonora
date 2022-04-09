@@ -21,7 +21,7 @@
 }
 
 .inputs-left input{
-    box-shadow: 2px 2px 0.5em #000000;
+    box-shadow: 1px 1px 0.5em #000000;
 
     width: 60%;
     height: 60px;
@@ -30,7 +30,7 @@
     margin: 10px 0 10px 260px;
 }
 .inputs-right input{
-    box-shadow: 2px 2px 0.5em #000000;
+    box-shadow: 1px 1px 0.5em #000000;
 
     width: 60%;
     height: 60px;

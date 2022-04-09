@@ -10,10 +10,11 @@ ul{
 .container-product .cont-prod-left{
     flex: 40%;
     width: 100%;
+    
 }
 
 .container-product .cont-prod-left .product-img img{
-    margin: 100px;
+    margin: 80px;
     box-shadow: 1px 1px 0.5em black;
     border-radius: 20px;
 }
@@ -28,9 +29,11 @@ ul{
 
 .container-product .cont-prod-center .product-info-left ul li{
     width: 100%;
-    margin: 64px -2px 34px -64px;
+    margin: 80px -2px 34px -120px;
     font-size: 25px;
     padding: 8px;
+    box-shadow: 1px 1px 0.4em black;
+    border-radius: 10px;
 }
 
 
@@ -43,10 +46,11 @@ ul{
 
 .container-product .cont-prod-right .product-info-right{
     border-radius: 10px;
-    box-shadow: 1px 1px 0.5em rgb(0, 0, 0), inset 1px 1px 25em rgb(158, 1, 1);
+    box-shadow: 1px 1px 0.5em rgb(0, 0, 0), inset 1px 1px 25em rgb(161, 82, 82);
     margin-right: 70px;
     margin-left: -50px;
     margin-top: 100px;
+    
 }
 
 .container-product .cont-prod-right .product-info-right ul li{
@@ -62,7 +66,7 @@ ul{
 }
 
 .container-product .cont-prod-right .product-info-right ul .plusMinus .qntd{
-    color: rgb(87, 33, 33);
+    color: rgb(255, 255, 255);
     background-color: inherit;
     margin: 5px;
 }   

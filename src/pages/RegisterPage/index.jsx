@@ -7,6 +7,7 @@ import api from '../../services/loginApi'
 import Bottom from '../BottomInfo/Bottom'
 
 import './registerPageStyles.css'
+import { validateSenha } from "../../validations/validations";
 
 export default function Register() {
 
@@ -38,7 +39,7 @@ export default function Register() {
             rg,
             phone,
             born,
-            register : null,
+            register : new Date(),
             password,
             email,
         }
@@ -51,12 +52,12 @@ export default function Register() {
                 try {
                     api.post('/user/registerNoAddress', data);
                     history.push('/login')
-        
                 } catch (err) {
                     alert("Falha ao criar conta . .")
                 }
             }else{
                 alert("Confirmação de senha invalida . . . .")
+                
             }
     }
 
@@ -91,7 +92,11 @@ export default function Register() {
         })
         else if(!password) return setStatus({
             type: 'error',
-            message: 'Necessario preencher o campo senha . .'
+            message: 'Necessario preencher campo senha . .'
+        })
+        else if(!validateSenha(password)) return setStatus({
+            type: 'error',
+            message: 'Senha nao atende aos requisitos . .'
         })
         else{return true;}
     }
