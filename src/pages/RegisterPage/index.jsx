@@ -7,7 +7,7 @@ import api from '../../services/loginApi'
 import Bottom from '../BottomInfo/Bottom'
 
 import './registerPageStyles.css'
-import { validateSenha } from "../../validations/validations";
+import { validateDoc, validateEmail, validateNasc, validateNome, validateSenha } from "../../validations/validations";
 
 export default function Register() {
 
@@ -44,6 +44,7 @@ export default function Register() {
             email,
         }
 
+        console.log(phone.length)
         if(!validate()) return; 
 
         
@@ -66,29 +67,57 @@ export default function Register() {
             type: 'error',
             message: 'Necessario preencher o campo nome . .'
         })
+        else if (!validateNome(firstName)) return setStatus({
+            type: 'error',
+            message: 'Nome invalido . .'
+        })
         else if(!lastName) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo sobrenome . .'
+        })
+        else if (!validateNome(lastName)) return setStatus({
+            type: 'error',
+            message: 'Sobrenome invalido . .'
         })
         else if(!cpf) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo cpf . .'
         })
+        else if(!validateDoc(rg, "CPF")) return setStatus({
+            type: 'error',
+            message: 'CPF Invalido . .'
+        })
         else if(!rg) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo rg . .'
+        })
+        else if(!validateDoc(rg, "RG")) return setStatus({
+            type: 'error',
+            message: 'RG Invalido . .'
         })
         else if(!phone) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo telefone . .'
         })
+        else if(!validateDoc(phone, "TEL")) return setStatus({
+            type: 'error',
+            message: 'Telefone Invalido . .'
+        })
         else if(!born) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo data de nascimento . .'
         })
+        else if (!validateNasc(born)) return setStatus({
+            type: 'error',
+            message: 'Data de nascimento invalida . .'
+        })
         else if(!email) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo email . .'
+        })
+        else if(!validateEmail(email)) return setStatus({
+            type: 'error',
+            message: 'Email invalido . .'
         })
         else if(!password) return setStatus({
             type: 'error',

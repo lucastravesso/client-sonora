@@ -9,6 +9,7 @@ import DropDownCardFlag from '../../components/DropDowns/DdCardFlags'
 import Bottom from "../BottomInfo/Bottom";
 
 import './cardStyles.css'
+import { validateCardDate, validateDoc } from "../../validations/validations";
 
 export default function AddCard(){
 
@@ -64,9 +65,17 @@ export default function AddCard(){
             type: 'error',
             message: 'Necessario preencher o campo numero do cartão . .'
         })
+        else if(validateDoc(card_number, "CARD")) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo numero do cartão . .'
+        })
         else if(!card_valid) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo validade do cartão . .'
+        })
+        else if(validateCardDate(card_valid)) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher com uma data valida . .'
         })
         else{return true;}
     }
