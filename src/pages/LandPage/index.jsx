@@ -12,12 +12,14 @@ import './landPageStyles.css'
 export default function LandPage() {
 
     const [products, setProducts] = useState([]);
+    const [mostView, setMostView] = useState([]);
     const [limits, setLimits] = useState([]);
     const [page, setPage] = useState(0);
 
     const history = useHistory();
 
     useEffect(() => {getProducts()}, [page])
+    useEffect(() => {getTopProducts()}, [])
 
     async function getProducts(){
         try {
@@ -29,6 +31,15 @@ export default function LandPage() {
             alert("Nao foi possivel trazer os produtos")
         }
     } 
+    async function getTopProducts(){
+        try {
+            await api.get(`products/listtop`).then(resProd => {
+                setMostView(resProd.data)
+            })
+        } catch (err) {
+            alert("Nao foi possivel trazer os produtos")
+        }
+    }
 
     async function increment(){
         if(page < limits.totalPages -1){
@@ -60,10 +71,10 @@ export default function LandPage() {
                         <li key={prod.id}>
                             <strong>Produto</strong>
                             <p>{prod.prod_name}</p>
+                            <strong>Fabricante</strong>
+                            <p>{prod.prod_builder}</p>
                             <strong>Preço</strong>
                             <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(prod.prod_price)}</p>
-                            <strong>Especificação</strong>
-                            <p>{prod.prod_spec}</p>
                             <strong>Categoria</strong>
                             <p>{prod.category.categoryName}</p>
                             <img src={instrument} alt=""/>
@@ -75,6 +86,27 @@ export default function LandPage() {
             <div className="buttons">
                 <button className="btn-effect" onClick={() => decrement()}>Pagina Anterior</button>
                 <button className="btn-effect" onClick={() => increment()}>Proxima Pagina</button>
+            </div>
+            <br />
+                <span className="prod-alert">Produtos mais visualizados</span>
+            <br />
+            <div className="products">
+                <ul>
+                    {mostView.map(mv => (
+                        <li key={mv.id}>
+                            <strong>Produto</strong>
+                            <p>{mv.prod_name}</p>
+                            <strong>Fabricante</strong>
+                            <p>{mv.prod_builder}</p>
+                            <strong>Preço</strong>
+                            <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(mv.prod_price)}</p>
+                            <strong>Categoria</strong>
+                            <p>{mv.categoryDto.categoryName}</p>
+                            <img src={instrument} alt=""/>
+                            <button className='buy' onClick={() => getProduct(mv.id)}>Ver produto</button>
+                        </li>
+                    ))}
+                </ul>
             </div>
             <Bottom />
         </>

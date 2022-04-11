@@ -1,7 +1,6 @@
-
-.products{
+.products {
     width: 100%;
-    max-width: 1080px;    
+    max-width: 1080px;
 }
 
 
@@ -25,25 +24,27 @@
 
 .products ul li:hover {
     animation: hover-prod infinite 2s;
-    
+
 }
 
-@keyframes hover-prod{
-    0%{
+@keyframes hover-prod {
+    0% {
         background-color: white;
         box-shadow: 7px 7px 0.8em #ff0008;
         padding: 24px;
         border-radius: 12px;
         position: relative;
     }
-    50%{
+
+    50% {
         text-align: left;
         background-color: white;
         box-shadow: 5px 5px 0.5em #751518;
         padding: 24px;
         border-radius: 12px;
     }
-    100%{
+
+    100% {
         background-color: white;
         box-shadow: 7px 7px 0.8em #ff0008;
         padding: 24px;
@@ -52,11 +53,46 @@
     }
 }
 
-.products ul li p{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap');
+
+.prod-alert {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    color: #cf1b1b;
+    font-size: 30px;
+    letter-spacing: 6px;
+}
+
+
+.prod-alert::after {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    content: "Produtos mais visualizados";
+    color: transparent;
+    background-image: repeating-linear-gradient(120deg,
+            transparent 0,
+            transparent 1px,
+            rgb(255, 0, 0) 2px,
+            rgb(122, 23, 23) 4px);
+    background-clip: text;
+    top: 0px;
+    left: 0px;
+    transition: 1s;
+}
+
+.prod-alert:hover:after {
+    top: -1px;
+    left: -1px;
+}
+
+.products ul li p {
     color: #BA2126;
 }
 
-.products ul li img{
+.products ul li img {
     position: absolute;
     margin-left: 270px;
     padding-left: 25px;
@@ -64,11 +100,11 @@
     width: 285px;
 }
 
-.products ul li strong{
+.products ul li strong {
     color: #8b1a1e;
 }
 
-.products ul li .buy{
+.products ul li .buy {
     width: 50%;
     height: 60px;
     background: #BA2126;
@@ -85,7 +121,7 @@
     transition: filter 0.8s;
 }
 
-.products ul button{
+.products ul button {
     cursor: pointer;
 }
 
@@ -100,27 +136,27 @@
     animation: background infinite 10s;
 }
 
-@keyframes background{
-    0%{
+@keyframes background {
+    0% {
         filter: brightness(80%);
         color: white;
         background-color: #ca3434;
-        box-shadow: 1px 1px 0.5em black;
+        box-shadow: 1px 1px 0.3em black;
         border-radius: 10px;
     }
-    50%{
+
+    50% {
         filter: brightness(80%);
-        background-color: #420a58;
-        box-shadow: 1px 1px 0.5em black;
+        background-color: #580a0a;
+        box-shadow: 1px 1px 0.3em rgb(153, 0, 0);
         border-radius: 10px;
-        box-shadow: 1px 1px 1em black;
     }
-    100%{
+
+    100% {
         filter: brightness(80%);
         color: white;
         background-color: #ca3434;
-        box-shadow: 1px 1px 0.5em black;
+        box-shadow: 1px 1px 0.3em black;
         border-radius: 10px;
     }
 }
-

@@ -180,29 +180,33 @@ export default function NormalPerfil() {
                                     <h1>Informação dos cartões</h1>
                                 </td>
                             </tr>
-                            <div className="table-foot">
-                                {
-                                    card.map(card =>(
-                                        <div className="each-row">
-                                            <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
-                                            <tr className="lines-table">
-                                                <td>Nome no cartão : {card.card_name}</td>
-                                            </tr>
-                                            <tr className="lines-table">
-                                                <td>Bandeira : {card.card_flag}</td>
-                                            </tr>
-                                            <tr className="lines-table">
-                                                <td>Numero no cartão : {card.card_number}</td>
-                                            </tr>
-                                            <tr className="lines-table">
-                                                <td>Validade do cartão : {card.card_valid}</td>
-                                            </tr>
-                                
-                                            <br /><br />
-                                        </div>
-                                    ))
-                                }
-                            </div>
+                            <tr>
+                                <td>
+                                <div className="table-foot">
+                                    {
+                                        card.map(card =>(
+                                            <div className="each-row" key={card.id}>
+                                                <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
+                                                <tr className="lines-table">
+                                                    <td>Nome no cartão : {card.card_name}</td>
+                                                </tr>
+                                                <tr className="lines-table">
+                                                    <td>Bandeira : {card.card_flag}</td>
+                                                </tr>
+                                                <tr className="lines-table">
+                                                    <td>Numero no cartão : {card.card_number}</td>
+                                                </tr>
+                                                <tr className="lines-table">
+                                                    <td>Validade do cartão : {card.card_valid}</td>
+                                                </tr>
+                                    
+                                                <br /><br />
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                                </td>
+                            </tr>
                         </tfoot>
                     </table>                    
  

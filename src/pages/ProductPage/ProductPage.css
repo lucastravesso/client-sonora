@@ -32,7 +32,7 @@ ul{
     margin: 80px -2px 34px -120px;
     font-size: 25px;
     padding: 8px;
-    box-shadow: 1px 1px 0.4em black;
+    box-shadow: 1px 1px 0.4em black,  inset 1px 1px 2em rgb(170, 62, 62);
     border-radius: 10px;
 }
 
@@ -46,27 +46,27 @@ ul{
 
 .container-product .cont-prod-right .product-info-right{
     border-radius: 10px;
-    box-shadow: 1px 1px 0.5em rgb(0, 0, 0), inset 1px 1px 25em rgb(161, 82, 82);
+    box-shadow: 1px 1px 0.5em rgb(0, 0, 0), inset 1px 1px 2em rgb(170, 66, 66);
     margin-right: 70px;
     margin-left: -50px;
-    margin-top: 100px;
+    margin-top: 80px;
     
 }
 
 .container-product .cont-prod-right .product-info-right ul li{
     width: 100%;
-    padding: 25px;
+    padding: 20px;
     font-size: 20px;
     margin-bottom: -10px;
 }
 .container-product .cont-prod-right .product-info-right ul .plusMinus{
-    margin-left: 225px;
+    margin-left: 235px;
     margin-top: -28px;
     margin-bottom: -30px;
 }
 
 .container-product .cont-prod-right .product-info-right ul .plusMinus .qntd{
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     background-color: inherit;
     margin: 5px;
 }   
