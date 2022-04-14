@@ -84,8 +84,8 @@ export default function LandPage() {
                 </ul>
             </div>
             <div className="buttons">
-                <button className="btn-effect" onClick={() => decrement()}>Pagina Anterior</button>
-                <button className="btn-effect" onClick={() => increment()}>Proxima Pagina</button>
+                <button data-cy="prev-page" className="btn-effect" onClick={() => decrement()}>Pagina Anterior</button>
+                <button data-cy="next-page" className="btn-effect" onClick={() => increment()}>Proxima Pagina</button>
             </div>
             <br />
                 <span className="prod-alert">Produtos mais visualizados</span>
@@ -95,7 +95,7 @@ export default function LandPage() {
                     {mostView.map(mv => (
                         <li key={mv.id}>
                             <strong>Produto</strong>
-                            <p>{mv.prod_name}</p>
+                            <p data-cy="prod-name">{mv.prod_name}</p>
                             <strong>Fabricante</strong>
                             <p>{mv.prod_builder}</p>
                             <strong>Preço</strong>

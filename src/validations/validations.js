@@ -21,7 +21,7 @@ export function validateNome(nome) {
 
 export function validateDoc(codigo, tipoDocumento) {
     if (tipoDocumento === "RG") return !(codigo.replace(/[-_()]/g, "").length < 11)
-    if (tipoDocumento === "CPF") return (codigo.replace(/[-_()]/g, "").length < 14)
+    if (tipoDocumento === "CPF") return !(codigo.replace(/[-_()]/g, "").length < 13)
     if (tipoDocumento === "TEL") return (codigo.replace(/[-_()]/g, "").length > 10)
     if (tipoDocumento === "CARD") return !(codigo.replace(/[_]|[ ]/g, "").length > 15)
 }

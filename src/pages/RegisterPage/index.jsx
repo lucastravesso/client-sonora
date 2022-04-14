@@ -44,7 +44,6 @@ export default function Register() {
             email,
         }
 
-        console.log(phone.length)
         if(!validate()) return; 
 
         
@@ -83,7 +82,7 @@ export default function Register() {
             type: 'error',
             message: 'Necessario preencher o campo cpf . .'
         })
-        else if(!validateDoc(rg, "CPF")) return setStatus({
+        else if(!validateDoc(cpf, "CPF")) return setStatus({
             type: 'error',
             message: 'CPF Invalido . .'
         })
@@ -95,14 +94,6 @@ export default function Register() {
             type: 'error',
             message: 'RG Invalido . .'
         })
-        else if(!phone) return setStatus({
-            type: 'error',
-            message: 'Necessario preencher o campo telefone . .'
-        })
-        else if(!validateDoc(phone, "TEL")) return setStatus({
-            type: 'error',
-            message: 'Telefone Invalido . .'
-        })
         else if(!born) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo data de nascimento . .'
@@ -110,6 +101,14 @@ export default function Register() {
         else if (!validateNasc(born)) return setStatus({
             type: 'error',
             message: 'Data de nascimento invalida . .'
+        })
+        else if(!phone) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo telefone . .'
+        })
+        else if(!validateDoc(phone, "TEL")) return setStatus({
+            type: 'error',
+            message: 'Telefone Invalido . .'
         })
         else if(!email) return setStatus({
             type: 'error',
@@ -141,28 +140,33 @@ export default function Register() {
                     <div className="left-form">
                         <div className="inputs-left">
                             <input
+                                data-cy='nome'
                                 placeholder='Nome'
                                 value={firstName}
                                 onChange={e => setFirstName(e.target.value)}
                             />
                             <input
+                                data-cy='sobrenome'
                                 placeholder='Sobrenome'
                                 value={lastName}
                                 onChange={e => setLastName(e.target.value)}
                             />
                             <InputMask
+                                data-cy='cpf'
                                 mask="999.999.999-99"
                                 placeholder='CPF'
                                 value={cpf}
                                 onChange={e => setCpf(e.target.value)}
                             />
                             <InputMask
+                                data-cy='rg'
                                 mask="99.999.999-9"
                                 placeholder='RG'
                                 value={rg}
                                 onChange={e => setRg(e.target.value)}
                             />
                             <input
+                                data-cy='dt-nasc'
                                 placeholder='Data de Nascimento'
                                 type="date"
                                 onChange={e => setBorn(e.target.value)}
@@ -172,12 +176,14 @@ export default function Register() {
                     <div className="right-form">
                         <div className="inputs-right">
                             <InputMask
+                                data-cy='tel'
                                 mask="(99)99999-9999"
                                 placeholder='Telefone'
                                 value={phone}
                                 onChange={e => setPhone(e.target.value)}
                             />
                             <input
+                                data-cy='email'
                                 placeholder='Email'
                                 type="email"
                                 value={email}
@@ -195,7 +201,7 @@ export default function Register() {
                                 value={passwordConf}
                                 onChange={e => setPasswordConf(e.target.value)}
                             />
-                            <button className="button" type='submit'>Enviar</button>
+                            <button data-cy='btn-register-submit' className="button" type='submit'>Enviar</button>
                         </div>
                     </div>
                 </div>

@@ -45,24 +45,28 @@ export default function Login () {
                 <div className="login-container">
                     <form onSubmit={login}>
                         <h1>Faça login para continuar . .</h1>
-                        <input type="email"
+                        <input 
+                            data-cy="login"
+                            type="email"
                             placeholder="Email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
-                        <input type="password"
+                        <input 
+                            data-cy="senha"
+                            type="password"
                             placeholder="Senha"
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                         />
-                        <button className="button" type="submit">Login</button>
+                        <button data-cy="login-submit" className="button" type="submit">Login</button>
                     </form>
                 </div>
 
                 <div className="register-container">
                         <div className="align-register">
                             <h1>Se você não é registrado, cria sua conta agora!</h1>
-                            <button className="button" onClick={() => history.push('register')} >Registrar-se</button>
+                            <button data-cy="register-btn" className="button" onClick={() => history.push('register')} >Registrar-se</button>
                         </div>
                 </div>
             </div>

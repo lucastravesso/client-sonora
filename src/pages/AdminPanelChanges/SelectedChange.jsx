@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import api from '../../services/loginApi'
 import './AdminPanelChanges.css'
 import NavAdmin from '../NavAdmin/NavAdmin'
-import DropDownStatus from '../../components/DropDowns/DdStatusChange'
+import DropDownStatusChange from '../../components/DropDowns/DdChangeStatus'
 
 export default function SelectedChange() {
 
@@ -62,7 +62,7 @@ export default function SelectedChange() {
                         <tr>
                             <td className="unique">Alterar Status do Pedido</td>
                             <td>
-                                <DropDownStatus onChange={(e) => setStatus(e.target.value)}/>
+                                <DropDownStatusChange onChange={(e) => setStatus(e.target.value)}/>
                             </td>
                             <td><button className="button" onClick={() => handleChangeStatus()}>Alterar</button></td>
                         </tr>

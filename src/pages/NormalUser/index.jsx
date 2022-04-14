@@ -21,6 +21,15 @@ export default function NormalPerfil() {
 
     useEffect(() => {getCard()}, [])
     useEffect(() => {getUser()}, [])
+    useEffect(() => {
+        api.get('/auth/me', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }).then(res =>{
+            setAuth(res.data)
+        })
+    }, [])
 
     async function getUser(){
         try {
@@ -97,15 +106,8 @@ export default function NormalPerfil() {
         history.push('/login')
     }
 
-    async function handleAdmin(){
-        api.get('/auth/me', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        }).then(res =>{
-            setAuth(res.data)
-        })
-
+    function handleAdmin(){
+        
         if(auth.profiles[0].name !== "ROLE_ADMIN")
         {
             alert("Voce não é um administrador.")
@@ -117,7 +119,7 @@ export default function NormalPerfil() {
     return (
         <>
             <Nav />
-            <button className="button-adm" onClick={() => handleAdmin()}>Painel administrativo</button>
+            <button data-cy="adminpanel" className="button-adm" onClick={() => handleAdmin()}>Painel administrativo</button>
             <div className="full-container-user">
                 <div className="cont-left-user">
                     <table className="table-left-user">
@@ -216,7 +218,7 @@ export default function NormalPerfil() {
                         <thead>
                             <tr> 
                                 <td>
-                                    <button className="button1" onClick={logout} type="button">
+                                    <button data-cy="logout" className="button1" onClick={logout} type="button">
                                         <FiPower size={18} color='251fc5' />
                                     </button>
                                     {verifyUserInformations(user, card)}

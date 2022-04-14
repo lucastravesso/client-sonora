@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import api from '../../services/loginApi'
 import './AdminPanelCancel.css'
 import NavAdmin from '../NavAdmin/NavAdmin'
-import DropDownStatus from '../../components/DropDowns/DdStatusChange'
+import DropDownStatusCancel from '../../components/DropDowns/DdCancelStatus'
 
 export default function SelectedCancel() {
 
@@ -72,7 +72,7 @@ export default function SelectedCancel() {
                         <tr>
                             <td className="unique">Alterar Status do Pedido</td>
                             <td>
-                                <DropDownStatus onChange={(e) => setStatus(e.target.value)}/>
+                                <DropDownStatusCancel onChange={(e) => setStatus(e.target.value)}/>
                             </td>
                             <td><button className="button" onClick={() => handleChangeStatus()}>Alterar</button></td>
                         </tr>
