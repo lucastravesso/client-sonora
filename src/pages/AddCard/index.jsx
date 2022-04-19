@@ -32,7 +32,7 @@ export default function AddCard(){
             card_name : card_name,
             card_flag : card_flag,
             card_number : card_number,
-            card_valid : card_valid,
+            card_security : card_valid,
         }
 
         if(!validate()) return; 
@@ -73,10 +73,6 @@ export default function AddCard(){
             type: 'error',
             message: 'Necessario preencher o campo validade do cartão . .'
         })
-        else if(validateCardDate(card_valid)) return setStatus({
-            type: 'error',
-            message: 'Necessario preencher com uma data valida . .'
-        })
         else{return true;}
     }
 
@@ -100,7 +96,7 @@ export default function AddCard(){
                     onChange={e => setCard_number(e.target.value)}
                 />
                 <InputMask
-                    mask='99/99'
+                    mask='999'
                     placeholder='Validade do cartão'
                     value={card_valid}
                     onChange={e => setCard_valid(e.target.value)}

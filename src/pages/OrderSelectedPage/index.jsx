@@ -19,9 +19,9 @@ export default function OrderSelectedPage() {
     const [cartProducts, setCartProducts] = useState([]);
 
     const history = useHistory();
-    
-    useEffect(() => {getOrder() }, [])
-    useEffect(() => {getProducts()}, []);
+
+    useEffect(() => { getOrder() }, [])
+    useEffect(() => { getProducts() }, []);
 
     async function getProducts() {
         try {
@@ -43,7 +43,7 @@ export default function OrderSelectedPage() {
 
         try {
 
-             api.get(`/order/${localStorage.getItem('order-id')}`, {
+            api.get(`/order/${localStorage.getItem('order-id')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
@@ -57,10 +57,9 @@ export default function OrderSelectedPage() {
         }
     }
 
-    function handleOrderStatus(){
-        if(order.cupon !== null)
-        {
-           return <table className="top-table"> 
+    function handleOrderStatus() {
+        if (order.cupon !== null) {
+            return <table className="top-table">
                 <tr>
                     <td><b>Nº Pedido</b></td>
                     <td><b>Data do Pedido</b></td>
@@ -69,11 +68,11 @@ export default function OrderSelectedPage() {
                 <tr>
                     <td>{order.id}</td>
                     <td>{order.orderDate}</td>
-                    <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * cup.c_percentage)}</td>
+                    <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice / 100) * cup.c_percentage)}</td>
                 </tr>
             </table>
-        }else{
-           return <table className="top-table"> 
+        } else {
+            return <table className="top-table">
                 <tr>
                     <td><b>Nº Pedido</b></td>
                     <td><b>Data do Pedido</b></td>
@@ -88,6 +87,33 @@ export default function OrderSelectedPage() {
         }
     }
 
+    function verifyStatus() {
+        if (order.status === "PEDIDO_ENVIADO" || order.status === "ENTREGUE") {
+            return (
+                <div>
+                    <tr>
+                        <td>Impossivel cancelar, pedido a caminho ou entregue</td>
+                    </tr>
+                </div>
+            );
+        }else{
+            return (
+                <div>
+                    <tr>
+                        <td>Deseja cancelar a compra ?</td>
+                    </tr>
+                    <tr>
+                        <td><button className="button" onClick={() => {
+                            localStorage.setItem('id-pedido_cancel', order.id)
+                            history.push('/cancelamento')
+                        }
+                        }>Cancelar compra</button></td>
+                    </tr>
+                </div>
+            );
+        }
+    }
+
 
     return (
         <>
@@ -97,7 +123,7 @@ export default function OrderSelectedPage() {
                     {shippingBar(order.status)}
                     <br />
                     {handleOrderStatus()}
-                   <table className="middle-table">
+                    <table className="middle-table">
                         <tr className="bar">
                             <td>Produto</td>
                             <td>Preço Unitario</td>
@@ -129,15 +155,7 @@ export default function OrderSelectedPage() {
                                     <td><button className="button" onClick={() => history.push('/troca')}>Trocar pedido</button></td>
                                 </tr>
                                 <br />
-                                <tr>
-                                    <td>Deseja cancelar a compra ?</td>
-                                </tr>
-                                <tr>
-                                    <td><button className="button" onClick={() => {
-                                        localStorage.setItem('id-pedido_cancel', order.id)
-                                        history.push('/cancelamento')}
-                                        }>Cancelar compra</button></td>
-                                </tr>
+                                {verifyStatus()}
                             </thead>
                         </table>
                     </div>

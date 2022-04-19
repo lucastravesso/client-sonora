@@ -79,13 +79,14 @@ export default function CartConfPage() {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
-            }).then(response =>{
-                localStorage.setItem('id_cartão', response.data.id);
-                history.push('/confirmacaodepedido')
-            });        
+        }).then(response => {
+            localStorage.setItem('id_cartão', response.data.id);
+            history.push('/confirmacaodepedido')
+        });
+
     }
 
-    async function verifyCupon(){
+    async function verifyCupon() {
 
         let cupom = document.getElementsByName("cupom")
         try {
@@ -96,63 +97,64 @@ export default function CartConfPage() {
             }).then(res => {
                 setCup(res.data)
             })
-            
-            if(cup.length !== 0 && cup.c_quantity > 0)
-            {
+
+            if (cup.length !== 0 && cup.c_quantity > 0) {
                 setStatus({
                     type: 'cupom',
                     message: `PARABENS!! VOCE GANHOU ${cup.c_percentage}% DE DESCONTO COM NOSSO CUPOM ! CUPOM VALIDO ATÉ ${cup.c_final}`
                 })
                 localStorage.setItem('cupon', cup.id)
-            }else{
+            } else {
                 setStatus({
                     type: 'cupom',
                     message: 'Cupom invalido . .'
                 })
             }
-        } catch (err) {}
+        } catch (err) { }
     }
 
-    function showCards(){
-        if(card.length === 0)
-        {
+    function showCards() {
+        if (card.length === 0) {
             return <tr>
                 <td>
                     <button className="button" onClick={
-                       ()=> history.push('/adicionarcartao')
+                        () => history.push('/adicionarcartao')
                     }>Adicionar um cartão</button>
                 </td>
             </tr>
-        }else{
+        } else {
             return (
                 <>
-                {card.map(card => (
-                <div className="cartao">
-                    <tr>
-                        <td>Nome no cartão : {card.card_name}</td>
-                    </tr>
-                    <tr>
-                        <td>Bandeira : {card.card_flag}</td>
-                    </tr>
-                    <tr>
-                        <td>Numero no cartão : {card.card_number}</td>
-                    </tr>
-                    <tr>
-                        <td>Validade do cartão : {card.card_valid}</td>
-                    </tr>
+                    {card.map(card => (
+                        <div className="cartao" key={card.id}>
+                            <tr>
+                                <td>Nome no cartão : {card.card_name}</td>
+                            </tr>
+                            <tr>
+                                <td>Bandeira : {card.card_flag}</td>
+                            </tr>
+                            <tr>
+                                <td>Numero no cartão : {card.card_number}</td>
+                            </tr>
+                            <tr>
+                                <td>Código de segurança : {card.card_security}</td>
+                            </tr>
 
-                    <button className="button" onClick={() => selectCard(card.id)}>Selecionar e prosseguir</button>
-                    <br /><br />
-                </div>
-            ))}
-            <tr>
-                <td>
-                    <button className="button" onClick={
-                       ()=> history.push('/adicionarcartao')
-                    }>Adicionar outro cartão</button>
-                </td>
-            </tr>
-            </>
+                            <button
+                                className="button"
+                                onClick={() => selectCard(card.id)}>Selecionar cartão
+                            </button>
+                            <br /><br />
+                        </div>
+                    ))}
+                    <tr>
+                        <td>
+                            <button className="button" onClick={
+                                () => history.push('/adicionarcartao')
+                            }>Adicionar outro cartão</button>
+                        </td>
+                    </tr>
+                </>
             )
         }
     }
@@ -217,7 +219,7 @@ export default function CartConfPage() {
                             </tr>
                             <tr className="cupom">
                                 <td>
-                                    <input type="text" name="cupom" placeholder="Cupom"/>
+                                    <input type="text" name="cupom" placeholder="Cupom" />
                                 </td>
                             </tr>
                             <tr className="cupom">
@@ -228,15 +230,16 @@ export default function CartConfPage() {
                             <tr>
                                 <td>{status.type === 'cupom' ? <p>{status.message}</p> : ""}</td>
                             </tr>
+                            <br />
                             {showCards()}
                             <tr>
                                 <td>
                                     <button className="button" onClick={
-                                    ()=> history.push('/qrcode')
+                                        () => history.push('/qrcode')
                                     }>Pix via QR code</button>
                                 </td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>

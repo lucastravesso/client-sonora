@@ -90,3 +90,13 @@
     width: 80%;
 }
 
+.container-order-selected .selected-right table thead div{
+
+    align-items: center;
+    margin-left: 20px;
+    
+}
+
+.container-order-selected .selected-right table thead div .button{
+    width: 300px;
+}

@@ -199,7 +199,7 @@ export default function NormalPerfil() {
                                                     <td>Numero no cartão : {card.card_number}</td>
                                                 </tr>
                                                 <tr className="lines-table">
-                                                    <td>Validade do cartão : {card.card_valid}</td>
+                                                    <td>Código de segurança : {card.card_security}</td>
                                                 </tr>
                                     
                                                 <br /><br />

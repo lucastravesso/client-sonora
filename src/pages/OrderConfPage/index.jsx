@@ -24,15 +24,23 @@ export default function OrderConfPage() {
     useEffect(() => { getUser() }, [])
     useEffect(() => { getCard() }, [])
     useEffect(() => { getProducts() }, []);
-    useEffect(() => {
-        api.get(`/cupon/list/${localStorage.getItem('cupon')}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-            }
-        }).then(res => {
-            setCup(res.data)
-        })
-    }, [])
+    useEffect(() => { getCupon() }, [])
+
+    function getCupon(){
+
+        if(localStorage.getItem('cupon') !== null)
+        {
+            api.get(`/cupon/list/${localStorage.getItem('cupon')}`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            }).then(res => {
+                setCup(res.data)
+            })
+        }else{
+            return ;
+        }
+    }
 
     function xoption(){
         return (
@@ -101,8 +109,7 @@ export default function OrderConfPage() {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
                 });
-                alert('Pedido confirmado, poderá visualizar na pagina de pedidos')
-                history.push('/perfilsimples')
+                history.push('/pedidos')
                 localStorage.clear('cupon')
             } catch (err) {
                 alert("Falha ao processar compra")
@@ -114,8 +121,7 @@ export default function OrderConfPage() {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
                 });
-                alert('Pedido confirmado, poderá visualizar na pagina de pedidos')
-                history.push('/perfilsimples')
+                history.push('/pedidos')
             } catch (err) {
                 alert("Falha ao processar compra")
             }
@@ -205,21 +211,11 @@ export default function OrderConfPage() {
                                     <td>Numero : {card.card_number}</td>
                                 </tr>
                                 <tr>
-                                    <td>Validade do cartão : {card.card_valid}</td>
+                                    <td>Código de segurança : {card.card_security}</td>
                                 </tr>
 
                             </div>
                             {xoption()}
-                            <br />
-                            <br />
-                            <tr className="cv">
-                                <td>
-                                    <InputMask
-                                        mask="999"
-                                        placeholder='CVC'
-                                    />
-                                </td>
-                            </tr>
                         </tbody>
                         <tfoot>
                             <tr>

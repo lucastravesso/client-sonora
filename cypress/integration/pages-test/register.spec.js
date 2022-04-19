@@ -85,4 +85,21 @@ describe('Register tests', () => {
         cy.get('[data-cy=btn-register-submit]').click()
         cy.contains('Necessario preencher o campo email . .').should('have.length', 1)
     });
+
+    it('email mult validation', () => {
+        cy.visit('/login')
+
+        cy.get('[data-cy=register-btn]').click()
+
+        cy.get('[data-cy=nome]').type('Lucas')
+        cy.get('[data-cy=sobrenome]').type('Travesso')
+        cy.get('[data-cy=cpf]').type('12312312312')
+        cy.get('[data-cy=rg]').type('222222222')
+        cy.get('[data-cy=dt-nasc]').type('1996-12-26')
+        cy.get('[data-cy=tel]').type('12314524567')
+
+        cy.get('[data-cy=btn-register-submit]').click()
+        cy.contains('Necessario preencher o campo email . .').should('have.length', 1)
+
+    })
 })
