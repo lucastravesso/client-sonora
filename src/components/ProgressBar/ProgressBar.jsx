@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 import './styles.css'
 
-export default function verifyUserInformations(user, card) {
+export default function verifyUserInformations(address, card) {
 
-    if (user.addressDto === null) {
+    if (address.length === 0) {
         return (
             <>
                 <div className="box">
@@ -24,7 +24,7 @@ export default function verifyUserInformations(user, card) {
                 <Link className="button" to='/adicionarendereco'>Adicionar endereço</Link>
             </>
         );
-    } else if(user.addressDto != null && card.length === 0){
+    } else if(address.length != 0 && card.length === 0){
         return (
             <>
             <div className="box">
@@ -42,7 +42,8 @@ export default function verifyUserInformations(user, card) {
                 <h2 className="text-red">Cartão preenchido X</h2>
             </div>
             <Link className="button" to='/editarperfil'>Editar Perfil</Link>
-            <Link className="button" to='/adicionarcartao'>Adicionar Cartão</Link>
+            <Link className="button" to='/adicionarendereco'>Adicionar novo endereço</Link>
+            <Link className="button" to='/adicionarcartao'>Adicionar primeiro cartão</Link>
             </>
         );
     }else{
@@ -65,7 +66,8 @@ export default function verifyUserInformations(user, card) {
                 <h2 className="text-green">Cartão preenchido ✔</h2>
             </div>
             <Link className="button" to='/editarperfil'>Editar Perfil</Link>
-            <Link className="button" to='/adicionarcartao'>Adicionar Cartão</Link>
+            <Link className="button" to='/adicionarendereco'>Adicionar novo endereço</Link>
+            <Link className="button" to='/adicionarcartao'>Adicionar novo cartão</Link>
             </>
         );
     }

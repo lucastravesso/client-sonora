@@ -119,6 +119,7 @@ export default function CartPage() {
                     if(cartProducts[i].productDTO.prod_quantity < cartProducts[i].quantity)
                     {
                         alert('Algum produto pode estar indisponivel em estoque')
+                        clearCart()
                         return history.push('/')
                     }else{
                         history.push('/confirmacaodecompra')

@@ -13,7 +13,6 @@ export default function AddressAdd() {
 
     const history = useHistory();
 
-    const [user, setUser] = useState([]);
     const [formValuesState, setFormValuesState] = useState({});
     const [formValuesCity, setFormValuesCity] = useState({});
     const [state, setState] = useState('');
@@ -23,20 +22,11 @@ export default function AddressAdd() {
     const [number, setNumber] = useState();
     const [complement, setComplement] = useState('');
 
-    useEffect(() => {
-        api.get('user/findByToken',{
-            headers: {
-                 Authorization : `Bearer ${localStorage.getItem('accessToken')}`
-                }
-        }).then(response =>{
-            setUser(response.data)
-        })
-    },[])
-    
+
     async function addAddress(e){
         e.preventDefault();
 
-        const addressDto = {
+        const data = {
             country : "Brasil",
             state : state,
             city : city,
@@ -46,20 +36,9 @@ export default function AddressAdd() {
             complement
         }
 
-        const data = {
-            firstName : user.firstName,
-            lastName : user.lastName,
-            cpf : user.cpf,
-            rg : user.rg,
-            born : user.born,
-            register : user.register,
-            login : user.login,
-            email : user.email,
-            addressDto
-        }
 
         try {
-            api.put(`/user/update/${user.id}`, data, {
+            api.post(`/address`, data, {
                 headers:{
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }

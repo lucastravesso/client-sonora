@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FiPower } from 'react-icons/fi'
 
-import verifyAddress from "../../components/VerifyAddress/VerifyAddress";
 import verifyUserInformations from "../../components/ProgressBar/ProgressBar";
 import api from '../../services/loginApi'
 import Nav from '../Navigation/Nav'
@@ -19,19 +18,19 @@ export default function NormalPerfil() {
     const [card, setCard] = useState([]);
     const [auth, setAuth] = useState([]);
 
-    useEffect(() => {getCard()}, [])
-    useEffect(() => {getUser()}, [])
+    useEffect(() => { getCard() }, [])
+    useEffect(() => { getUser() }, [])
     useEffect(() => {
         api.get('/auth/me', {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`
             }
-        }).then(res =>{
+        }).then(res => {
             setAuth(res.data)
         })
     }, [])
 
-    async function getUser(){
+    async function getUser() {
         try {
             await api.get('user/findByToken', {
                 headers: {
@@ -46,7 +45,7 @@ export default function NormalPerfil() {
         }
     }
 
-    async function getCard(){
+    async function getCard() {
         try {
             await api.get('/card/listallbyid', {
                 headers: {
@@ -60,14 +59,13 @@ export default function NormalPerfil() {
         }
     }
 
-    async function cardFind(id){
-        return card.find((c) =>{
-            if(c.id === id)
-            {
+    async function cardFind(id) {
+        return card.find((c) => {
+            if (c.id === id) {
                 let r = window.confirm("Voce deseja realmente excluir este cartão ?");
-                if (r===true){
+                if (r === true) {
                     try {
-                        api.delete(`/card/delete/${id}`,{
+                        api.delete(`/card/delete/${id}`, {
                             headers: {
                                 Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                             }
@@ -82,13 +80,12 @@ export default function NormalPerfil() {
         })
     }
 
-    async function deleteAccount(){
+    async function deleteAccount() {
 
         let r = window.confirm("Voce deseja realmente inativar sua conta ?");
-        if (r===true)
-        {
+        if (r === true) {
             try {
-                api.delete(`/user/delete/${user.id}`,{
+                api.delete(`/user/delete/${user.id}`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
@@ -106,13 +103,45 @@ export default function NormalPerfil() {
         history.push('/login')
     }
 
-    function handleAdmin(){
-        
-        if(auth.profiles[0].name !== "ROLE_ADMIN")
-        {
+    function handleAdmin() {
+
+        if (auth.profiles[0].name !== "ROLE_ADMIN") {
             alert("Voce não é um administrador.")
-        }else{
+        } else {
             history.push('/paineladministrativo');
+        }
+    }
+
+    function addressList() {
+        if (address.length === 0) {
+            return <tr><td>Nada a informar</td></tr>
+        } else {
+            return address.map(a => (
+                <>
+                    <tr>
+                        <td>{a.country}</td>
+                    </tr>
+                    <tr>
+                        <td>{a.state}</td>
+                    </tr>
+                    <tr>
+                        <td>{a.city}</td>
+                    </tr>
+                    <tr>
+                        <td>{a.district}</td>
+                    </tr>
+                    <tr>
+                        <td>{a.street}</td>
+                    </tr>
+                    <tr>
+                        <td>{a.number}</td>
+                    </tr>
+                    <tr>
+                        <td>{a.complement}</td>
+                    </tr>
+                    <br />
+                </>
+            ))
         }
     }
 
@@ -154,27 +183,8 @@ export default function NormalPerfil() {
                                     <h1>Informações de endereço</h1>
                                 </td>
                             </tr>
-                            <tr className="lines-table">
-                                <td>Pais : {verifyAddress(address, "country")}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Estado : {verifyAddress(address, "state")}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Cidade : {verifyAddress(address, "city")}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Bairro : {verifyAddress(address, "district")}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Rua : {verifyAddress(address, "street")}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Numero : {verifyAddress(address, "number")}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Complemento : {verifyAddress(address, "complement")}</td>
-                            </tr>
+                            {addressList()}
+
                         </tbody>
                         <tfoot >
                             <tr className="title-bar">
@@ -184,44 +194,44 @@ export default function NormalPerfil() {
                             </tr>
                             <tr>
                                 <td>
-                                <div className="table-foot">
-                                    {
-                                        card.map(card =>(
-                                            <div className="each-row" key={card.id}>
-                                                <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
-                                                <tr className="lines-table">
-                                                    <td>Nome no cartão : {card.card_name}</td>
-                                                </tr>
-                                                <tr className="lines-table">
-                                                    <td>Bandeira : {card.card_flag}</td>
-                                                </tr>
-                                                <tr className="lines-table">
-                                                    <td>Numero no cartão : {card.card_number}</td>
-                                                </tr>
-                                                <tr className="lines-table">
-                                                    <td>Código de segurança : {card.card_security}</td>
-                                                </tr>
-                                    
-                                                <br /><br />
-                                            </div>
-                                        ))
-                                    }
-                                </div>
+                                    <div className="table-foot">
+                                        {
+                                            card.map(card => (
+                                                <div className="each-row" key={card.id}>
+                                                    <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
+                                                    <tr className="lines-table">
+                                                        <td>Nome no cartão : {card.card_name}</td>
+                                                    </tr>
+                                                    <tr className="lines-table">
+                                                        <td>Bandeira : {card.card_flag}</td>
+                                                    </tr>
+                                                    <tr className="lines-table">
+                                                        <td>Numero no cartão : {card.card_number}</td>
+                                                    </tr>
+                                                    <tr className="lines-table">
+                                                        <td>Código de segurança : {card.card_security}</td>
+                                                    </tr>
+
+                                                    <br /><br />
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
                                 </td>
                             </tr>
                         </tfoot>
-                    </table>                    
- 
-               </div>
+                    </table>
+
+                </div>
                 <div className="cont-right-user">
                     <table className="table-right-user">
                         <thead>
-                            <tr> 
+                            <tr>
                                 <td>
                                     <button data-cy="logout" className="button1" onClick={logout} type="button">
                                         <FiPower size={18} color='251fc5' />
                                     </button>
-                                    {verifyUserInformations(user, card)}
+                                    {verifyUserInformations(address, card)}
                                 </td>
                             </tr>
                         </thead>
@@ -257,7 +267,7 @@ export default function NormalPerfil() {
                                 <td>
                                     Deseja inativar sua conta ?<br />
                                     Clique no botão abaixo!
-                                    <button id ="alert" className="button" onClick={deleteAccount}>Inativar conta</button>
+                                    <button id="alert" className="button" onClick={deleteAccount}>Inativar conta</button>
                                 </td>
                             </tr>
                         </tfoot>

@@ -110,7 +110,6 @@ export default function OrderConfPage() {
                     }
                 });
                 history.push('/pedidos')
-                localStorage.clear('cupon')
             } catch (err) {
                 alert("Falha ao processar compra")
             }
