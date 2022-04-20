@@ -111,34 +111,46 @@ export default function NormalPerfil() {
             history.push('/paineladministrativo');
         }
     }
+    async function deleteAddress(id){
+        return address.find((c) => {
+            if (c.id === id) {
+                let r = window.confirm("Voce deseja realmente excluir este endereço ?");
+                if (r === true) {
+                    try {
+                        api.delete(`/address/${id}`, {
+                            headers: {
+                                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                            }
+                        })
+                        setAddress(address.filter(address => address.id !== id))
+                    } catch (err) {
+                        return alert("Falha ao deletar endereco . .")
+                    }
+                }
+            }
+            return null;
+        })
+    }
 
     function addressList() {
         if (address.length === 0) {
             return <tr><td>Nada a informar</td></tr>
         } else {
             return address.map(a => (
-                <>
-                    <tr>
-                        <td>{a.country}</td>
-                    </tr>
-                    <tr>
-                        <td>{a.state}</td>
-                    </tr>
-                    <tr>
-                        <td>{a.city}</td>
-                    </tr>
-                    <tr>
-                        <td>{a.district}</td>
-                    </tr>
-                    <tr>
-                        <td>{a.street}</td>
-                    </tr>
-                    <tr>
-                        <td>{a.number}</td>
-                    </tr>
-                    <tr>
-                        <td>{a.complement}</td>
-                    </tr>
+                <><br />
+                    <a className="anchor-address" href="#abrirModal">{a.country}, {a.state} - {a.city}</a>
+                    <div id="abrirModal" className="modal">
+                        <a href="#fechar" title="Fechar" className="fechar">X</a>
+                        <h2>Endereço</h2>
+                        <p>País : {a.country}</p>
+                        <p>Estado : {a.state}</p>
+                        <p>Cidade : {a.city}</p>
+                        <p>Bairro : {a.district}</p>
+                        <p>Rua : {a.street}</p>
+                        <p>Numero : {a.number}</p>
+                        <p>Logradouro : {a.complement}</p>
+                        <button className="button-remove-address" onClick={() => deleteAddress(a.id)}>Excluir endereço</button>
+                    </div>
                     <br />
                 </>
             ))

@@ -1,17 +1,17 @@
-.full-container-user{
+.full-container-user {
     display: grid;
     grid-template-columns: 70% 30%;
 }
 
-.button-adm{
-    position:absolute;
+.button-adm {
+    position: absolute;
     margin: 15px 10px 10px 1660px;
     background: none;
     border: none;
     box-shadow: 0.5px 0.5px 0.2em black;
 }
 
-.full-container-user .cont-left-user{
+.full-container-user .cont-left-user {
     padding-left: 15%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -24,7 +24,7 @@
 }
 
 
-.full-container-user .cont-left-user .table-left-user .title-bar td h1{
+.full-container-user .cont-left-user .table-left-user .title-bar td h1 {
     color: #ffffff;
     box-shadow: inset 1000px 1000px 100em #660f12, 2px 2px 0.2em black;
     border-radius: 10px;
@@ -33,11 +33,11 @@
     padding: 14px 14px 14px 22px;
     font-size: 120%;
     width: 845px;
-    
+
 }
 
-.full-container-user .cont-left-user .table-left-user .lines-table td{
-    
+.full-container-user .cont-left-user .table-left-user .lines-table td {
+
     padding-top: 15px;
     padding-left: 50px;
     font-size: 120%;
@@ -45,12 +45,12 @@
 }
 
 
-.table-foot{
+.table-foot {
     width: 80%;
     margin-left: 10%;
 }
 
-.table-foot .each-row{
+.table-foot .each-row {
 
     background-image: url("../../assets/bg-card.jpg");
     margin: 27px;
@@ -59,7 +59,7 @@
     border-radius: 10px;
 }
 
-.table-foot .each-row tr td{
+.table-foot .each-row tr td {
     font-weight: bold;
     line-height: 1;
     text-shadow: rgb(255, 255, 255) 0.0em 0.06em 0.06em;
@@ -69,7 +69,7 @@
     -webkit-text-fill-color: transparent;
 }
 
-.button-remove{
+.button-remove {
     margin-left: 72%;
     width: 25%;
     height: 60px;
@@ -88,7 +88,7 @@
     transition: filter 0.2s;
 }
 
-.button-remove:hover{
+.button-remove:hover {
     filter: brightness(80%);
 }
 
@@ -97,22 +97,22 @@
     margin: 0;
     padding-right: 12%;
     padding-top: 50px;
-    
+
 }
 
-.full-container-user .cont-right-user .table-right-user thead tr td{
+.full-container-user .cont-right-user .table-right-user thead tr td {
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 1em #ff0008;
     border-radius: 10px;
 }
 
-.full-container-user .cont-right-user .table-right-user td{
+.full-container-user .cont-right-user .table-right-user td {
     padding: 8%;
     width: 100%;
 }
 
-.full-container-user .cont-right-user table tr td .button1{
-    
+.full-container-user .cont-right-user table tr td .button1 {
+
     position: absolute;
     margin-left: 370px;
     margin-top: -15px;
@@ -123,11 +123,12 @@
     background: transparent;
     transition: border-color 0.5s;
 }
-.full-container-user .cont-right-user table tr td button:hover{
+
+.full-container-user .cont-right-user table tr td button:hover {
     border: 2px solid rgb(255, 0, 0);
 }
 
-.full-container-user .cont-right-user .table-right-user tbody tr td{
+.full-container-user .cont-right-user .table-right-user tbody tr td {
     text-align: center;
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 1em #ff0008;
@@ -135,74 +136,133 @@
 
 }
 
-.full-container-user .cont-right-user .table-right-user tfoot tr td{
+.full-container-user .cont-right-user .table-right-user tfoot tr td {
     text-align: center;
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 1em #ff0008;
     border-radius: 10px;
+
+}
+
+
+.modal {
+    border-radius: 20px;
+    box-shadow: inset 1px 1px 0.5em white;
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 200ms ease-in;
+    -moz-transition: opacity 200ms ease-in;
+    transition: opacity 100ms ease-in;
+    pointer-events: none;
+    width: 700px;
+    height: 400px;
+    padding: 20px;
+    top: 200px;
+    left: 400px;
+}
+.anchor-address{
+    text-decoration: none;
+    font-size: 27px;
+    margin-left: 50px;
+}
+
+.modal:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal div {
+    width: 400px;
     
+    position: relative;
+    margin: 10% auto;
+    padding: 15px 20px;
+    background: #fff;
+}
+
+.fechar {
+    position: absolute;
+    width: 30px;
+    right: -15px;
+    top: -20px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 5px;
+    background: #ff4545;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #8d0000;
+  }
+
+  .button-remove-address {
+    margin-left: 25%;
+    margin-top: 10px;
+    width: 50%;
+    height: 40px;
+    background: #BA2126;
+    border-radius: 20px;
+    border: 0;
+    color: white;
+    font-weight: 700;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+    box-shadow: 2px 2px 0.2em #000000;
+    transition: filter 0.2s;
+}
+
+.button-remove-address:hover {
+    filter: brightness(80%);
 }
 
 /*-----------------------------------------------*/
 
 
 
-@media screen and (max-width: 1500px){
-    .full-container-user
-{
+@media screen and (max-width: 1500px) {
+    .full-container-user {
         display: grid;
         grid-template-columns: 70% 30%;
     }
-    
-    .full-container-user
- .cont-left--user
-user{
+
+    .full-container-user .cont-left--user user {
         padding-left: 5%;
     }
-    
-    .full-container-user
- .cont-left--user
-user .table-left-user tr td{
+
+    .full-container-user .cont-left--user user .table-left-user tr td {
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
         width: 700px;
     }
-    
-    .full-container-user
- .cont-left--user
-user .table-left-user tr td h1{
+
+    .full-container-user .cont-left--user user .table-left-user tr td h1 {
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
         text-align: center;
         width: 700px;
     }
-    
-    
-    .full-container-user
- .cont-right-user
- .table-right-user {
+
+
+    .full-container-user .cont-right-user .table-right-user {
         width: 100%;
     }
-    
-    .full-container-user
- .cont-right-user
- .table-right-user td{
+
+    .full-container-user .cont-right-user .table-right-user td {
         padding: 2%;
         width: 100%;
     }
-    
-    .full-container-user
- .cont-right-user
- .table-right-user .offbutton{
+
+    .full-container-user .cont-right-user .table-right-user .offbutton {
         text-align: center;
     }
-    
-    
-    .full-container-user
- .cont-right-user
- table .button1{
+
+
+    .full-container-user .cont-right-user table .button1 {
         height: 60px;
         width: 60px;
         border-radius: 4px;
@@ -210,69 +270,53 @@ user .table-left-user tr td h1{
         background: transparent;
         transition: border-color 0.5s;
     }
-    .full-container-user
- .cont-right-user
- table button:hover{
+
+    .full-container-user .cont-right-user table button:hover {
         border: 2px solid rgb(177, 140, 140);
     }
 }
 
-@media screen and (max-width: 1050px){
-    .full-container-user
-{
+@media screen and (max-width: 1050px) {
+    .full-container-user {
         display: grid;
         grid-template-columns: 60% 40%;
     }
-    
-    .full-container-user
- .cont-left--user
-user{
+
+    .full-container-user .cont-left--user user {
         padding-left: 5%;
     }
-    
-    .full-container-user
- .cont-left--user
-user .table-left-user tr td{
+
+    .full-container-user .cont-left--user user .table-left-user tr td {
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
         width: 550px;
     }
-    
-    .full-container-user
- .cont-left--user
-user .table-left-user tr td h1{
+
+    .full-container-user .cont-left--user user .table-left-user tr td h1 {
         border-bottom: 2.5px solid black;
         padding-top: 3%;
         font-size: 140%;
         text-align: center;
         width: 550px;
     }
-    
-    
-    .full-container-user
- .cont-right-user
- .table-right-user {
+
+
+    .full-container-user .cont-right-user .table-right-user {
         width: 100%;
     }
-    
-    .full-container-user
- .cont-right-user
- .table-right-user td{
+
+    .full-container-user .cont-right-user .table-right-user td {
         padding: 2%;
         width: 100%;
     }
-    
-    .full-container-user
- .cont-right-user
- .table-right-user .offbutton{
+
+    .full-container-user .cont-right-user .table-right-user .offbutton {
         text-align: center;
     }
-    
-    
-    .full-container-user
- .cont-right-user
- table .button1{
+
+
+    .full-container-user .cont-right-user table .button1 {
         height: 60px;
         width: 60px;
         border-radius: 4px;
@@ -280,9 +324,8 @@ user .table-left-user tr td h1{
         background: transparent;
         transition: border-color 0.5s;
     }
-    .full-container-user
- .cont-right-user
- table button:hover{
+
+    .full-container-user .cont-right-user table button:hover {
         border: 2px solid rgb(177, 140, 140);
     }
 }
