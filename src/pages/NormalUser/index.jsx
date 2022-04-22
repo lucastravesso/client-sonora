@@ -112,33 +112,40 @@ export default function NormalPerfil() {
             history.push('/paineladministrativo');
         }
     }
-    async function deleteAddress(id){
-        return address.find((c) => {
-            if (c.id === id) {
-                let r = window.confirm("Voce deseja realmente excluir este endereço ?");
-                if (r === true) {
-                    try {
-                        api.delete(`/address/${id}`, {
-                            headers: {
-                                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                            }
-                        })
-                        setAddress(address.filter(address => address.id !== id))
-                    } catch (err) {
-                        return alert("Falha ao deletar endereco . .")
+    async function deleteAddress(id) {
+        if (address.length > 1) {
+            return address.find((c) => {
+                if (c.id === id) {
+                    let r = window.confirm("Voce deseja realmente excluir este endereço ?");
+                    if (r === true) {
+                        try {
+                            api.delete(`/address/${id}`, {
+                                headers: {
+                                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                                }
+                            })
+                            document.getElementById('fechar-modal').click();
+                            setAddress(address.filter(address => address.id !== id))
+
+                        } catch (err) {
+                            return alert("Falha ao deletar endereco . .")
+                        }
                     }
                 }
-            }
-            return null;
-        })
+                return null;
+            })
+        } else {
+            alert("Impossivel deletar, adicione mais algum endereço para isso.")
+        }
     }
 
 
-    function showAddressModal(id){
-        address.find(c =>{
-            if(c.id === id){
+    function showAddressModal(id) {
+        address.find(c => {
+            if (c.id === id) {
                 setSelectedAddress(c)
             }
+            return null;
         })
     }
 
@@ -150,7 +157,7 @@ export default function NormalPerfil() {
                 <><br />
                     <a className="anchor-address" href="#abrirModal" onClick={() => showAddressModal(a.id)}>{a.country}, {a.state} - {a.city}</a>
                     <div id="abrirModal" className="modal">
-                        <a href="#fechar" title="Fechar" className="fechar">X</a>
+                        <a href="#fechar" id="fechar-modal" title="Fechar" className="fechar">X</a>
                         <h2>Endereço</h2>
                         <br />
                         <p>País : {selectedAddress.country}</p>

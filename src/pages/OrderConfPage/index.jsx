@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import InputMask from 'react-input-mask'
 
 import './OrderConfPage.css'
 
@@ -85,27 +84,31 @@ export default function OrderConfPage() {
 
     async function confirmarCompra() {
 
-        if (cup.length !== 0) {
-            try {
-                await api.post('/order/with', cup, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                });
-                history.push('/pedidos')
-            } catch (err) {
-                alert("Falha ao processar compra")
-            }
-        } else if (cup.length === 0) {
-            try {
-                await api.post('/order', null, {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                    }
-                });
-                history.push('/pedidos')
-            } catch (err) {
-                alert("Falha ao processar compra")
+        if (selectedAddress.length === 0) {
+            return alert("Selecione um endereço para continuar a compra");
+        } else {
+            if (cup.length !== 0) {
+                try {
+                    await api.post(`/order/with/${localStorage.getItem('address-id')}`, cup, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                        }
+                    });
+                    history.push('/pedidos')
+                } catch (err) {
+                    alert("Falha ao processar compra")
+                }
+            } else if (cup.length === 0) {
+                try {
+                    await api.post(`/order/${localStorage.getItem('address-id')}`, null, {
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                        }
+                    });
+                    history.push('/pedidos')
+                } catch (err) {
+                    alert("Falha ao processar compra")
+                }
             }
         }
     }
@@ -131,11 +134,12 @@ export default function OrderConfPage() {
     }
 
     function selectAddress(id) {
-        return address.find(c => {
+        address.find((c) => {
             if (c.id === id) {
                 localStorage.setItem("address-id", id)
                 setSelectedAddress(c)
             }
+            return null;
         })
     }
 
@@ -147,6 +151,24 @@ export default function OrderConfPage() {
                 </tr>
             </button>
         ))
+    }
+
+    function verifySelectedAddress() {
+        if (selectedAddress.length === 0) {
+            return <tr className="lines-right">
+                <td>Nenhum endereço selecionado</td>
+            </tr>
+        } else {
+            return <tr className="lines-right">
+                <td>
+                    Estado : {selectedAddress.state} <br />
+                    Cidade : {selectedAddress.city} <br />
+                    Bairro : {selectedAddress.district} <br />
+                    Rua : {selectedAddress.street} <br />
+                    Numero : {selectedAddress.number} <br />
+                    Logradouro : {selectedAddress.complement}</td>
+            </tr>
+        }
     }
 
 
@@ -199,15 +221,7 @@ export default function OrderConfPage() {
                             <tr>
                                 <td><h1>Endereço selecionado</h1></td>
                             </tr>
-                            <tr className="lines-right">
-                                <td>
-                                    Estado : {selectedAddress.state} <br />
-                                    Cidade : {selectedAddress.city} <br />
-                                    Bairro : {selectedAddress.district} <br />
-                                    Rua : {selectedAddress.street} <br />
-                                    Numero : {selectedAddress.number} <br />
-                                    Logradouro : {selectedAddress.complement}</td>
-                            </tr>
+                            {verifySelectedAddress()}
                         </thead>
                         <tbody>
                             <div className="cartao">
