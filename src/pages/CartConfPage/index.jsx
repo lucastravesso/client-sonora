@@ -230,7 +230,6 @@ export default function CartConfPage() {
                             <tr>
                                 <td>{status.type === 'cupom' ? <p>{status.message}</p> : ""}</td>
                             </tr>
-                            <br />
                             {showCards()}
                             <tr>
                                 <td>

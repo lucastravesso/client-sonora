@@ -15,6 +15,7 @@ export default function NormalPerfil() {
 
     const [user, setUser] = useState([]);
     const [address, setAddress] = useState([]);
+    const [selectedAddress, setSelectedAddress] = useState([])
     const [card, setCard] = useState([]);
     const [auth, setAuth] = useState([]);
 
@@ -132,24 +133,34 @@ export default function NormalPerfil() {
         })
     }
 
+
+    function showAddressModal(id){
+        address.find(c =>{
+            if(c.id === id){
+                setSelectedAddress(c)
+            }
+        })
+    }
+
     function addressList() {
         if (address.length === 0) {
-            return <tr><td>Nada a informar</td></tr>
+            return <tr className="naf"><td className="naf">Nada a informar</td></tr>
         } else {
             return address.map(a => (
                 <><br />
-                    <a className="anchor-address" href="#abrirModal">{a.country}, {a.state} - {a.city}</a>
+                    <a className="anchor-address" href="#abrirModal" onClick={() => showAddressModal(a.id)}>{a.country}, {a.state} - {a.city}</a>
                     <div id="abrirModal" className="modal">
                         <a href="#fechar" title="Fechar" className="fechar">X</a>
                         <h2>Endereço</h2>
-                        <p>País : {a.country}</p>
-                        <p>Estado : {a.state}</p>
-                        <p>Cidade : {a.city}</p>
-                        <p>Bairro : {a.district}</p>
-                        <p>Rua : {a.street}</p>
-                        <p>Numero : {a.number}</p>
-                        <p>Logradouro : {a.complement}</p>
-                        <button className="button-remove-address" onClick={() => deleteAddress(a.id)}>Excluir endereço</button>
+                        <br />
+                        <p>País : {selectedAddress.country}</p>
+                        <p>Estado : {selectedAddress.state}</p>
+                        <p>Cidade : {selectedAddress.city}</p>
+                        <p>Bairro : {selectedAddress.district}</p>
+                        <p>Rua : {selectedAddress.street}</p>
+                        <p>Numero : {selectedAddress.number}</p>
+                        <p>Logradouro : {selectedAddress.complement}</p>
+                        <button className="button-remove-address" onClick={() => deleteAddress(selectedAddress.id)}>Excluir endereço</button>
                     </div>
                     <br />
                 </>

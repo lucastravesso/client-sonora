@@ -18,6 +18,7 @@ export default function OrderConfPage() {
     const [cup, setCup] = useState([]);
     const [user, setUser] = useState([]);
     const [address, setAddress] = useState([]);
+    const [selectedAddress, setSelectedAddress] = useState([]);
 
     const history = useHistory();
 
@@ -26,10 +27,9 @@ export default function OrderConfPage() {
     useEffect(() => { getProducts() }, []);
     useEffect(() => { getCupon() }, [])
 
-    function getCupon(){
+    function getCupon() {
 
-        if(localStorage.getItem('cupon') !== null)
-        {
+        if (localStorage.getItem('cupon') !== null) {
             api.get(`/cupon/list/${localStorage.getItem('cupon')}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
@@ -37,26 +37,9 @@ export default function OrderConfPage() {
             }).then(res => {
                 setCup(res.data)
             })
-        }else{
-            return ;
+        } else {
+            return;
         }
-    }
-
-    function xoption(){
-        return (
-                <select name="opt">
-                    <option>1x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)} - sem juros</option>
-                    <option>2x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 2) } - sem juros</option>
-                    <option>3x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 3)} - sem juros</option>
-                    <option>4x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 4)} - sem juros</option>
-                    <option>5x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 5)} - sem juros</option>
-                    <option>6x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice / 6)} - sem juros</option>
-                    <option>7x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 5) /7)} - 5% de juros</option>
-                    <option>8x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 5) /8)} - 5% de juros</option>
-                    <option>9x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 10) /9)} - 10% de juros</option>
-                    <option>10x {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format((products.totalPrice + (products.totalPrice / 100) * 10) /10)} - 10% de juros</option>
-                </select>
-        );
     }
 
     async function getUser() {
@@ -100,11 +83,11 @@ export default function OrderConfPage() {
         });
     }
 
-    async function confirmarCompra(){
+    async function confirmarCompra() {
 
-        if(cup.length !== 0){
+        if (cup.length !== 0) {
             try {
-                await api.post('/order/with', cup ,{
+                await api.post('/order/with', cup, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
@@ -113,9 +96,9 @@ export default function OrderConfPage() {
             } catch (err) {
                 alert("Falha ao processar compra")
             }
-        }else if(cup.length === 0){
+        } else if (cup.length === 0) {
             try {
-                await api.post('/order', null ,{
+                await api.post('/order', null, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
@@ -127,26 +110,45 @@ export default function OrderConfPage() {
         }
     }
 
-    function getResults(){
+    function getResults() {
 
-        if(cup.length !== 0)
-        {
+        if (cup.length !== 0) {
             return <div className="results">
-            <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
-                Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
-                Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice /100) * cup.c_percentage)}</h1>
+                <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
+                    Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
+                    Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice / 100) * cup.c_percentage)}</h1>
             </div>
-        }else{
+        } else {
             return <div className="results">
-            <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
-                Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
-            </h1>
+                <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
+                    Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
+                </h1>
             </div>
         }
 
-        
-        
+
+
     }
+
+    function selectAddress(id) {
+        return address.find(c => {
+            if (c.id === id) {
+                localStorage.setItem("address-id", id)
+                setSelectedAddress(c)
+            }
+        })
+    }
+
+    function showAddress() {
+        return address.map(a => (
+            <button key={a.id} className="address-btn" onClick={() => selectAddress(a.id)}>
+                <tr className="lines-right">
+                    <td>{a.state + ", " + a.city + " - " + a.district}</td>
+                </tr>
+            </button>
+        ))
+    }
+
 
     return (
         <>
@@ -191,11 +193,20 @@ export default function OrderConfPage() {
                             <tr>
                                 <td><h1>Endereço de entrega</h1></td>
                             </tr>
-                            <tr className="lines-right">
-                                <td>{address.state + ", " + address.city + " - " + address.district}</td>
+                            {showAddress()}
+                            <br />
+                            <br />
+                            <tr>
+                                <td><h1>Endereço selecionado</h1></td>
                             </tr>
                             <tr className="lines-right">
-                                <td>{address.street + ", " + address.number}</td>
+                                <td>
+                                    Estado : {selectedAddress.state} <br />
+                                    Cidade : {selectedAddress.city} <br />
+                                    Bairro : {selectedAddress.district} <br />
+                                    Rua : {selectedAddress.street} <br />
+                                    Numero : {selectedAddress.number} <br />
+                                    Logradouro : {selectedAddress.complement}</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -214,7 +225,6 @@ export default function OrderConfPage() {
                                 </tr>
 
                             </div>
-                            {xoption()}
                         </tbody>
                         <tfoot>
                             <tr>

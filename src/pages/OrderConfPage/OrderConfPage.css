@@ -112,3 +112,14 @@
     width: 70%;
     margin-left: 15%;
 }
+
+.address-btn{
+    border-radius: 20px;
+    padding: 2px;
+    margin:10px;
+    transition: 1s;
+}
+
+.address-btn:hover{
+    background-color: #cf7f82;
+}

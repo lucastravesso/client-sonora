@@ -36,6 +36,13 @@
 
 }
 
+.full-container-user .cont-left-user .table-left-user tbody .naf .naf {
+    padding-top: 15px;
+    padding-left: 50px;
+    font-size: 120%;
+    width: 900px;
+}
+
 .full-container-user .cont-left-user .table-left-user .lines-table td {
 
     padding-top: 15px;
@@ -53,7 +60,7 @@
 .table-foot .each-row {
 
     background-image: url("../../assets/bg-card.jpg");
-    margin: 27px;
+    margin: 55px;
     background-color: rgb(255, 255, 255);
     box-shadow: 4px 4px 0.5em #000000;
     border-radius: 10px;
@@ -183,13 +190,23 @@
     background: #fff;
 }
 
+.modal h2{
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+.modal p{
+    font-size: 27px;
+}
+
 .fechar {
     position: absolute;
-    width: 30px;
+    width: 60px;
     right: -15px;
     top: -20px;
     text-align: center;
-    line-height: 30px;
+    line-height: 60px;
     margin-top: 5px;
     background: #ff4545;
     border-radius: 50%;
@@ -199,9 +216,9 @@
 
   .button-remove-address {
     margin-left: 25%;
-    margin-top: 10px;
+    margin-top: 15px;
     width: 50%;
-    height: 40px;
+    height: 50px;
     background: #BA2126;
     border-radius: 20px;
     border: 0;
