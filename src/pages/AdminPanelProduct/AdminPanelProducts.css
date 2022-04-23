@@ -81,6 +81,9 @@
 .products-container ul li button + button {
     top: 50px;
 }
+.products-container ul li button + button + button {
+    top: 75px;
+}
 
 .products-container ul li button:hover{
     opacity: 0.8;
@@ -102,4 +105,3 @@
     line-height: 22px;
     font-size: 20px;
 }
-

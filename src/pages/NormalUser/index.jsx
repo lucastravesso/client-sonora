@@ -112,6 +112,7 @@ export default function NormalPerfil() {
             history.push('/paineladministrativo');
         }
     }
+
     async function deleteAddress(id) {
         if (address.length > 1) {
             return address.find((c) => {
@@ -124,8 +125,8 @@ export default function NormalPerfil() {
                                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                                 }
                             })
-                            document.getElementById('fechar-modal').click();
                             setAddress(address.filter(address => address.id !== id))
+                            document.getElementById('fechar-modal').click();
 
                         } catch (err) {
                             return alert("Falha ao deletar endereco . .")

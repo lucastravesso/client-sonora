@@ -16,6 +16,7 @@ export default function OrderSelectedPage() {
     const [order, setOrder] = useState([]);
     const [cup, setCup] = useState([]);
     const [products, setProducts] = useState([]);
+    const [address, setAddress] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
 
     const history = useHistory();
@@ -50,12 +51,14 @@ export default function OrderSelectedPage() {
             }).then(res => {
                 setOrder(res.data)
                 setCup(res.data.cupon)
+                setAddress(res.data.addressDto)
             })
 
         } catch (err) {
             alert("Falha ao trazer pedido")
         }
     }
+    console.log(address)
 
     function handleOrderStatus() {
         if (order.cupon !== null) {
@@ -70,6 +73,16 @@ export default function OrderSelectedPage() {
                     <td>{order.orderDate}</td>
                     <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice / 100) * cup.c_percentage)}</td>
                 </tr>
+                <tr>
+                    <td><b>Cidade</b></td>
+                    <td><b>Bairro</b></td>
+                    <td><b>Numero</b></td>
+                </tr>
+                <tr>
+                    <td>{address.city}</td>
+                    <td>{address.district}</td>
+                    <td>{address.number}</td>
+                </tr>
             </table>
         } else {
             return <table className="top-table">
@@ -82,6 +95,16 @@ export default function OrderSelectedPage() {
                     <td>{order.id}</td>
                     <td>{order.orderDate}</td>
                     <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}</td>
+                </tr>
+                <tr>
+                    <td><b>Cidade</b></td>
+                    <td><b>Bairro</b></td>
+                    <td><b>Numero</b></td>
+                </tr>
+                <tr>
+                    <td>{address.city}</td>
+                    <td>{address.district}</td>
+                    <td>{address.number}</td>
                 </tr>
             </table>
         }
@@ -96,7 +119,7 @@ export default function OrderSelectedPage() {
                     </tr>
                 </div>
             );
-        }else{
+        } else {
             return (
                 <div>
                     <tr>

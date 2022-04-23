@@ -12,6 +12,7 @@ export default function SelectedSales() {
     const [user, setUser] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
     const [status, setStatus] = useState('');
+    const [address, setAddress] = useState([])
     const [cup, setCup] = useState([]);
 
     useEffect(() => { getProducts() }, []);
@@ -45,6 +46,7 @@ export default function SelectedSales() {
             }).then(res => {
                 setOrder(res.data)
                 setCup(res.data.cupon)
+                setAddress(res.data.addressDto)
             })
 
         } catch (err) {
@@ -121,6 +123,19 @@ export default function SelectedSales() {
                             <td>{user.cpf}</td>
                             <td>{user.email}</td>
                             <td>{user.phone}</td>
+                        </tr>
+                        <br />
+                        <tr>
+                            <td><b>Estado</b></td>
+                            <td><b>Cidade</b></td>
+                            <td><b>Bairro</b></td>
+                            <td><b>Numero</b></td>
+                        </tr>
+                        <tr>
+                            <td>{address.state}</td>
+                            <td>{address.city}</td>
+                            <td>{address.district}</td>
+                            <td>{address.number}</td>
                         </tr>
                     </table>
                     <br />
