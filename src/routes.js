@@ -37,6 +37,7 @@ import OrderCancelSelected from "./pages/OrderCancel/OrderCancelSelected";
 import SelectedCancel from "./pages/AdminPanelCancel/SelectedCancel";
 import QRCodePayment from "./pages/QRCodePayment/index"
 import QRPage from "./pages/QRPage";
+import PasswordChange from "./pages/PasswordChange";
 
 export default function Routes(){
     return (
@@ -44,6 +45,7 @@ export default function Routes(){
             <Switch>
                 <Route path='/' exact component={LandPage}/>
                 <Route path='/login' component={Login}/>
+                <Route path='/mudarsenha' component={PasswordChange}/>
                 <Route path='/register' component={Register}/>
                 <Route path='/perfilsimples' component={NormalPerfil} />
                 <Route path='/adicionarendereco' component={AddressAdd} />

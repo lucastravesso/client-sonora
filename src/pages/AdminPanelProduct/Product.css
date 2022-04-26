@@ -12,7 +12,7 @@
 .new-product-container .content {
     flex: 50%;
     width: 100%;
-    padding: 96px;
+    margin: 0;
 }
 
 .new-product-container .content form{
@@ -27,10 +27,11 @@
 .new-product-container .content form .select-product{
     box-shadow: none;
     margin-top: 8px;
-    width: 400px;
+    width: 450px;
     margin-left: 0;
 }
 
 .edit-status{
     flex: 50%;
 }
+

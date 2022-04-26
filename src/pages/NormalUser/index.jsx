@@ -270,6 +270,14 @@ export default function NormalPerfil() {
                         <tbody>
                             <tr>
                                 <td>
+                                    Para alterar a senha <br />
+                                    Clique no botão abaixo!
+                                    <button className="button" onClick={() => history.push("/mudarsenha")}>Alterar senha</button>
+                                </td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>
                                     Deseja acompanhar seus pedidos ?<br />
                                     Clique no botão abaixo!
                                     <button className="button" onClick={() => history.push("/pedidos")}>Ver meus pedidos</button>
