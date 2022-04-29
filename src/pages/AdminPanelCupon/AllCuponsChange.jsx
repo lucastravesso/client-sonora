@@ -66,8 +66,6 @@ export default function AllCuponsChange() {
                         <tr>
                             <td>Nome do Cupom</td>
                             <td>Desconto</td>
-                            <td>Data de lançamento</td>
-                            <td>Data de fechamento</td>
                             <td>Quantidade</td>
                         </tr>
                         <br />
@@ -76,8 +74,6 @@ export default function AllCuponsChange() {
                                 <tr key={c.id}>
                                     <td>{c.c_name}</td>
                                     <td>R$ {c.c_percentage },00</td>
-                                    <td>{c.c_register}</td>
-                                    <td>{c.c_final}</td>
                                     <td>{c.c_quantity}</td>
                                 </tr>
                                 <tr>

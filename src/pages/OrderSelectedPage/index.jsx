@@ -84,28 +84,54 @@ export default function OrderSelectedPage() {
                 </tr>
             </table>
         } else if (order.cupon !== null && cup.c_type === 1) {
-            return <table className="top-table">
-                <tr>
-                    <td><b>Nº Pedido</b></td>
-                    <td><b>Data do Pedido</b></td>
-                    <td><b>Preço total com cupom : {cup.c_name}</b></td>
-                </tr>
-                <tr>
-                    <td>{order.id}</td>
-                    <td>{order.orderDate}</td>
-                    <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice -  cup.c_percentage)}</td>
-                </tr>
-                <tr>
-                    <td><b>Cidade</b></td>
-                    <td><b>Bairro</b></td>
-                    <td><b>Numero</b></td>
-                </tr>
-                <tr>
-                    <td>{address.city}</td>
-                    <td>{address.district}</td>
-                    <td>{address.number}</td>
-                </tr>
-            </table>
+
+            if (products.totalPrice < cup.c_percentage) {
+                return <table className="top-table">
+                    <tr>
+                        <td><b>Nº Pedido</b></td>
+                        <td><b>Data do Pedido</b></td>
+                        <td><b>Preço total com cupom : {cup.c_name}</b></td>
+                    </tr>
+                    <tr>
+                        <td>{order.id}</td>
+                        <td>{order.orderDate}</td>
+                        <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - cup.c_percentage)}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Cidade</b></td>
+                        <td><b>Bairro</b></td>
+                        <td><b>Numero</b></td>
+                    </tr>
+                    <tr>
+                        <td>{address.city}</td>
+                        <td>{address.district}</td>
+                        <td>{address.number}</td>
+                    </tr>
+                </table>
+            } else {
+                return <table className="top-table">
+                    <tr>
+                        <td><b>Nº Pedido</b></td>
+                        <td><b>Data do Pedido</b></td>
+                        <td><b>Preço total com cupom : {cup.c_name}</b></td>
+                    </tr>
+                    <tr>
+                        <td>{order.id}</td>
+                        <td>{order.orderDate}</td>
+                        <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - cup.c_percentage)}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Cidade</b></td>
+                        <td><b>Bairro</b></td>
+                        <td><b>Numero</b></td>
+                    </tr>
+                    <tr>
+                        <td>{address.city}</td>
+                        <td>{address.district}</td>
+                        <td>{address.number}</td>
+                    </tr>
+                </table>
+            }
         } else {
             return <table className="top-table">
                 <tr>

@@ -93,7 +93,7 @@ export default function OrderConfPage() {
                         headers: {
                             Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                         }
-                    });
+                    })
                     history.push('/pedidos')
                 } catch (err) {
                     alert("Falha ao processar compra")
@@ -122,11 +122,19 @@ export default function OrderConfPage() {
                     Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice / 100) * cup.c_percentage)}</h1>
             </div>
         } else if (cup.length !== 0 && cup.c_type === 1) {
-            return <div className="results">
-                <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
-                    Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
-                    Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - cup.c_percentage)}</h1>
-            </div>
+            if(products.totalPrice < cup.c_percentage){
+                return <div className="results">
+                    <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
+                        Preço total da compra : R$: 0,00⠀⠀⠀⠀⠀⠀
+                        Um cupom com valor {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(cup.c_percentage - products.totalPrice)} sera gerado</h1>
+                </div>
+            }else{
+                return <div className="results">
+                    <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
+                        Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
+                        Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - cup.c_percentage)}</h1>
+                </div>
+            }
         } else {
             return <div className="results">
                 <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
