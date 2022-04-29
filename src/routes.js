@@ -38,6 +38,7 @@ import SelectedCancel from "./pages/AdminPanelCancel/SelectedCancel";
 import QRCodePayment from "./pages/QRCodePayment/index"
 import QRPage from "./pages/QRPage";
 import PasswordChange from "./pages/PasswordChange";
+import AllCuponsChange from "./pages/AdminPanelCupon/AllCuponsChange";
 
 export default function Routes(){
     return (
@@ -60,6 +61,7 @@ export default function Routes(){
                 <Route path='/pedido' component={OrderSelectedPage} />
                 <Route path='/paineladministrativo' exact component={AdminPanelHome} />
                 <Route path='/paineladministrativo/cupons' exact component={AllCupons} />
+                <Route path='/paineladministrativo/cuponschange' exact component={AllCuponsChange} />
                 <Route path='/paineladministrativo/cupons/add-alt' component={Cupon} />
                 <Route path='/paineladministrativo/produtos' exact component={AllProducts} />
                 <Route path='/paineladministrativo/vendas' exact component={AdminPanelSales} />

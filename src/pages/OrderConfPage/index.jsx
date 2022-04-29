@@ -115,11 +115,17 @@ export default function OrderConfPage() {
 
     function getResults() {
 
-        if (cup.length !== 0) {
+        if (cup.length !== 0 && cup.c_type === 0) {
             return <div className="results">
                 <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
                     Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
                     Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice / 100) * cup.c_percentage)}</h1>
+            </div>
+        } else if (cup.length !== 0 && cup.c_type === 1) {
+            return <div className="results">
+                <h1>Quantidade total de itens : {products.total}⠀⠀⠀⠀⠀⠀
+                    Preço total da compra : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)}⠀⠀⠀⠀⠀⠀
+                    Preço total com desconto : {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - cup.c_percentage)}</h1>
             </div>
         } else {
             return <div className="results">

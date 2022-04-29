@@ -98,10 +98,16 @@ export default function CartConfPage() {
                 setCup(res.data)
             })
 
-            if (cup.length !== 0 && cup.c_quantity > 0) {
+            if (cup.length !== 0 && cup.c_quantity > 0 && cup.c_type === 0) {
                 setStatus({
                     type: 'cupom',
                     message: `PARABENS!! VOCE GANHOU ${cup.c_percentage}% DE DESCONTO COM NOSSO CUPOM ! CUPOM VALIDO ATÉ ${cup.c_final}`
+                })
+                localStorage.setItem('cupon', cup.id)
+            } else if (cup.length !== 0 && cup.c_quantity > 0 && cup.c_type === 1) {
+                setStatus({
+                    type: 'cupom',
+                    message: `VOCE ESTÁ UTILIZANDO UM CUPOM DE TROCA DE R$${cup.c_percentage},00`
                 })
                 localStorage.setItem('cupon', cup.id)
             } else {

@@ -40,3 +40,23 @@
 .container-adm-home .navigation table thead tr .opt button:hover{
     filter: brightness(80%);
 }
+
+.container-adm-home .navigation table thead tr .modal-cpn{
+    position: absolute;
+    top: 105px;
+    left: 746px;
+}
+
+.container-adm-home .navigation table thead tr .modal-cpn .btn-cpn{
+    margin: 5px;
+    padding: 5px;
+    width: 80px;
+    height: 30px;
+    font-size: 11px;
+    background: #BA2126;
+    border-radius: 28px;
+    box-shadow: inset 1px 1px 0.5em black;
+    border: 0;
+    color: white;
+    transition: filter 0.8s;
+}

@@ -69,7 +69,7 @@ export default function SelectedSales() {
     }
 
     function handleVerifyCupon() {
-        if(cup !== null){
+        if (cup !== null && cup.c_type === 0) {
             return <table className="top-table">
                 <tr>
                     <td><b>Id do Cupom</b></td>
@@ -84,7 +84,22 @@ export default function SelectedSales() {
                     <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - (products.totalPrice / 100) * cup.c_percentage)}</td>
                 </tr>
             </table>
-        } else{
+        } else if (cup !== null && cup.c_type === 1) {
+            return <table className="top-table">
+                <tr>
+                    <td><b>Id do Cupom</b></td>
+                    <td><b>Nome do Cupom</b></td>
+                    <td><b>Total descontado pelo cupom</b></td>
+                    <td><b>Preço final do pedido com cupom</b></td>
+                </tr>
+                <tr>
+                    <td>{cup.id}</td>
+                    <td>{cup.c_name}</td>
+                    <td>R$ {cup.c_percentage},00</td>
+                    <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - cup.c_percentage)}</td>
+                </tr>
+            </table>
+        } else {
             return <table className="top-table">
                 <tr>
                     <td><b>Não utilizou cupom de desconto.</b></td>

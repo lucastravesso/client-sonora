@@ -1,5 +1,5 @@
-import React from "react";
-import {useHistory} from 'react-router-dom'
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom'
 
 import Logo from '../../assets/logo_Musica.png'
 
@@ -9,6 +9,7 @@ export default function NavAdmin() {
 
     const history = useHistory();
 
+    const [listCupons, setListCupons] = useState(false)
 
     return (
         <>
@@ -22,7 +23,14 @@ export default function NavAdmin() {
                                 </td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/usuarios')}> Usuarios </button></td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>
-                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/cupons')}> Cupons </button></td>
+
+                                <td className="opt"><button onClick={() => listCupons ? setListCupons(false) : setListCupons(true)}> Cupons </button></td>
+                                {listCupons === true && (
+                                    <div className="modal-cpn">
+                                        <button className="btn-cpn" onClick={() => history.push('/paineladministrativo/cupons')}>Promocional</button>
+                                        <button className="btn-cpn" onClick={() => history.push('/paineladministrativo/cuponschange')}>Troca</button>
+                                    </div>
+                                )}
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/vendas')}> Vendas </button></td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/cancelamentos')}> Cancelamentos </button></td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/trocas')}> Trocas </button></td>
