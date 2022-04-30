@@ -278,6 +278,14 @@ export default function NormalPerfil() {
                             <br />
                             <tr>
                                 <td>
+                                    Para ver seus cupons <br />
+                                    Clique no botão abaixo!
+                                    <button className="button" onClick={() => history.push("/meuscupons")}>Meus cupons</button>
+                                </td>
+                            </tr>
+                            <br />
+                            <tr>
+                                <td>
                                     Deseja acompanhar seus pedidos ?<br />
                                     Clique no botão abaixo!
                                     <button className="button" onClick={() => history.push("/pedidos")}>Ver meus pedidos</button>

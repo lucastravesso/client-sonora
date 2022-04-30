@@ -90,12 +90,12 @@ export default function OrderSelectedPage() {
                     <tr>
                         <td><b>Nº Pedido</b></td>
                         <td><b>Data do Pedido</b></td>
-                        <td><b>Preço total com cupom : {cup.c_name}</b></td>
+                        <td><b>Você utilizou o cupom ' {cup.c_name} '</b></td>
                     </tr>
                     <tr>
                         <td>{order.id}</td>
                         <td>{order.orderDate}</td>
-                        <td>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice - cup.c_percentage)}</td>
+                        <td>Um novo cupom foi gerado com o valor restante.</td>
                     </tr>
                     <tr>
                         <td><b>Cidade</b></td>
@@ -108,7 +108,7 @@ export default function OrderSelectedPage() {
                         <td>{address.number}</td>
                     </tr>
                 </table>
-            } else {
+            } else if(products.totalPrice > cup.c_percentage){
                 return <table className="top-table">
                     <tr>
                         <td><b>Nº Pedido</b></td>

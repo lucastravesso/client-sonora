@@ -39,6 +39,7 @@ import QRCodePayment from "./pages/QRCodePayment/index"
 import QRPage from "./pages/QRPage";
 import PasswordChange from "./pages/PasswordChange";
 import AllCuponsChange from "./pages/AdminPanelCupon/AllCuponsChange";
+import AllUserCupons from "./pages/CuponsPages/AllUserCupons";
 
 export default function Routes(){
     return (
@@ -46,6 +47,7 @@ export default function Routes(){
             <Switch>
                 <Route path='/' exact component={LandPage}/>
                 <Route path='/login' component={Login}/>
+                <Route path='/meuscupons' component={AllUserCupons}/>
                 <Route path='/mudarsenha' component={PasswordChange}/>
                 <Route path='/register' component={Register}/>
                 <Route path='/perfilsimples' component={NormalPerfil} />
