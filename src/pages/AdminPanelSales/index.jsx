@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import {useHistory} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom'
 
 import api from '../../services/loginApi'
 import './AdminPanelSales.css'
@@ -10,20 +10,20 @@ export default function AdminPanelSales() {
     const history = useHistory();
     const [orders, setOrders] = useState([]);
 
-    useEffect(() =>{getOrders()}, [])
+    useEffect(() => { getOrders() }, [])
 
-    async function getOrders(){
+    async function getOrders() {
         try {
             await api.get('/order/findAll', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
-            }).then(res => {setOrders(res.data)})
+            }).then(res => { setOrders(res.data) })
         } catch (err) {
             alert("Não foi encontrado nenhuma venda")
         }
     }
-    
+
     return (
         <>
             <NavAdmin />
@@ -37,20 +37,21 @@ export default function AdminPanelSales() {
                     <br />
                     <br />
                     {orders
-                    .sort((a, b) => {return a.orderDate.localeCompare(b.orderDate)})
-                    .map(o =>(
-                        <button className="button" onClick={() => {
-                            localStorage.setItem('selected-order',o.id);
-                            history.push('/paineladministrativo/vendas/venda')
-                        }}>
-                            <tr key={o.id}>
-                                <td>ID : {o.id}</td>
-                                <td>STATUS : {o.status}</td>
-                                <td>Data do pedido : {o.orderDate}</td>
-                                <td>Email : {o.user.email}</td>
-                            </tr>
-                        </button>
-                    ))}
+                        .sort((a, b) => { return a.id - b.id })
+                        .reverse()
+                        .map(o => (
+                            <button className="button" onClick={() => {
+                                localStorage.setItem('selected-order', o.id);
+                                history.push('/paineladministrativo/vendas/venda')
+                            }}>
+                                <tr key={o.id}>
+                                    <td>ID : {o.id}</td>
+                                    <td>STATUS : {o.status}</td>
+                                    <td>Data do pedido : {o.orderDate}</td>
+                                    <td>Email : {o.user.email}</td>
+                                </tr>
+                            </button>
+                        ))}
                 </table>
             </div>
         </>

@@ -86,18 +86,15 @@ export default function CartConfPage() {
 
     }
 
-    async function verifyCupon() {
+    function verifyCupon() {
 
-        let cupom = document.getElementsByName("cupom")
-        try {
-            await api.get(`/cupon/listname/${cupom[0].value}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            }).then(res => {
-                setCup(res.data)
-            })
-
+        const cupom = document.getElementsByName("cupom")
+        api.get(`/cupon/listname/${cupom[0].value}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+            }
+        }).then(res => {
+            setCup(res.data)
             if (cup.length !== 0 && cup.c_quantity > 0 && cup.c_type === 0) {
                 setStatus({
                     type: 'cupom',
@@ -116,7 +113,7 @@ export default function CartConfPage() {
                     message: 'Cupom invalido . .'
                 })
             }
-        } catch (err) { }
+        })
     }
 
     function showCards() {

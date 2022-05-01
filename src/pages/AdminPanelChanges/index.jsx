@@ -38,7 +38,10 @@ export default function AdminPanelChanges() {
                     <br />
                     <br />
                     <tbody>
-                        {changes.map(c => (
+                        {changes
+                        .sort((a, b) => { return a.id - b.id })
+                        .reverse()
+                        .map(c => (
                             <button className="button" onClick={() => {
                                 localStorage.setItem('selected-change',c.id);
                                 history.push('/paineladministrativo/trocas/troca')

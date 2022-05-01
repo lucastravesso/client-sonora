@@ -131,6 +131,29 @@ export default function OrderSelectedPage() {
                         <td>{address.number}</td>
                     </tr>
                 </table>
+            }else{
+                return <table className="top-table">
+                    <tr>
+                        <td><b>Nº Pedido</b></td>
+                        <td><b>Data do Pedido</b></td>
+                        <td><b>Voce utilizou um cupom de troca</b></td>
+                    </tr>
+                    <tr>
+                        <td>{order.id}</td>
+                        <td>{order.orderDate}</td>
+                        <td>com o valor identico ao desta compra</td>
+                    </tr>
+                    <tr>
+                        <td><b>Cidade</b></td>
+                        <td><b>Bairro</b></td>
+                        <td><b>Numero</b></td>
+                    </tr>
+                    <tr>
+                        <td>{address.city}</td>
+                        <td>{address.district}</td>
+                        <td>{address.number}</td>
+                    </tr>
+                </table>
             }
         } else {
             return <table className="top-table">

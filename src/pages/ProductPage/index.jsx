@@ -31,8 +31,8 @@ export default function LandPage() {
 
     async function addCart() {
 
-        if (product.prod_quantity === 0) {
-            alert("Produto fora de estoque .")
+        if (product.prod_quantity === 0 || product.prod_active === 0) {
+            alert("Produto fora de estoque ou inativado.")
             history.push('/')
         } else {
             if(qntd === 1)
