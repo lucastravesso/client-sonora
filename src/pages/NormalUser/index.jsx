@@ -193,7 +193,7 @@ export default function NormalPerfil() {
                                 <td>Nome : {user.firstName + ' ' + user.lastName}</td>
                             </tr>
                             <tr className="lines-table">
-                                <td>CPF : {user.cpf}</td>
+                                <td id="teste-cpf">CPF : {user.cpf}</td>
                             </tr>
                             <tr className="lines-table">
                                 <td>RG : {user.rg}</td>

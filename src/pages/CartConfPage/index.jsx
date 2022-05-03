@@ -25,6 +25,8 @@ export default function CartConfPage() {
 
     const history = useHistory();
 
+    localStorage.removeItem('cupon')
+
     useEffect(() => { getCard() }, [])
     useEffect(() => { getProducts() }, []);
 

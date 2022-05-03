@@ -45,17 +45,20 @@ export default function AllUserCupons() {
                     </thead>
                     <br />
                     <tbody>
-                        {cupons.map(c => (
-                            <>
-                                <tr key={c.id}>
-                                    <td>Cupom : {c.c_name}</td>
-                                    <td>Data de obtenção : {c.c_register}</td>
-                                    <td>Valor do cupom : R$ {c.c_percentage},00</td>
-                                    <td>Cupom usado : {checkAvaible(c.c_quantity)}</td>
-                                </tr>
-                                <br />
-                            </>
-                        ))}
+                        {cupons
+                            .sort((a, b) => { return a.id - b.id })
+                            .reverse()
+                            .map(c => (
+                                <>
+                                    <tr key={c.id}>
+                                        <td>Cupom : <label>{c.c_name}</label></td>
+                                        <td>Data de obtenção : {c.c_register}</td>
+                                        <td>Valor do cupom : R$ {c.c_percentage},00</td>
+                                        <td>Cupom usado : {checkAvaible(c.c_quantity)}</td>
+                                    </tr>
+                                    <br />
+                                </>
+                            ))}
                     </tbody>
                 </table>
             </div>
