@@ -1,4 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import InputMask from 'react-input-mask';
+
 
 import { Chart } from "react-google-charts";
 
@@ -10,12 +12,14 @@ import NavAdmin from '../NavAdmin/NavAdmin'
 export default function AdminPanelHome() {
 
     const [infos, setInfos] = useState([])
+    const [ini, setIni] = useState('')
+    const [end, setEnd] = useState('')
 
-    useEffect(() => {getGraficInfo()}, [])
+    useEffect(() => { getGraficInfo() }, [])
 
-    function getGraficInfo(){
+    function getGraficInfo(dtIni, dtFim) {
         try {
-            api.get('/order/grafics', {
+            api.get(`/order/grafics/${dtIni}/${dtFim}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -27,20 +31,15 @@ export default function AdminPanelHome() {
         }
     }
 
-    console.log(infos)
+    var dtTable = [];
+
+    dtTable = infos.map(i => {
+        return [i.cat_sale_date, i.getCat_corda, i.getCat_sopro, i.getCat_percussao, i.getCat_eletronicos, i.getCat_outros]
+    })
 
     const data = [
-        ["Year", "Cordas", "Sopro", "Percussão", "eletrofones", "outros"],
-        ["2004", 655, 400, 600, 200, 100],
-        ["2005", 344, 460, 500, 500, 100],
-        ["2006", 123, 1120, 100, 300, 20],
-        ["2007", 104, 540, 300, 800, 1200],
-        ["2007", 104, 540, 300, 800, 1200],
-        ["2007", 104, 540, 300, 800, 1200],
-        ["2007", 104, 540, 300, 800, 1200],
-        ["2007", 104, 540, 300, 800, 1200],
-        ["2007", 104, 540, 300, 800, 1200],
-        ["2007", 104, 540, 300, 800, 1200],
+        ["Dia", "Cordas", "Sopro", "Percussão", "eletrofones", "outros"],
+        ...dtTable
     ];
 
     const options = {
@@ -49,6 +48,11 @@ export default function AdminPanelHome() {
         legend: { position: "bottom" },
     };
 
+    async function senddata(e){
+        e.preventDefault()
+        getGraficInfo(ini,end)
+    }
+
     return (
         <>
             <NavAdmin />
@@ -56,11 +60,28 @@ export default function AdminPanelHome() {
 
                 <Chart
                     chartType="LineChart"
-                    width="100%"
-                    height="400px"
+                    width="80%"
+                    height="450px"
                     data={data}
                     options={options}
                 />
+                <div className="form-grafics">
+                    <form onSubmit={senddata}>
+                        <InputMask
+                            mask="9999-99-99"
+                            placeholder='Data inicio'
+                            value={ini}
+                            onChange={e => setIni(e.target.value)}
+                        />
+                        <InputMask
+                            mask="9999-99-99"
+                            placeholder='Data final'
+                            value={end}
+                            onChange={e => setEnd(e.target.value)}
+                        />
+                        <button className="button" type='submit'>Enviar</button>
+                    </form>
+                </div>
             </div>
         </>
     );
