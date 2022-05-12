@@ -19,7 +19,7 @@ export default function NavAdmin() {
                         <thead>
                             <tr>
                                 <td className="logo">
-                                    <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/")} />
+                                    <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/paineladministrativo")} />
                                 </td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/usuarios')}> Usuarios </button></td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>

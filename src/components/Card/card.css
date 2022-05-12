@@ -1,0 +1,26 @@
+.card{
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 20px;
+    font-size: 1rem;
+    overflow: hidden;
+    background-color: white;
+
+    text-align: center;
+    max-width: 600px;
+    min-width: 400px;
+}
+
+.card .footer {
+    padding: 10px 5px;
+    font-size: 25px;
+    background-color: black;
+    color: white;
+}
+
+
+.card .content {
+    padding: 20px 10px;
+    background-color: white;
+    color: black;
+}

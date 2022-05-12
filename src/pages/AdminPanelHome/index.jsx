@@ -45,42 +45,59 @@ export default function AdminPanelHome() {
     const options = {
         title: "Volume de vendas",
         curveType: "function",
-        legend: { position: "bottom" },
+        lineWidth: 2,
+        legend: { position: "right" },
     };
 
-    async function senddata(e){
+    async function senddata(e) {
         e.preventDefault()
-        getGraficInfo(ini,end)
+        getGraficInfo(ini, end)
+    }
+
+    function validateFields() {
+        if (data.length < 2) {
+            return <h1 className="h1-grafic">Insira os dados para consulta</h1>
+        } else {
+            return <>
+            <h1 className="h1-grafic">Grafico de vendas entre {ini} a {end}</h1>
+            <Chart
+                chartType="LineChart"
+                width="1000px"
+                height="550px"
+                loader={<div>Loading Chart</div>}
+                data={data}
+                options={options}
+            />
+            </>
+        }
     }
 
     return (
         <>
             <NavAdmin />
-            <div className="container-home">
+            <div className="container-home-full">
+                <div className="container-home-left">
+                    {validateFields()}
+                    <div className="form-grafics">
+                        <form onSubmit={senddata}>
+                            <InputMask
+                                mask="9999-99-99"
+                                placeholder='Data inicio'
+                                value={ini}
+                                onChange={e => setIni(e.target.value)}
+                            />
+                            <InputMask
+                                mask="9999-99-99"
+                                placeholder='Data final'
+                                value={end}
+                                onChange={e => setEnd(e.target.value)}
+                            />
+                            <button className="button-grafics" type='submit'>Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <div className="container-home-right">
 
-                <Chart
-                    chartType="LineChart"
-                    width="80%"
-                    height="450px"
-                    data={data}
-                    options={options}
-                />
-                <div className="form-grafics">
-                    <form onSubmit={senddata}>
-                        <InputMask
-                            mask="9999-99-99"
-                            placeholder='Data inicio'
-                            value={ini}
-                            onChange={e => setIni(e.target.value)}
-                        />
-                        <InputMask
-                            mask="9999-99-99"
-                            placeholder='Data final'
-                            value={end}
-                            onChange={e => setEnd(e.target.value)}
-                        />
-                        <button className="button" type='submit'>Enviar</button>
-                    </form>
                 </div>
             </div>
         </>
