@@ -3,6 +3,8 @@ import InputMask from 'react-input-mask';
 
 
 import { Chart } from "react-google-charts";
+import { validateNasc } from "../../validations/validations";
+
 
 import api from '../../services/loginApi'
 
@@ -14,22 +16,53 @@ export default function AdminPanelHome() {
     const [infos, setInfos] = useState([])
     const [ini, setIni] = useState('')
     const [end, setEnd] = useState('')
+    const [status, setStatus] = useState({
+        type: '',
+        message: ''
+    });
 
     useEffect(() => { getGraficInfo() }, [])
 
     function getGraficInfo(dtIni, dtFim) {
-        try {
-            api.get(`/order/grafics/${dtIni}/${dtFim}`, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            }).then(res => {
-                setInfos(res.data)
-            })
-        } catch (err) {
-            console.log("falha ao buscar info")
+        if (dtIni !== undefined && dtFim !== undefined) {
+
+            if (!validate()) return;
+
+            try {
+                api.get(`/order/grafics/${dtIni}/${dtFim}`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                }).then(res => {
+                    setInfos(res.data)
+                })
+            } catch (err) {
+                console.log("falha ao buscar info")
+            }
         }
     }
+
+    function validate() {
+
+        if (!ini) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo data inicio . .'
+        })
+        else if (!end) return setStatus({
+            type: 'error',
+            message: 'Necessario preencher o campo data final . .'
+        })
+        else if (!validateNasc(end)) return setStatus({
+            type: 'error',
+            message: 'Data final além do dia atual . .'
+        })
+        else if (!validateNasc(ini)) return setStatus({
+            type: 'error',
+            message: 'Data inicio além do dia atual . .'
+        })
+        else { return true; }
+    }
+
 
     var dtTable = [];
 
@@ -49,28 +82,30 @@ export default function AdminPanelHome() {
         legend: { position: "right" },
     };
 
-    async function senddata(e) {
+    function senddata(e) {
         e.preventDefault()
         getGraficInfo(ini, end)
     }
 
     function validateFields() {
         if (data.length < 2) {
-            return <h1 className="h1-grafic">Insira os dados para consulta</h1>
+            return <h1 className="h1-grafic">Insira os dados para consultar o volume de vendas entre datas</h1>
         } else {
             return <>
-            <h1 className="h1-grafic">Grafico de vendas entre {ini} a {end}</h1>
-            <Chart
-                chartType="LineChart"
-                width="1000px"
-                height="550px"
-                loader={<div>Loading Chart</div>}
-                data={data}
-                options={options}
-            />
+                <h1 className="h1-grafic">Grafico de vendas entre {ini} a {end}</h1>
+                <Chart
+                    chartType="LineChart"
+                    width="1840px"
+                    height="650px"
+                    loader={<div>Carregando grafico, aguarde . .</div>}
+                    data={data}
+                    options={options}
+                />
             </>
         }
     }
+
+
 
     return (
         <>
@@ -79,6 +114,7 @@ export default function AdminPanelHome() {
                 <div className="container-home-left">
                     {validateFields()}
                     <div className="form-grafics">
+
                         <form onSubmit={senddata}>
                             <InputMask
                                 mask="9999-99-99"
@@ -95,9 +131,7 @@ export default function AdminPanelHome() {
                             <button className="button-grafics" type='submit'>Enviar</button>
                         </form>
                     </div>
-                </div>
-                <div className="container-home-right">
-
+                    <h1>{status.type === 'error' ? <p style={{ color: "red" }}>{status.message}</p> : ""}</h1>
                 </div>
             </div>
         </>

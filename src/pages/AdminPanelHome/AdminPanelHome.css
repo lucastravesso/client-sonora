@@ -5,7 +5,7 @@
 
 .container-home-full .container-home-left{
     margin: 10px;
-    flex: 50%;
+    flex: 100%;
     box-shadow: 1px 1px 0.5em black;
     background-color: rgb(248, 224, 193);
     border-radius: 20px;
@@ -23,9 +23,7 @@
     text-align: center;
     margin-left: 40%;
 }
-.container-home-full .container-home-right{
-    flex: 50%;
-}
+
 
 .button-grafics{
     width: 100%;
