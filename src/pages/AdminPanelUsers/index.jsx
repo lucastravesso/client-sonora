@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom"
 
 import api from '../../services/loginApi'
 import './AdminPanelUsers.css'
@@ -7,6 +8,8 @@ import '../../components/Card/UserCard'
 import UserCard from "../../components/Card/UserCard";
 
 export default function AdminPanelUsers() {
+    
+    const history = useHistory()
 
     const [user, setUser] = useState([])
 
@@ -31,6 +34,7 @@ export default function AdminPanelUsers() {
                 {user.map(u => (
                     <UserCard titulo={"Usuario : " + u.firstName}>
                         <ul key={u.id}>
+                            <li>Id: {u.id}</li><br />
                             <li>Nome : {u.firstName} {u.lastName}</li><br />
                             <li>CPF : {u.cpf}</li><br />
                             <li>RG : {u.rg}</li><br />
@@ -39,7 +43,10 @@ export default function AdminPanelUsers() {
                             <li>Data de registro : {u.register}</li><br />
                             <li>Email : {u.email}</li>
                         </ul>
-                        <button className="button-users">Ver usuario</button>
+                        <button className="button-users" onClick={() =>{
+                            localStorage.setItem('id-usuario-inf', u.id)
+                            history.push('/paineladministrativo/usuarios/informacoes')
+                        }}>Ver usuario</button>
                     </UserCard>
                 ))}
 

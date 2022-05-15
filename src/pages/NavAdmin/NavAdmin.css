@@ -4,6 +4,8 @@
     height: 150px;
     align-items: center;
     background-color: #3B0B0C;
+    box-shadow:  1px 1px 0.5em black;
+
 }
 
 .trocas-cancelamentos{
