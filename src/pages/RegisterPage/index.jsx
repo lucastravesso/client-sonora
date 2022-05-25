@@ -27,6 +27,8 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [passwordConf, setPasswordConf] = useState('');
 
+    const [testRes, setTestRes] = useState([])
+
     async function registerForm(e){
         e.preventDefault();
 
@@ -45,7 +47,6 @@ export default function Register() {
         }
 
         if(!validate()) return; 
-
         
         if(password === passwordConf)
             {

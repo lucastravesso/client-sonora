@@ -15,7 +15,7 @@ export default function QRPage() {
 
     let precoTotal = Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(products.totalPrice)
     let String = `Preço total do pedido : ${precoTotal}
-                \nConta para envio do pagamento : 2496777-5
+                \nConta para envio do pagamento : 2498777-5
                 \nInstituição de pagamento : Nu Pagamentos S.A.
                 \nAgência : 0001
                 \nPIX : 48502475800 

@@ -46,6 +46,8 @@ export default function NormalPerfil() {
         }
     }
 
+
+
     async function getCard() {
         try {
             await api.get('/card/listallbyid', {
@@ -86,7 +88,7 @@ export default function NormalPerfil() {
         let r = window.confirm("Voce deseja realmente inativar sua conta ?");
         if (r === true) {
             try {
-                api.delete(`/user/delete/${user.id}`, {
+                await api.put('/user/inactive', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
@@ -94,7 +96,7 @@ export default function NormalPerfil() {
                 localStorage.clear()
                 history.push('/');
             } catch (err) {
-                alert("falha ao deletar conta")
+                alert("falha ao inativar a conta")
             }
         }
     }

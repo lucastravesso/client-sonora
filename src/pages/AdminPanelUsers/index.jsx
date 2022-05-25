@@ -8,10 +8,14 @@ import '../../components/Card/UserCard'
 import UserCard from "../../components/Card/UserCard";
 
 export default function AdminPanelUsers() {
-    
+
     const history = useHistory()
 
+    const [consulta, setConsulta] = useState(false)
+
     const [user, setUser] = useState([])
+
+    const [id, setId] = useState()
 
     useEffect(() => { getUser() }, [])
 
@@ -27,28 +31,53 @@ export default function AdminPanelUsers() {
         }
     }
 
+    function showUsers(e) {
+        e.preventDefault();
+        return (
+            <>
+
+            </>
+        )
+    }
+
+
     return (
         <>
             <NavAdmin />
+            <button onClick={() => consulta ? setConsulta(false) : setConsulta(true)}>Filtrar</button>
             <div className="container-home">
-                {user.map(u => (
-                    <UserCard titulo={"Usuario : " + u.firstName}>
-                        <ul key={u.id}>
-                            <li>Id: {u.id}</li><br />
-                            <li>Nome : {u.firstName} {u.lastName}</li><br />
-                            <li>CPF : {u.cpf}</li><br />
-                            <li>RG : {u.rg}</li><br />
-                            <li>Telefone : {u.phone}</li><br />
-                            <li>Data de Nascimento : {u.born}</li><br />
-                            <li>Data de registro : {u.register}</li><br />
-                            <li>Email : {u.email}</li>
-                        </ul>
-                        <button className="button-users" onClick={() =>{
-                            localStorage.setItem('id-usuario-inf', u.id)
-                            history.push('/paineladministrativo/usuarios/informacoes')
-                        }}>Ver usuario</button>
-                    </UserCard>
-                ))}
+                {consulta === true && (
+                    <div className="modal-filter">
+                        <form onSubmit={showUsers}>
+                            <input
+                                type="text"
+                                placeholder="ID do usuario"
+                                onChange={e => setId(e.target.value)}
+                            />
+                            <button className="button" type="submit">Filtrar</button>
+                        </form>
+                    </div>
+                )}
+                {user
+                    .map(u => (
+                        <UserCard titulo={"Usuario : " + u.firstName}
+                            id={u.id}
+                            nome={u.firstName}
+                            sobrenome={u.lastName}
+                            cpf={u.cpf}
+                            rg={u.rg}
+                            phone={u.phone}
+                            born={u.born}
+                            email={u.email}
+                        >
+
+                            <button className="button-users" onClick={() => {
+                                localStorage.setItem('id-usuario-inf', u.id)
+                                history.push('/paineladministrativo/usuarios/informacoes')
+                            }}>Ver usuario</button>
+                        </UserCard>
+                    ))}
+
 
             </div>
         </>

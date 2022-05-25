@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import {useHistory} from 'react-router-dom'
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom'
 import './loginStyles.css'
 
 import Nav from '../Navigation/Nav'
@@ -7,52 +7,56 @@ import Bottom from "../BottomInfo/Bottom";
 
 import api from '../../services/loginApi'
 
-export default function Login () {
+export default function Login() {
 
     const history = useHistory();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    if(localStorage.getItem('email') != null)
-    {
-        history.push('/perfilsimples');
-    }
+    async function login(e) {
+        e.preventDefault();
 
-    async function login(e){
-            e.preventDefault();
+        const data = {
+            email,
+            password,
+        };
+        try {
+            const response = await api.post('auth', data);
 
-            const data = {
-                email,
-                password,
-            };
+            localStorage.setItem('email', data.email)
+            localStorage.setItem('accessToken', response.data.token)
             try {
-                const response = await api.post('auth', data);
-
-                localStorage.setItem('email', data.email)
-                localStorage.setItem('accessToken', response.data.token)
-                //FAZER A VALIDACAO DE ROTA COM O NIVEL DE ACESSO DO PERFIL
-                history.push('/perfilsimples')
+                await api.get("/user/verify", {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                    }
+                })
+                history.push('/perfilsimples');
             } catch (err) {
-                alert("Login failed !")
+                localStorage.clear()
+                alert("Conta inativada")
             }
+        } catch (err) {
+            alert("Login failed !")
+        }
     };
 
-        return (
-            <>
+    return (
+        <>
             <Nav />
             <div className="main-login">
                 <div className="login-container">
                     <form onSubmit={login}>
                         <h1>Faça login para continuar . .</h1>
-                        <input 
+                        <input
                             data-cy="login"
                             type="email"
                             placeholder="Email"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
-                        <input 
+                        <input
                             data-cy="senha"
                             type="password"
                             placeholder="Senha"
@@ -64,16 +68,16 @@ export default function Login () {
                 </div>
 
                 <div className="register-container">
-                        <div className="align-register">
-                            <h1>Se você não é registrado, cria sua conta agora!</h1>
-                            <button data-cy="register-btn" className="button" onClick={() => history.push('register')} >Registrar-se</button>
-                        </div>
+                    <div className="align-register">
+                        <h1>Se você não é registrado, cria sua conta agora!</h1>
+                        <button data-cy="register-btn" className="button" onClick={() => history.push('register')} >Registrar-se</button>
+                    </div>
                 </div>
             </div>
             <br />
             <br />
             <br />
             <Bottom />
-            </>
+        </>
     );
 }

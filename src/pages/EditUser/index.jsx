@@ -24,33 +24,11 @@ export default function EditUser() {
     const [password, setPassword] = useState('');
     const [login, setLogin] = useState('');
     const [email, setEmail] = useState('');
-    const [country, setCountry] = useState('');
-    const [state, setState] = useState('');
-    const [city, setCity] = useState('');
-    const [district, setDistrict] = useState('');
-    const [street, setStreet] = useState('');
-    const [number, setNumber] = useState('');
-    const [complement, setComplement] = useState('');
+
 
     const history = useHistory();
     const accessToken = localStorage.getItem('accessToken');
 
-    const [formValuesState, setFormValuesState] = useState({});
-    const [formValuesCity, setFormValuesCity] = useState({});
-
-    const handleInputChangeState = (e) => {
-        e.preventDefault();
-        
-        const { value, name } = e.target;
-        setFormValuesState({ ...formValuesState, [name]: value });
-        setState(value)
-    }
-    const handleInputChangeCity = (e) => {
-        e.preventDefault();
-        const { value, name } = e.target;
-        setFormValuesCity({ ...formValuesCity, [name]: value });
-        setCity(value)
-    }
 
     useEffect(() => {
         try {
@@ -70,15 +48,8 @@ export default function EditUser() {
                 setRegister(res.data.register)
                 setLogin(res.data.login)
                 setEmail(res.data.email)
-                setCountry(res.data.addressDto.country)
-                setState(res.data.addressDto.state)
-                setCity(res.data.addressDto.city)      
-                setDistrict(res.data.addressDto.district)
-                setStreet(res.data.addressDto.street)
-                setNumber(res.data.addressDto.number)
-                setComplement(res.data.addressDto.complement)
             })
-            
+
         } catch (err) {
             alert("Falha ao encontrar usuario . .")
         }
@@ -87,16 +58,6 @@ export default function EditUser() {
     async function updateUser(e) {
         e.preventDefault();
 
-        const addressDto = {
-            country: country,
-            state: state,
-            city: city,
-            district: district,
-            street: street,
-            number: number,
-            complement: complement,
-
-        }
 
         const User = {
             firstName: firstName,
@@ -109,7 +70,6 @@ export default function EditUser() {
             password: password,
             login: login,
             email: email,
-            addressDto,
         }
 
         try {
@@ -170,40 +130,15 @@ export default function EditUser() {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
+                        <button className="button" type="submit">Enviar</button>
 
                     </div>
                 </div>
-                <div className="form-right">
-                    <div className="align-rigth">
-                        <DropDownStates id="state" name="state" address={state} onChange={handleInputChangeState} />
-                        <DropDownCities id="city" name="city" address={city} onChange={handleInputChangeCity} state={formValuesState.state} />
-                        <input
-                            placeholder="Bairro"
-                            value={district}
-                            onChange={e => setDistrict(e.target.value)}
-                        />
-                        <input
-                            placeholder="Rua"
-                            value={street}
-                            onChange={e => setStreet(e.target.value)}
-                        />
-                        <input
-                            placeholder="Numero"
-                            value={number}
-                            onChange={e => setNumber(e.target.value)}
-                        />
-                        <input
-                            placeholder="Complemento"
-                            value={complement}
-                            onChange={e => setComplement(e.target.value)}
-                        />
-                        <button className="button" type="submit">Enviar</button>
-                    </div>
-                </div>
-            </form>
+
+            </form >
             <br />
             <br />
-        <Bottom />
+            <Bottom />
         </>
     );
 }
