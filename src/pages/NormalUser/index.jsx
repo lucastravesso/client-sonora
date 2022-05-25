@@ -88,7 +88,7 @@ export default function NormalPerfil() {
         let r = window.confirm("Voce deseja realmente inativar sua conta ?");
         if (r === true) {
             try {
-                await api.put('/user/inactive', {
+                await api.put('/user/inactive', null, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                     }
