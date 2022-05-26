@@ -14,6 +14,10 @@ export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    if(localStorage.getItem('email') !== null){
+        history.push('/perfilsimples');
+    }
+
     async function login(e) {
         e.preventDefault();
 
