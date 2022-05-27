@@ -1,0 +1,77 @@
+.audit-container{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.table-audit-table{
+    width: 1810px;
+    margin-left: 50px;
+    margin-top: 20px;
+    vertical-align: center;
+}
+
+.table-audit-table .th_audit{
+
+    width: 100%;
+    margin-left: 20px;
+    padding: 4px 12px 4px 20px;
+    box-shadow: inset 1000px 1000px 100em #660f12, 2px 2px 0.2em black;
+    border-radius: 10px; 
+    background-color: rgba(252, 50, 50, 0.425);
+}
+
+.table-audit-table .th_audit td{
+    
+    padding: 12px 12px 12px 20px;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+}
+
+.table-audit-table .tb_audit{
+    width: 100%;
+    margin-left: 20px;
+    padding: 4px 12px 4px 20px;
+    border-radius: 10px;
+    box-shadow: inset 1000px 1000px 100em #ffffff, 2px 2px 0.2em black;
+    background-color: rgba(255, 255, 255, 0.425);
+}
+
+.table-audit-table .tb_audit td{
+    
+    padding: 12px 12px 12px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+
+.buttonss .btn-effects {
+    position: fixed;
+    margin: 20px 20px 20px 525px;
+    border-radius: 10px;
+    background: none;
+    font: inherit;
+    padding: 8px;
+    color: white;
+    border: 1px white;
+    background-color: rgb(163, 10, 10);
+}
+
+.buttonss .btn-effects2 {
+    position: fixed;
+    margin: 20px 20px 20px 1225px;
+    border-radius: 10px;
+    background: none;
+    font: inherit;
+    padding: 8px;
+    color: white;
+    border: 1px white;
+    background-color: rgb(163, 10, 10);
+}
+

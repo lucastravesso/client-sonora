@@ -10,6 +10,7 @@ export default function NavAdmin() {
     const history = useHistory();
 
     const [listCupons, setListCupons] = useState(false)
+    const [audit, setAudit] = useState(false)
 
     return (
         <>
@@ -21,7 +22,13 @@ export default function NavAdmin() {
                                 <td className="logo">
                                     <img src={Logo} alt="Logo MusicShop" className='nav-img-logo' onClick={() => history.push("/paineladministrativo")} />
                                 </td>
-                                <td className="opt"><button onClick={() => history.push('/paineladministrativo/usuarios')}> Usuarios </button></td>
+                                <td className="opt"><button onClick={() => audit ? setAudit(false) : setAudit(true)}> Usuarios </button></td>
+                                {audit === true && (
+                                    <div className="modal-usr">
+                                        <button className="btn-usr" onClick={() => history.push('/paineladministrativo/usuarios')}>Usuarios</button>
+                                        <button className="btn-usr" onClick={() => history.push('/paineladministrativo/auditoria')}>Auditoria</button>
+                                    </div>
+                                )}
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/produtos')}> Produtos </button></td>
 
                                 <td className="opt"><button onClick={() => listCupons ? setListCupons(false) : setListCupons(true)}> Cupons </button></td>

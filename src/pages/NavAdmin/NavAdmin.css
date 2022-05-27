@@ -62,3 +62,23 @@
     color: white;
     transition: filter 0.8s;
 }
+
+.container-adm-home .navigation table thead tr .modal-usr{
+    position: absolute;
+    top: 105px;
+    left: 330px;
+}
+
+.container-adm-home .navigation table thead tr .modal-usr .btn-usr{
+    margin: 5px;
+    padding: 5px;
+    width: 80px;
+    height: 30px;
+    font-size: 11px;
+    background: #BA2126;
+    border-radius: 28px;
+    box-shadow: inset 1px 1px 0.5em black;
+    border: 0;
+    color: white;
+    transition: filter 0.8s;
+}

@@ -41,12 +41,14 @@ import PasswordChange from "./pages/PasswordChange";
 import AllCuponsChange from "./pages/AdminPanelCupon/AllCuponsChange";
 import AllUserCupons from "./pages/CuponsPages/AllUserCupons";
 import UserPage from "./pages/AdminPanelUsers/UserPage"
+import AuditTable from "./pages/AdminPanelAudit/auditIndex";
 
 export default function Routes(){
     return (
         <BrowserRouter>
             <Switch>
                 <Route path='/paineladministrativo/usuarios/informacoes' exact component={UserPage}/>
+                <Route path='/paineladministrativo/auditoria' exact component={AuditTable}/>
                 <Route path='/' exact component={LandPage}/>
                 <Route path='/login' component={Login}/>
                 <Route path='/meuscupons' component={AllUserCupons}/>
