@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom'
 
 import api from '../../services/loginApi'
 import './AdminPanelSales.css'
 import NavAdmin from '../NavAdmin/NavAdmin'
 
+import SelectedSale from "./SelectedSale";
+
 export default function AdminPanelSales() {
 
-    const history = useHistory();
     const [orders, setOrders] = useState([]);
+    const [selected, setSelected] = useState();
 
     useEffect(() => { getOrders() }, [])
 
@@ -27,7 +28,8 @@ export default function AdminPanelSales() {
     return (
         <>
             <NavAdmin />
-            <div className="container-sales">
+            { !!selected ? <SelectedSale item={ selected } /> : (
+                <div className="container-sales">
                 <table className="table-sales">
                     <thead>
                         <tr>
@@ -41,8 +43,7 @@ export default function AdminPanelSales() {
                         .reverse()
                         .map(o => (
                             <button className="button" onClick={() => {
-                                localStorage.setItem('selected-order', o.id);
-                                history.push('/paineladministrativo/vendas/venda')
+                                setSelected(o.id)
                             }}>
                                 <tr key={o.id}>
                                     <td>ID : {o.id}</td>
@@ -54,6 +55,8 @@ export default function AdminPanelSales() {
                         ))}
                 </table>
             </div>
+            )}
+            
         </>
     );
 }

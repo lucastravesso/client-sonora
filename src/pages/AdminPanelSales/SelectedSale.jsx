@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 
 import api from '../../services/loginApi'
 import './AdminPanelSales.css'
-import NavAdmin from '../NavAdmin/NavAdmin'
 import DropDownStatus from '../../components/DropDowns/DdStatusChange'
 
-export default function SelectedSales() {
+export default function SelectedSales(props) {
 
     const [order, setOrder] = useState([]);
     const [products, setProducts] = useState([]);
@@ -20,7 +19,7 @@ export default function SelectedSales() {
 
     async function getProducts() {
         try {
-            await api.get(`/order/prod/${localStorage.getItem('selected-order')}`, {
+            await api.get(`/order/prod/${props.item}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -39,7 +38,7 @@ export default function SelectedSales() {
 
         try {
 
-            await api.get(`/order/${localStorage.getItem('selected-order')}`, {
+            await api.get(`/order/${props.item}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
@@ -57,7 +56,7 @@ export default function SelectedSales() {
     async function handleChangeStatus() {
 
         try {
-            api.put(`/order/updateStatus/${localStorage.getItem('selected-order')}`, { status: status }, {
+            api.put(`/order/updateStatus/${props.item}`, { status: status }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`
                 }
@@ -110,7 +109,6 @@ export default function SelectedSales() {
 
     return (
         <>
-            <NavAdmin />
             <div className="container-sales">
                 <div className="selected-left">
                     <table className="top-table">
