@@ -11,7 +11,6 @@ import AddCard from './pages/AddCard/index';
 import CartPage from "./pages/CartPage";
 import CartConfPage from "./pages/CartConfPage";
 import OrderConfPage from "./pages/OrderConfPage";
-import OrdersPage from "./pages/OrdersPage";
 import OrderSelectedPage from "./pages/OrderSelectedPage"
 import AdminPanelHome from "./pages/AdminPanelHome"
 import ProductPage from "./pages/ProductPage"
@@ -63,7 +62,6 @@ export default function Routes(){
                 <Route path='/confirmacaodepedido' component={OrderConfPage} />
                 <Route path='/trocas' exact component={ProductChangeOrder} />
                 <Route path='/trocas/produto' component={ProductChangeSelected} />
-                <Route path='/pedidos' component={OrdersPage} />
                 <Route path='/pedido' component={OrderSelectedPage} />
                 <Route path='/paineladministrativo' exact component={AdminPanelHome} />
                 <Route path='/paineladministrativo/cupons' exact component={AllCupons} />

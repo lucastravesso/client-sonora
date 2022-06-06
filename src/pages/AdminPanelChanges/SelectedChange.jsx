@@ -29,6 +29,9 @@ export default function SelectedChange() {
         }
     }
 
+    console.log(change)
+
+
     async function handleChangeStatus(){
 
         try {

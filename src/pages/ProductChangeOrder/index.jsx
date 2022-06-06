@@ -1,37 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 import './ProductChangeOrder.css'
 
-import Nav from '../Navigation/Nav'
-import Bottom from "../BottomInfo/Bottom";
+export default function ProductChangeOrder(props) {
 
-import api from "../../services/loginApi";
-
-
-export default function ProductChangeOrder() {
-
-    const [orders, setOrders] = useState([]);
-
-    const history = useHistory();
-
-    useEffect(() => {getOrders()}, [])
-
-    async function getOrders(){
-        try {
-            
-            api.get('/change/list/user', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            }).then(res =>{
-                setOrders(res.data)
-            })
-
-        } catch (err) {
-            alert("Falha ao buscar pedidos . .")
-        }
-    }
+    const history = useHistory()
 
     async function handleRedirect(id){
 
@@ -41,13 +15,12 @@ export default function ProductChangeOrder() {
 
     return (
         <>
-            <Nav />
             <div className="container-product-change">
                 <table>
                     <tr>
                         <td><h1>TODOS OS PEDIDOS DE TROCA DA CONTA</h1></td>
                     </tr>
-                    {orders.map(o =>(
+                    {props.receiveProps.map(o =>(
                         <>
                             <button onClick={() => handleRedirect(o.id)}>
                                 <tr key={o.id}>
@@ -61,7 +34,6 @@ export default function ProductChangeOrder() {
                     ))}
                 </table>
             </div>
-            <Bottom />
         </>
     );
 

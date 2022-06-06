@@ -20,3 +20,58 @@
     font-size: 20px;
     
 }
+
+.container-user-adm{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+    margin: 100px 140px;
+}
+
+.user-info-adm{
+    grid-column-start: 1;
+    grid-column-end: 5;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.user-info-adm ul li {
+    font-size: 25px;
+    padding: 10px;
+}
+
+.user-address-info-adm{
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid black;
+    background-color: rgb(244, 253, 116);
+}
+
+.user-card-info-adm{
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid black;
+    background-color: rgb(152, 255, 126);
+}
+
+.user-fame-info-adm{
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid black;
+    background-color: rgb(137, 135, 243);
+}
+
+.user-activated-info-adm{
+    text-align: center;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px solid black;
+    color: white;
+    background-color: rgb(70, 64, 64);
+}

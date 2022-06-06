@@ -1,37 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 import './OrdersPage.css'
 
-import Nav from '../Navigation/Nav'
-import Bottom from "../BottomInfo/Bottom";
-
-import api from "../../services/loginApi";
-
-
-export default function OrdersPage() {
-
-    const [orders, setOrders] = useState([]);
+export default function OrdersPage(props) {
 
     const history = useHistory();
-
-    useEffect(() => {getOrders()}, [])
-
-    async function getOrders(){
-        try {
-            
-            api.get('/order/findByUser', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            }).then(res =>{
-                setOrders(res.data)
-            })
-
-        } catch (err) {
-            alert("Falha ao buscar pedidos . .")
-        }
-    }
 
     async function handleRedirect(id){
 
@@ -41,13 +15,12 @@ export default function OrdersPage() {
 
     return (
         <>
-            <Nav />
             <div className="container-orders">
                 <table>
                     <tr>
                         <td><h1>TODOS OS PEDIDOS DA CONTA</h1></td>
                     </tr>
-                    {orders
+                    {props.receiveProps
                     .sort((a, b) => {return a.id - b.id})
                     .reverse()
                     .map(o =>(
@@ -64,7 +37,6 @@ export default function OrdersPage() {
                     ))}
                 </table>
             </div>
-            <Bottom />
         </>
     );
 

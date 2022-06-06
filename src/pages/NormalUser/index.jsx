@@ -8,6 +8,8 @@ import Nav from '../Navigation/Nav'
 import Bottom from '../BottomInfo/Bottom'
 
 import './normalUserStyles.css'
+//import OrdersPage from "../OrdersPage";
+import ProductChangeOrder from "../ProductChangeOrder";
 
 export default function NormalPerfil() {
 
@@ -18,6 +20,51 @@ export default function NormalPerfil() {
     const [selectedAddress, setSelectedAddress] = useState([])
     const [card, setCard] = useState([]);
     const [auth, setAuth] = useState([]);
+    //const [selectedSales, setSelectedSales] = useState(false);
+    //const [ordersListSales, setOrdersListSales] = useState([]);
+    const [selectedChanges, setSelectedChanges] = useState(false);
+    const [ordersListChanges, setOrdersListChanges] = useState([]);
+
+    const [changeNotifications, setChangeNotifications] = useState(0);
+
+    useEffect(() => {getOrdersListChanges()}, [])
+
+    async function getOrdersListChanges(){
+        try {
+            
+            api.get('/change/list/user', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            }).then(res =>{
+                setOrdersListChanges(res.data)
+            })
+
+        } catch (err) {
+            alert("Falha ao buscar pedidos . .")
+        }
+    }
+
+    console.log(ordersListChanges)
+
+
+    /*
+    useEffect(() => {getOrdersListSales()}, [])
+
+    async function getOrdersListSales(){
+        try {
+            api.get('/order/findByUser', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            }).then(res =>{
+                setOrdersListSales(res.data)
+            })
+
+        } catch (err) {
+            alert("Falha ao buscar pedidos . .")
+        }
+    }*/
 
     useEffect(() => { getCard() }, [])
     useEffect(() => { getUser() }, [])
@@ -45,8 +92,6 @@ export default function NormalPerfil() {
             alert("Falha ao traer as informações de usuario")
         }
     }
-
-
 
     async function getCard() {
         try {
@@ -142,7 +187,6 @@ export default function NormalPerfil() {
         }
     }
 
-
     function showAddressModal(id) {
         address.find(c => {
             if (c.id === id) {
@@ -178,152 +222,159 @@ export default function NormalPerfil() {
         }
     }
 
+
+
     return (
         <>
             <Nav />
-            <button data-cy="adminpanel" className="button-adm" onClick={() => handleAdmin()}>Painel administrativo</button>
-            <div className="full-container-user">
-                <div className="cont-left-user">
-                    <table className="table-left-user">
-                        <thead>
-                            <tr className="title-bar">
-                                <td>
-                                    <h1>Informações do usuário</h1>
-                                </td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Nome : {user.firstName + ' ' + user.lastName}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td id="teste-cpf">CPF : {user.cpf}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>RG : {user.rg}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Data de Nascimento : {user.born}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Email : {user.email}</td>
-                            </tr>
-                            <tr className="lines-table">
-                                <td>Telefone : {user.phone}</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className="title-bar">
-                                <td>
-                                    <h1>Informações de endereço</h1>
-                                </td>
-                            </tr>
-                            {addressList()}
+            {!!selectedChanges ? <ProductChangeOrder receiveProps={ordersListChanges} /> : (
+                <>
+                    <button data-cy="adminpanel" className="button-adm" onClick={() => handleAdmin()}>Painel administrativo</button>
+                    <div className="full-container-user">
+                        <div className="cont-left-user">
+                            <table className="table-left-user">
+                                <thead>
+                                    <tr className="title-bar">
+                                        <td>
+                                            <h1>Informações do usuário</h1>
+                                        </td>
+                                    </tr>
+                                    <tr className="lines-table">
+                                        <td>Nome : {user.firstName + ' ' + user.lastName}</td>
+                                    </tr>
+                                    <tr className="lines-table">
+                                        <td id="teste-cpf">CPF : {user.cpf}</td>
+                                    </tr>
+                                    <tr className="lines-table">
+                                        <td>RG : {user.rg}</td>
+                                    </tr>
+                                    <tr className="lines-table">
+                                        <td>Data de Nascimento : {user.born}</td>
+                                    </tr>
+                                    <tr className="lines-table">
+                                        <td>Email : {user.email}</td>
+                                    </tr>
+                                    <tr className="lines-table">
+                                        <td>Telefone : {user.phone}</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className="title-bar">
+                                        <td>
+                                            <h1>Informações de endereço</h1>
+                                        </td>
+                                    </tr>
+                                    {addressList()}
 
-                        </tbody>
-                        <tfoot >
-                            <tr className="title-bar">
-                                <td>
-                                    <h1>Informação dos cartões</h1>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="table-foot">
-                                        {
-                                            card.map(card => (
-                                                <div className="each-row" key={card.id}>
-                                                    <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
-                                                    <tr className="lines-table">
-                                                        <td>Nome no cartão : {card.card_name}</td>
-                                                    </tr>
-                                                    <tr className="lines-table">
-                                                        <td>Bandeira : {card.card_flag}</td>
-                                                    </tr>
-                                                    <tr className="lines-table">
-                                                        <td>Numero no cartão : {card.card_number}</td>
-                                                    </tr>
-                                                    <tr className="lines-table">
-                                                        <td>Código de segurança : {card.card_security}</td>
-                                                    </tr>
+                                </tbody>
+                                <tfoot >
+                                    <tr className="title-bar">
+                                        <td>
+                                            <h1>Informação dos cartões</h1>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div className="table-foot">
+                                                {
+                                                    card.map(card => (
+                                                        <div className="each-row" key={card.id}>
+                                                            <button className="button-remove" onClick={() => cardFind(card.id)}>Excluir cartão</button>
+                                                            <tr className="lines-table">
+                                                                <td>Nome no cartão : {card.card_name}</td>
+                                                            </tr>
+                                                            <tr className="lines-table">
+                                                                <td>Bandeira : {card.card_flag}</td>
+                                                            </tr>
+                                                            <tr className="lines-table">
+                                                                <td>Numero no cartão : {card.card_number}</td>
+                                                            </tr>
+                                                            <tr className="lines-table">
+                                                                <td>Código de segurança : {card.card_security}</td>
+                                                            </tr>
 
-                                                    <br /><br />
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                                            <br /><br />
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
 
-                </div>
-                <div className="cont-right-user">
-                    <table className="table-right-user">
-                        <thead>
-                            <tr>
-                                <td>
-                                    <button data-cy="logout" className="button1" onClick={logout} type="button">
-                                        <FiPower size={18} color='251fc5' />
-                                    </button>
-                                    {verifyUserInformations(address, card)}
-                                </td>
-                            </tr>
-                        </thead>
-                        <br />
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Para alterar a senha <br />
-                                    Clique no botão abaixo!
-                                    <button className="button" onClick={() => history.push("/mudarsenha")}>Alterar senha</button>
-                                </td>
-                            </tr>
+                        </div>
+                        <div className="cont-right-user">
+                            <table className="table-right-user">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <button data-cy="logout" className="button1" onClick={logout} type="button">
+                                                <FiPower size={18} color='251fc5' />
+                                            </button>
+                                            {verifyUserInformations(address, card)}
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <br />
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Para alterar a senha <br />
+                                            Clique no botão abaixo!
+                                            <button className="button" onClick={() => history.push("/mudarsenha")}>Alterar senha</button>
+                                        </td>
+                                    </tr>
+                                    <br />
+                                    <tr>
+                                        <td>
+                                            Para ver seus cupons <br />
+                                            Clique no botão abaixo!
+                                            <button className="button" onClick={() => history.push("/meuscupons")}>Meus cupons</button>
+                                        </td>
+                                    </tr>
+                                    <br />
+                                    <tr>
+                                        <td>
+                                            Deseja acompanhar seus pedidos ?<br />
+                                            Clique no botão abaixo!
+                                            <button className="button" >Ver meus pedidos</button>
+                                        </td>
+                                    </tr>
+                                    <br />
+                                    <tr>
+                                        <td>
+                                            Deseja acompanhar seus pedidos de troca ?<br />
+                                            Clique no botão abaixo!
+                                            <button className="button" onClick={() => setSelectedChanges(true)}>Ver minhas trocas</button>
+                                        </td>
+                                    </tr>
+                                    <br />
+                                    <tr>
+                                        <td>
+                                            Deseja acompanhar seus pedidos de cancelamento ?<br />
+                                            Clique no botão abaixo!
+                                            <button className="button" onClick={() => history.push("/cancelamentos")}>Ver meus cancelamentos</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <br />
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            Deseja inativar sua conta ?<br />
+                                            Clique no botão abaixo!
+                                            <button id="alert" className="button" onClick={deleteAccount}>Inativar conta</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
                             <br />
-                            <tr>
-                                <td>
-                                    Para ver seus cupons <br />
-                                    Clique no botão abaixo!
-                                    <button className="button" onClick={() => history.push("/meuscupons")}>Meus cupons</button>
-                                </td>
-                            </tr>
-                            <br />
-                            <tr>
-                                <td>
-                                    Deseja acompanhar seus pedidos ?<br />
-                                    Clique no botão abaixo!
-                                    <button className="button" onClick={() => history.push("/pedidos")}>Ver meus pedidos</button>
-                                </td>
-                            </tr>
-                            <br />
-                            <tr>
-                                <td>
-                                    Deseja acompanhar seus pedidos de troca ?<br />
-                                    Clique no botão abaixo!
-                                    <button className="button" onClick={() => history.push("/trocas")}>Ver minhas trocas</button>
-                                </td>
-                            </tr>
-                            <br />
-                            <tr>
-                                <td>
-                                    Deseja acompanhar seus pedidos de cancelamento ?<br />
-                                    Clique no botão abaixo!
-                                    <button className="button" onClick={() => history.push("/cancelamentos")}>Ver meus cancelamentos</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <br />
-                        <tfoot>
-                            <tr>
-                                <td>
-                                    Deseja inativar sua conta ?<br />
-                                    Clique no botão abaixo!
-                                    <button id="alert" className="button" onClick={deleteAccount}>Inativar conta</button>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <br />
-                </div>
-            </div>
+                        </div>
+                    </div>
+                </>
+            )}
+
             <Bottom />
         </>
     );
