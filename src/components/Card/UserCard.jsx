@@ -16,6 +16,6 @@ export default props =>
             </ul>
         </div>
         <div className='footer'>
-            {props.titulo}
+            {props.usu_rank}
         </div>
     </div>

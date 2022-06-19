@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router-dom";
 
+import api from "../../services/loginApi";
+import Nav from "../Navigation/Nav";
 import './OrdersPage.css'
 
-export default function OrdersPage(props) {
+export default function OrdersPage() {
 
     const history = useHistory();
+
+    const [ordersListSales, setOrdersListSales] = useState([]);
 
     async function handleRedirect(id){
 
@@ -13,14 +17,32 @@ export default function OrdersPage(props) {
         history.push('/pedido')
     }
 
+    useEffect(() => {getOrdersListSales()}, [])
+
+    async function getOrdersListSales(){
+        try {
+            api.get('/order/findByUser', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+                }
+            }).then(res =>{
+                setOrdersListSales(res.data)
+            })
+
+        } catch (err) {
+            alert("Falha ao buscar pedidos . .")
+        }
+    }
+
     return (
         <>
+        <Nav />
             <div className="container-orders">
                 <table>
                     <tr>
                         <td><h1>TODOS OS PEDIDOS DA CONTA</h1></td>
                     </tr>
-                    {props.receiveProps
+                    {ordersListSales
                     .sort((a, b) => {return a.id - b.id})
                     .reverse()
                     .map(o =>(

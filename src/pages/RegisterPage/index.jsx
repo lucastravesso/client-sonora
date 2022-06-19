@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import {useHistory} from 'react-router-dom';
+import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import InputMask from 'react-input-mask';
 
 import Nav from '../Navigation/Nav'
@@ -8,6 +8,7 @@ import Bottom from '../BottomInfo/Bottom'
 
 import './registerPageStyles.css'
 import { validateDoc, validateEmail, validateNasc, validateNome, validateSenha } from "../../validations/validations";
+import { useEffect } from "react";
 
 export default function Register() {
 
@@ -27,43 +28,57 @@ export default function Register() {
     const [password, setPassword] = useState('');
     const [passwordConf, setPasswordConf] = useState('');
 
-    const [testRes, setTestRes] = useState([])
-
-    async function registerForm(e){
+    async function registerForm(e) {
         e.preventDefault();
 
         localStorage.clear()
 
-        const data ={
+        const data = {
             firstName,
             lastName,
             cpf,
             rg,
             phone,
             born,
-            register : new Date(),
+            register: new Date(),
             password,
             email,
         }
 
-        if(!validate()) return; 
-        
-        if(password === passwordConf)
-            {
-                try {
-                    api.post('/user/registerNoAddress', data);
-                    history.push('/login')
-                } catch (err) {
-                    alert("Falha ao criar conta . .")
-                }
-            }else{
-                alert("Confirmação de senha invalida . . . .")
-                
+        if (!validate()) return;
+
+        if (password === passwordConf) {
+            try {
+                api.post('/user/registerNoAddress', data);
+                history.push('/login')
+            } catch (err) {
+                alert("Falha ao criar conta . .")
             }
+        } else {
+            setStatus({
+                type: 'error',
+                message: 'Confirmação de senha invalida . .'
+            })
+        }
     }
 
-    function validate(){
-        if(!firstName) return setStatus({
+    const [res, setRes] = useState()
+    useEffect(()=> {mailVerify()}) 
+
+    function mailVerify() {
+        api.get(`/user/findmail/${email}`).then(res => {
+            if(res.status === 202){
+                setRes(true)
+            }
+        }).catch(err => {
+            if(err.response.status === 406){
+                setRes(false)
+            }
+        })
+    }
+
+    function validate() {
+        if (!firstName) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo nome . .'
         })
@@ -71,7 +86,7 @@ export default function Register() {
             type: 'error',
             message: 'Nome invalido . .'
         })
-        else if(!lastName) return setStatus({
+        else if (!lastName) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo sobrenome . .'
         })
@@ -79,23 +94,23 @@ export default function Register() {
             type: 'error',
             message: 'Sobrenome invalido . .'
         })
-        else if(!cpf) return setStatus({
+        else if (!cpf) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo cpf . .'
         })
-        else if(!validateDoc(cpf, "CPF")) return setStatus({
+        else if (!validateDoc(cpf, "CPF")) return setStatus({
             type: 'error',
             message: 'CPF Invalido . .'
         })
-        else if(!rg) return setStatus({
+        else if (!rg) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo rg . .'
         })
-        else if(!validateDoc(rg, "RG")) return setStatus({
+        else if (!validateDoc(rg, "RG")) return setStatus({
             type: 'error',
             message: 'RG Invalido . .'
         })
-        else if(!born) return setStatus({
+        else if (!born) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo data de nascimento . .'
         })
@@ -103,38 +118,42 @@ export default function Register() {
             type: 'error',
             message: 'Data de nascimento invalida . .'
         })
-        else if(!phone) return setStatus({
+        else if (!phone) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo telefone . .'
         })
-        else if(!validateDoc(phone, "TEL")) return setStatus({
+        else if (!validateDoc(phone, "TEL")) return setStatus({
             type: 'error',
             message: 'Telefone Invalido . .'
         })
-        else if(!email) return setStatus({
+        else if (!email) return setStatus({
             type: 'error',
             message: 'Necessario preencher o campo email . .'
         })
-        else if(!validateEmail(email)) return setStatus({
+        else if (!validateEmail(email)) return setStatus({
             type: 'error',
             message: 'Email invalido . .'
         })
-        else if(!password) return setStatus({
+        else if (res === false) return setStatus({
+            type: 'error',
+            message: 'Email ja cadastrado . .'
+        })
+        else if (!password) return setStatus({
             type: 'error',
             message: 'Necessario preencher campo senha . .'
         })
-        else if(!validateSenha(password)) return setStatus({
+        else if (!validateSenha(password)) return setStatus({
             type: 'error',
             message: 'Senha nao atende aos requisitos . .'
         })
-        else{return true;}
+        else { return true; }
     }
-    
+
     return (
         <>
             <Nav />
-            <div className="input">                        
-                <h1>{status.type === 'error' ? <p style={{ color: "red"}}>{status.message}</p> : ""}</h1>
+            <div className="input">
+                <h1>{status.type === 'error' ? <p style={{ color: "red" }}>{status.message}</p> : ""}</h1>
             </div>
             <form onSubmit={registerForm}>
                 <div className="form-container">

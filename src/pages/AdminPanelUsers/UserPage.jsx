@@ -75,6 +75,7 @@ export default function UserPage() {
                         Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
                 })
+                getUser()
             } catch (err) {
                 console.log("Falha ao ativar" + err)
             }
@@ -85,6 +86,7 @@ export default function UserPage() {
                         Authorization: `Bearer ${localStorage.getItem('accessToken')}`
                     }
                 })
+                getUser()
             } catch (err) {
                 console.log("Falha ao inativar" + err)
             }
@@ -125,7 +127,7 @@ export default function UserPage() {
                 <div className="user-activated-info-adm">
                     <ul>
                         <li>Status : {verifyActive()}</li>
-                        <li><button onClick={() => active()}>Ativar/inativar</button></li>
+                        <li><button className="button-active" onClick={() => active()}>Ativar/inativar</button></li>
                     </ul>
                 </div>
             </div>

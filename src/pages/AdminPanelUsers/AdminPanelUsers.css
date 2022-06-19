@@ -21,6 +21,18 @@
     
 }
 
+.button-active{
+    margin: 5px;
+    width: 150px;
+    height: 30px;
+    background: #BA2126;
+    border-radius: 20px;
+    border: 0;
+    color: white;
+    display: inline-block;
+    text-decoration: none;
+}
+
 .container-user-adm{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -75,3 +87,48 @@
     color: white;
     background-color: rgb(70, 64, 64);
 }
+
+.container-pesquisa{
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+}
+
+.botao-filtrar{
+    box-shadow: inset 1px 1px 1em black;
+    border: 1px solid black;
+    width: 150px;
+    height: 40px;
+    background: #BA2126;
+    border-radius: 20px;
+    border: 0;
+    color: white;
+    font-weight: 700;
+    margin: 16px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    transition: 2s;
+    
+}
+
+.botao-filtrar:hover{
+    transform: scale(104%);
+}
+
+.input-filtro{
+    width: 180px;
+    height: 40px;
+    color: rgb(0, 0, 0);
+    border: 1.5px solid #727272;
+    border-radius: 8px;
+    font-size: 17px;
+    padding: 0 24px;
+    margin-top: 16px;
+}
+
+.modal-filter{
+    display: flex;
+}
+

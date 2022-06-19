@@ -20,8 +20,6 @@ export default function NormalPerfil() {
     const [selectedAddress, setSelectedAddress] = useState([])
     const [card, setCard] = useState([]);
     const [auth, setAuth] = useState([]);
-    //const [selectedSales, setSelectedSales] = useState(false);
-    //const [ordersListSales, setOrdersListSales] = useState([]);
     const [selectedChanges, setSelectedChanges] = useState(false);
     const [ordersListChanges, setOrdersListChanges] = useState([]);
 
@@ -44,27 +42,6 @@ export default function NormalPerfil() {
             alert("Falha ao buscar pedidos . .")
         }
     }
-
-    console.log(ordersListChanges)
-
-
-    /*
-    useEffect(() => {getOrdersListSales()}, [])
-
-    async function getOrdersListSales(){
-        try {
-            api.get('/order/findByUser', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("accessToken")}`
-                }
-            }).then(res =>{
-                setOrdersListSales(res.data)
-            })
-
-        } catch (err) {
-            alert("Falha ao buscar pedidos . .")
-        }
-    }*/
 
     useEffect(() => { getCard() }, [])
     useEffect(() => { getUser() }, [])
@@ -338,7 +315,7 @@ export default function NormalPerfil() {
                                         <td>
                                             Deseja acompanhar seus pedidos ?<br />
                                             Clique no botão abaixo!
-                                            <button className="button" >Ver meus pedidos</button>
+                                            <button className="button" onClick={() => history.push("/pedidos")}>Ver meus pedidos</button>
                                         </td>
                                     </tr>
                                     <br />

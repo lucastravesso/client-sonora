@@ -41,6 +41,7 @@ import AllCuponsChange from "./pages/AdminPanelCupon/AllCuponsChange";
 import AllUserCupons from "./pages/CuponsPages/AllUserCupons";
 import UserPage from "./pages/AdminPanelUsers/UserPage"
 import AuditTable from "./pages/AdminPanelAudit/auditIndex";
+import OrdersPage from "./pages/OrdersPage";
 
 export default function Routes(){
     return (
@@ -63,6 +64,7 @@ export default function Routes(){
                 <Route path='/trocas' exact component={ProductChangeOrder} />
                 <Route path='/trocas/produto' component={ProductChangeSelected} />
                 <Route path='/pedido' component={OrderSelectedPage} />
+                <Route path='/pedidos' component={OrdersPage} />
                 <Route path='/paineladministrativo' exact component={AdminPanelHome} />
                 <Route path='/paineladministrativo/cupons' exact component={AllCupons} />
                 <Route path='/paineladministrativo/cuponschange' exact component={AllCuponsChange} />
