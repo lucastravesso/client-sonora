@@ -20,7 +20,10 @@ export default function ProductChangeOrder(props) {
                     <tr>
                         <td><h1>TODOS OS PEDIDOS DE TROCA DA CONTA</h1></td>
                     </tr>
-                    {props.receiveProps.map(o =>(
+                    {props.receiveProps
+                    .sort((a, b) => {return a.id - b.id})
+                    .reverse()
+                    .map(o =>(
                         <>
                             <button onClick={() => handleRedirect(o.id)}>
                                 <tr key={o.id}>

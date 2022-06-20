@@ -47,7 +47,10 @@ export default function OrderCancelList() {
                     <tr>
                         <td><h1>TODOS OS PEDIDOS DE CANCELAMENTO</h1></td>
                     </tr>
-                    {orders.map(o =>(
+                    {orders
+                    .sort((a, b) => {return a.id - b.id})
+                    .reverse()
+                    .map(o =>(
                         <>
                             <button onClick={() => handleRedirect(o.id)}>
                                 <tr key={o.id}>

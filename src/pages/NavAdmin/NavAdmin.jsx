@@ -41,10 +41,7 @@ export default function NavAdmin() {
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/vendas')}> Vendas </button></td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/cancelamentos')}> Cancelamentos </button></td>
                                 <td className="opt"><button onClick={() => history.push('/paineladministrativo/trocas')}> Trocas </button></td>
-                                <td className="opt"><button onClick={() => {
-                                    localStorage.clear()
-                                    history.push('/')
-                                }}> Sair </button></td>
+                                <td className="opt"><button onClick={() => history.push('/')}> Sair </button></td>
                             </tr>
                         </thead>
                     </table>
